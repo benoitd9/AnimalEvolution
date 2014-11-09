@@ -6,7 +6,6 @@
 package AnimalWorld;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -14,12 +13,12 @@ import java.util.NoSuchElementException;
 public class Board<T extends Organism>{
     
     private List<T> animalList;
-    private ArrayList<T>[][] board;
+    private List<T>[][] board;
     
     
     public Board(){
         animalList = new LinkedList<T>();
-        board = new ArrayList[500][500];
+        board = new LinkedList[500][500];
     }
     
     public void addActor(T org){
