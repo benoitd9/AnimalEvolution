@@ -8,8 +8,8 @@ package AnimalWorld;
 public class SurfaceDweller extends Animal
 {
 
-    public SurfaceDweller(String name, int[] stuff){
-        super(name, stuff);
+    public SurfaceDweller(String name, int[] stuff, BodyComponent body){
+        super(name, stuff, body);
 
     }
 

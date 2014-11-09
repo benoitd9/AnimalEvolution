@@ -19,8 +19,12 @@ public abstract class Animal implements Organism {
     protected boolean canEatLarger; //0 can not eat larger creatures, 1 can eat larger
     protected String name;    //the name of this Animal
     protected int gender; //0 is a female, 1 is male
+    protected BodyComponent body;
+    protected int damageConstant;
+    protected int damageCapacity;
+    protected int markedDamage;
 
-    public Animal(String aniName, int[] attributes) {
+    public Animal(String aniName, int[] attributes, BodyComponent initialBody) {
         position = new int[2];
         position[0] = attributes[0];
         position[1] = attributes[1];
@@ -43,12 +47,16 @@ public abstract class Animal implements Organism {
             eatingStrat = new Omnivore();
             isCannibal = false;
         }
-
-        size = attributes[4];
-
-        movementSpeed = attributes[5];
         
-        gender = attributes[6];
+        body = initialBody;
+        size = body.getSize();
+        damageCapacity = size/10;
+        damageConstant = size/30;
+        markedDamage = 0;
+
+        movementSpeed = attributes[4];
+        
+        gender = attributes[5];
 
     }
 
@@ -84,12 +92,15 @@ public abstract class Animal implements Organism {
         return name;
     }
     
-    public boolean equals(Animal ani){
-        if(this.getName().equals(ani.getName()))
+    @Override
+    public boolean equals(Object o){
+        if(o == null) return false;
+        if(o == this) return true;
+        if(!(o instanceof Animal)) return false;
+        Animal otherAnimal = (Animal) o;
+        if(this.getName().equals(otherAnimal.getName()))
             return true;
-        
-        else 
-            return false;
+        else return false;
     }
 
     abstract int hide(); //returns a 0 if unable to hide and a 1 if hide was successful

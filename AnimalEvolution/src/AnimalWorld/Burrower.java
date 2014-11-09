@@ -8,8 +8,8 @@ package AnimalWorld;
 public class Burrower extends Animal
 {
 
-    public Burrower(String name, int[] stuff){
-        super(name, stuff);
+    public Burrower(String name, int[] stuff, BodyComponent body){
+        super(name, stuff, body);
     }
     
     public void burrow()

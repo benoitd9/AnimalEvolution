@@ -5,27 +5,30 @@
  */
 package AnimalWorld;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.LinkedList;
 
 /**
  *
  * @author Holly
  */
 public abstract class CompositeComponent implements BodyComponent{
-    protected ArrayList<BodyComponent> children;
+    protected List<BodyComponent> children;
     protected int size;
     
     public CompositeComponent(int tempSize){
-        children = new ArrayList<BodyComponent>();
+        children = new LinkedList<BodyComponent>();
         size = tempSize;
     }
     
     @Override
     public int getSize(){
-        int tempSize = size;
+        int tempSize = 0;
         for(int i = 0; i < children.size(); i++){
             tempSize += children.get(i).getSize();
         }
+        if(tempSize <= size)
+            tempSize = size;
         return tempSize;
     }
     
