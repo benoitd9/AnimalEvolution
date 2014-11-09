@@ -18,7 +18,7 @@ public abstract class Animal implements Organism {
     protected boolean isCannibal;  //0 is not a cannibal, 1 is a cannibal
     protected boolean canEatLarger; //0 can not eat larger creatures, 1 can eat larger
     protected String name;    //the name of this Animal
-    protected int gender; //0 is a femail, 1 is male
+    protected int gender; //0 is a female, 1 is male
 
     public Animal(String aniName, int[] attributes) {
         position = new int[2];
@@ -78,6 +78,18 @@ public abstract class Animal implements Organism {
     @Override
     public int getY() {
         return position[1];
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public boolean equals(Animal ani){
+        if(this.getName().equals(ani.getName()))
+            return true;
+        
+        else 
+            return false;
     }
 
     abstract int hide(); //returns a 0 if unable to hide and a 1 if hide was successful

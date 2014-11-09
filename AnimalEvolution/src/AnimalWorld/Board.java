@@ -6,6 +6,7 @@
 package AnimalWorld;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -13,18 +14,18 @@ import java.util.NoSuchElementException;
 public class Board<T extends Organism>{
     
     private List<T> animalList;
-    private Organism[][] board;
+    private ArrayList<T>[][] board;
     
     
     public Board(){
         animalList = new LinkedList<T>();
-        board = new Organism[500][500];
+        board = new ArrayList[500][500];
     }
     
     public void addActor(T org){
         try{
-            int[] tempLoc = nearestClosest(null, org.getX(), org.getY());
-            board[tempLoc[0]][tempLoc[1]] = org;
+            int[] tempLoc = findClosest(null, org.getX(), org.getY());
+            board[tempLoc[0]][tempLoc[1]].add(org);
             animalList.add(org);
         }
         catch(BadLocationException e){
@@ -32,137 +33,137 @@ public class Board<T extends Organism>{
         }
     }
     
-    public int[] nearestClosest(T org, int x, int y) throws BadLocationException{
-        if(board[x][y] == org)
+    public int[] findClosest(T org, int x, int y) throws BadLocationException{
+        if(board[x][y].contains(org))
             return new int[]{x,y};
         for(int i = 1; i <= 100; i++){
             if(x <= i){
                 if(y <= i){            
-                    if(board[x + i][y] == org)
+                    if(board[x + i][y].contains(org))
                         return new int[]{x + i,y};
                     
-                    else if(board[x + i][y + i] == org)
+                    else if(board[x + i][y + i].contains(org))
                         return new int[]{x + i,y + i};
                     
-                    else if(board[x][y + i] == org)
+                    else if(board[x][y + i].contains(org))
                         return new int[]{x,y+i};
                 }
                 
                 else if(y >= (board[0].length-i)){
-                    if(board[x][y - i] == org)
+                    if(board[x][y - i].contains(org))
                         return new int[]{x,y-i};
         
-                    else if(board[x + i][y] == org)
+                    else if(board[x + i][y].contains(org))
                         return new int[]{x + i,y};
                     
-                    else if(board[x + i][y - i] == org)
+                    else if(board[x + i][y - i].contains(org))
                         return new int[]{x + i, y - i};
                     
                 }
                 
                 else{
-                    if(board[x][y-i] == org)
+                    if(board[x][y-i].contains(org))
                         return new int[]{x,y-i};
                     
-                    if(board[x+i][y-i] == org)
+                    if(board[x+i][y-i].contains(org))
                         return new int[]{x+i,y-i};
                     
-                    if(board[x+i][y] == org)
+                    if(board[x+i][y].contains(org))
                         return new int[]{x+i,y};
                     
-                    if(board[x][y+i] == org)
+                    if(board[x][y+i].contains(org))
                         return new int[]{x,y+i};
                     
-                    if(board[x+i][y+i] == org)
+                    if(board[x+i][y+i].contains(org))
                         return new int[]{x+i,y+i};
                 }
             }
             
             else if(y <= i){
                 if(x >= (board.length-i)){
-                    if(board[x-i][y] == org)
+                    if(board[x-i][y].contains(org))
                         return new int[]{x-i,y};
         
-                    else if(board[x][y+i] == org)
+                    else if(board[x][y+i].contains(org))
                         return new int[]{x,y+i};
                     
-                    else if(board[x - i][y + i] == org)
+                    else if(board[x - i][y + i].contains(org))
                         return new int[]{x - i, y + i};
                 }
                 
                 else{
-                    if(board[x - i][y] == org)
+                    if(board[x - i][y].contains(org))
                         return new int[]{x - i,y};
                     
-                    if(board[x-i][y+i] == org)
+                    if(board[x-i][y+i].contains(org))
                         return new int[]{x-i,y+i};
                     
-                    if(board[x+i][y] == org)
+                    if(board[x+i][y].contains(org))
                         return new int[]{x+i,y};
                     
-                    if(board[x][y+i] == org)
+                    if(board[x][y+i].contains(org))
                         return new int[]{x,y+i};
                     
-                    if(board[x+i][y+i] == org)
+                    if(board[x+i][y+i].contains(org))
                         return new int[]{x+i,y+i};
                 }
             }
             
             else if(x >= (board.length - i)){
                 if(y >= (board[0].length - i)){
-                    if(board[x-i][y] == org)
+                    if(board[x-i][y].contains(org))
                         return new int[]{x-i,y};
                     
-                    else if(board[x-i][y-i] == org)
+                    else if(board[x-i][y-i].contains(org))
                         return new int[]{x-i,y-i};
                     
-                    else if(board[x][y-i] == org)
+                    else if(board[x][y-i].contains(org))
                         return new int[]{x,y-i};
                     
                 }
                 
                 else{
-                    if(board[x][y+i] == org)
+                    if(board[x][y+i].contains(org))
                         return new int[]{x,y+i};
-                    else if(board[x-i][y+i] == org)
+                    else if(board[x-i][y+i].contains(org))
                         return new int[]{x-i,y+i};
-                    else if(board[x-i][y] == org)
+                    else if(board[x-i][y].contains(org))
                         return new int[]{x-i,y};
-                    else if(board[x-i][y-i] == org)
+                    else if(board[x-i][y-i].contains(org))
                         return new int[]{x-i,y-i};
-                    else if(board[x][y-i] == org)
+                    else if(board[x][y-i].contains(org))
                         return new int[]{x,y-i};
                 }
             }
             
             else if(y >= (board[0].length - i)){
-                if(board[x+i][y] == org)
+                if(board[x+i][y].contains(org))
                     return new int[]{x+i,y};
-                else if(board[x+i][y-i] == org)
+                else if(board[x+i][y-i].contains(org))
                     return new int[]{x+i,y-i};
-                else if(board[x][y-i] == org)
+                else if(board[x][y-i].contains(org))
                     return new int[]{x,y-i};
-                else if(board[x-i][y-i] == org)
+                else if(board[x-i][y-i].contains(org))
                     return new int[]{x-i,y-i};
-                else if(board[x-i][y] == org)
+                else if(board[x-i][y].contains(org))
                     return new int[]{x-i,y};
             }
             else{
-                if(board[x][y+i] == org)
+                if(board[x][y+i].contains(org))
                     return new int[]{x,y+i};
-                else if(board[x-i][y+i] == org)
+                else if(board[x-i][y+i].contains(org))
                     return new int[]{x-i,y+i};
-                else if(board[x-i][y] == org)
+                else if(board[x-i][y].contains(org))
                     return new int[]{x-i,y};
-                else if(board[x-i][y-i] == org)
+                else if(board[x-i][y-i].contains(org))
                     return new int[]{x-i,y};
-                else if(board[x][y-i] == org)
+                else if(board[x][y-i].contains(org))
                     return new int[]{x,y-i};
-                else if(board[x+i][y-i] == org)
+                else if(board[x+i][y-i].contains(org))
                     return new int[]{x+i,y-i};
-                else if(board[x+i][y] == org)
+                else if(board[x+i][y].contains(org))
                     return new int[]{x+i,y};
-                else if(board[x+i][y+i] == org)
+                else if(board[x+i][y+i].contains(org))
                     return new int[]{x+i,y+i};
             }
         }
