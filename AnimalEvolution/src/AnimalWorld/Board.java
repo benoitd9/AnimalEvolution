@@ -202,15 +202,15 @@ public class Board<T extends Organism>{
                 if(shalWater > 0){
                     if(medWater > 0){
                         if(deepWater > 0){
-                            if(rand < 10)
+                            if(rand < 20)
                                 landscape[i][j] = LandType.DIRT;
-                            else if(rand >= 10 && rand < 25)
+                            else if(rand >= 20 && rand < 55)
                                 landscape[i][j] = LandType.SHALLOW_WATER;
-                            else if(rand >= 25 && rand < 60)
+                            else if(rand >= 55 && rand < 80)
                                 landscape[i][j] = LandType.MEDIUM_WATER;
-                            else if(rand >= 60 && rand < 90)
+                            else if(rand >= 80 && rand < 99)
                                 landscape[i][j] = LandType.DEEP_WATER;
-                            else if(rand >= 90)
+                            else if(rand >= 99)
                                 landscape[i][j] = LandType.ROCK;
                         }
                         
@@ -221,9 +221,9 @@ public class Board<T extends Organism>{
                                 landscape[i][j] = LandType.SHALLOW_WATER;
                             else if(rand >= 45 && rand < 70)
                                 landscape[i][j] = LandType.MEDIUM_WATER;
-                            else if(rand >= 70 && rand < 90)
+                            else if(rand >= 70 && rand < 99)
                                 landscape[i][j] = LandType.DEEP_WATER;
-                            else if(rand >= 90)
+                            else if(rand >= 99)
                                 landscape[i][j] = LandType.ROCK;
                         }
                         
@@ -234,52 +234,52 @@ public class Board<T extends Organism>{
                             landscape[i][j] = LandType.DIRT;
                         else if(rand >= 30 && rand < 40)
                             landscape[i][j] = LandType.SHALLOW_WATER;
-                        else if(rand >= 40 && rand < 60)
+                        else if(rand >= 40 && rand < 80)
                             landscape[i][j] = LandType.MEDIUM_WATER;
-                        else if(rand >= 60 && rand < 90)
+                        else if(rand >= 80 && rand < 99)
                             landscape[i][j] = LandType.DEEP_WATER;
-                        else if(rand >= 90)
+                        else if(rand >= 99)
                             landscape[i][j] = LandType.ROCK;
                     }
                     
                     else{
-                        if(rand < 55)
+                        if(rand < 75)
                             landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 55 && rand < 75)
+                        else if(rand >= 75 && rand < 80)
                             landscape[i][j] = LandType.SHALLOW_WATER;
-                        else if(rand >= 75 && rand < 85)
+                        else if(rand >= 80 && rand < 90)
                             landscape[i][j] = LandType.MEDIUM_WATER;
-                        else if(rand >= 85 && rand < 95)
+                        else if(rand >= 90 && rand < 99)
                             landscape[i][j] = LandType.DEEP_WATER;
-                        else if(rand >= 95)
+                        else if(rand >= 99)
                             landscape[i][j] = LandType.ROCK;
                     }
                 }
                 
                 else if(medWater > 0){
                     if(deepWater > 0){
-                        if(rand < 15)
+                        if(rand < 20)
                             landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 15 && rand < 30)
+                        else if(rand >= 20 && rand < 50)
                             landscape[i][j] = LandType.SHALLOW_WATER;
-                        else if(rand >= 30 && rand < 60)
+                        else if(rand >= 50 && rand < 75)
                             landscape[i][j] = LandType.MEDIUM_WATER;
-                        else if(rand >= 60 && rand < 90)
+                        else if(rand >= 75 && rand < 99)
                             landscape[i][j] = LandType.DEEP_WATER;
-                        else if(rand >= 90)
+                        else if(rand >= 99)
                             landscape[i][j] = LandType.ROCK;
                     }
                         
                     else{
-                        if(rand < 30)
+                        if(rand < 40)
                             landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 30 && rand < 55)
+                        else if(rand >= 40 && rand < 75)
                             landscape[i][j] = LandType.SHALLOW_WATER;
-                        else if(rand >= 55 && rand < 70)
+                        else if(rand >= 75 && rand < 90)
                             landscape[i][j] = LandType.MEDIUM_WATER;
-                        else if(rand >= 70 && rand < 90)
+                        else if(rand >= 90 && rand < 99)
                             landscape[i][j] = LandType.DEEP_WATER;
-                        else if(rand >= 90)
+                        else if(rand >= 99)
                             landscape[i][j] = LandType.ROCK;
                     }
                     
@@ -288,13 +288,13 @@ public class Board<T extends Organism>{
                 else if(deepWater > 0){
                     if(rand < 20)
                         landscape[i][j] = LandType.DIRT;
-                    else if(rand >= 20 && rand < 35)
+                    else if(rand >= 20 && rand < 55)
                         landscape[i][j] = LandType.SHALLOW_WATER;
-                    else if(rand >= 35 && rand < 60)
+                    else if(rand >= 55 && rand < 80)
                         landscape[i][j] = LandType.MEDIUM_WATER;
-                    else if(rand >= 60 && rand < 90)
+                    else if(rand >= 80 && rand < 99)
                         landscape[i][j] = LandType.DEEP_WATER;
-                    else if(rand >= 90)
+                    else if(rand >= 99)
                         landscape[i][j] = LandType.ROCK;
                 }
                 
@@ -303,9 +303,9 @@ public class Board<T extends Organism>{
                         if(lava > 0){
                             if(rand < 55)
                                 landscape[i][j] = LandType.DIRT;
-                            else if(rand >= 55 && rand < 90)
+                            else if(rand >= 55 && rand < 95)
                                 landscape[i][j] = LandType.ROCK;
-                            else if(rand >= 90)
+                            else if(rand >= 95)
                                 landscape[i][j] = LandType.LAVA; 
                         }
                         else{
@@ -318,50 +318,50 @@ public class Board<T extends Organism>{
                         }
                     }
                     else if(lava > 0){
-                        if(rand < 55)
+                        if(rand < 65)
                             landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 55 && rand < 70)
+                        else if(rand >= 65 && rand < 80)
                             landscape[i][j] = LandType.ROCK;
-                        else if(rand >= 70 && rand < 85)
+                        else if(rand >= 80 && rand < 90)
                             landscape[i][j] = LandType.BOULDER;
-                        else if(rand >= 85)
+                        else if(rand >= 90)
                             landscape[i][j] = LandType.LAVA;
                     }
                     else{
-                        if(rand < 45)
+                        if(rand < 55)
                             landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 45 && rand < 80)
+                        else if(rand >= 55 && rand < 87)
                             landscape[i][j] = LandType.ROCK;
-                        else if(rand >= 80 && rand < 95)
+                        else if(rand >= 87 && rand < 97)
                             landscape[i][j] = LandType.BOULDER;
-                        else if(rand >= 95)
+                        else if(rand >= 97)
                             landscape[i][j] = LandType.LAVA;
                     }
                 }
                 else if(boulder > 0){
                     if(lava > 0){
-                        if(rand < 45)
+                        if(rand < 55)
                             landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 45 && rand < 80)
+                        else if(rand >= 55 && rand < 90)
                             landscape[i][j] = LandType.ROCK;
-                        else if(rand >= 80)
+                        else if(rand >= 90)
                             landscape[i][j] = LandType.LAVA; 
                     }
                     else{
-                        if(rand < 45)
+                        if(rand < 55)
                             landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 45 && rand < 90)
+                        else if(rand >= 55 && rand < 97)
                             landscape[i][j] = LandType.ROCK;
-                        else if(rand >= 90)
+                        else if(rand >= 97)
                             landscape[i][j] = LandType.LAVA;
                     }
                 }
                 else if(lava > 0){
-                    if(rand < 55)
+                    if(rand < 60)
                         landscape[i][j] = LandType.DIRT;
-                    else if(rand >= 55 && rand < 85)
+                    else if(rand >= 60 && rand < 90)
                         landscape[i][j] = LandType.ROCK;
-                    else if(rand >= 85)
+                    else if(rand >= 90)
                         landscape[i][j] = LandType.LAVA; 
                 }
                 else{
