@@ -30,7 +30,7 @@ public class LandType {
         }
         
         else if(c == 2){
-            color = new Color(0x7FFFD4);
+            color = new Color(0x00FFFF);
         }
         
         else if(c == 3){
