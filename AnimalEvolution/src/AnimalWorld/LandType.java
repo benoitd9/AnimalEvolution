@@ -30,11 +30,11 @@ public class LandType {
         }
         
         else if(c == 2){
-            color = new Color(0x00FFFF);
+            color = Color.BLUE;
         }
         
         else if(c == 3){
-            color = Color.BLUE;
+            color = new Color(0x0000B0);
         }
         
         else if(c == 4){

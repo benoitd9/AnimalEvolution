@@ -487,6 +487,28 @@ public class Board<T extends Organism>{
         return landscape[x][y];
     }
     
+    public void printTerrainComposition(){
+        int[] temp = new int[4];
+        for(int i = 0; i < landscape.length; i++){
+            for(int j = 0; j < landscape[0].length; j++){
+                if(landscape[i][j].equals(LandType.DIRT))
+                    temp[0] += 1;
+                else if(landscape[i][j].equals(LandType.SHALLOW_WATER) || landscape[i][j].equals(LandType.MEDIUM_WATER) || landscape[i][j].equals(LandType.DEEP_WATER))
+                    temp[1] += 1;
+                else if(landscape[i][j].equals(LandType.ROCK) || landscape[i][j].equals(LandType.BOULDER))
+                    temp[2] += 1;
+                else if(landscape[i][j].equals(LandType.LAVA))
+                    temp[3] += 1;
+            }
+        }
+        
+        System.out.println("The world is: ");
+        System.out.println((double)((double)(temp[0]*100)/(double)(landscape.length*landscape[0].length)) + "% Dirt");
+        System.out.println((double)((double)(temp[1]*100)/(double)(landscape.length*landscape[0].length)) + "% Water");
+        System.out.println((double)((double)(temp[2]*100)/(double)(landscape.length*landscape[0].length)) + "% Rock");
+        System.out.println((double)((double)(temp[3]*100)/(double)(landscape.length*landscape[0].length)) + "% Lava");
+    }
+    
     public Iterator<T> aniListIterator(){
         return new AnimalIterator(animalList.iterator());
     }

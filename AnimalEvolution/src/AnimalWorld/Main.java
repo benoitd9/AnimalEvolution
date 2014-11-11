@@ -18,6 +18,8 @@ public class Main
         app.add(gBoard);
         app.setSize(gBoard.getWidth(),gBoard.getHeight());
         app.setVisible(true);
+        
+        b.printTerrainComposition();
 
     }
 }
