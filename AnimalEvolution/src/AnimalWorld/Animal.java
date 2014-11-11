@@ -1,8 +1,6 @@
 package AnimalWorld;
 
 /**
- * test commit
- * test this is a test
  * Animal is the parent class of all creatures: Mammal
  *
  * @author Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
@@ -23,7 +21,6 @@ public abstract class Animal implements Organism {
     protected int damageConstant;
     protected int damageCapacity;
     protected int markedDamage;
-    int thing;
 
     public Animal(String aniName, int[] attributes, BodyComponent initialBody) {
         position = new int[2];
