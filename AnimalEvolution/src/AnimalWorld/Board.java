@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AnimalWorld;
 
 import java.util.List;
@@ -10,6 +5,13 @@ import java.util.LinkedList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Random;
+import javax.swing.text.BadLocationException;
+
+/**
+ * Board is where the game take place
+ * 
+ * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
+ */
 
 public class Board<T extends Organism>{
     
@@ -171,7 +173,7 @@ public class Board<T extends Organism>{
                     return new int[]{x+i,y+i};
             }
         }
-        throw new BadLocationException("Your animal is bad and should feel bad");
+        throw new BadLocationException("Your animal is bad and should feel bad", 0);
     }
     
     private void generateLandscape(){

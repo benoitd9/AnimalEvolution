@@ -1,23 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AnimalWorld;
 
 import java.util.List;
 import java.util.LinkedList;
 
 /**
- *
- * @author Holly
+ * CompositeComponent implements CompBodyComponent
+ *      CompositeComponent is a body part that contains other body parts
+ * 
+ * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public abstract class CompositeComponent implements BodyComponent{
-    protected List<BodyComponent> children;
+public abstract class CompositeComponent implements CompBodyComponent{
+    protected List<CompBodyComponent> children;
     protected int size;
     
     public CompositeComponent(int tempSize){
-        children = new LinkedList<BodyComponent>();
+        children = new LinkedList<CompBodyComponent>();
         size = tempSize;
     }
     
@@ -33,17 +30,17 @@ public abstract class CompositeComponent implements BodyComponent{
     }
     
     @Override
-    public void add(BodyComponent component){
+    public void add(CompBodyComponent component){
         children.add(component);
     }
     
     @Override
-    public void remove(BodyComponent component){
+    public void remove(CompBodyComponent component){
         children.remove(component);
     }
     
     @Override
-    public BodyComponent getChild(int i){
+    public CompBodyComponent getChild(int i){
         return children.get(i);
     }
 }

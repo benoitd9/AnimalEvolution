@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AnimalWorld;
 
 import java.util.Random;
@@ -11,15 +6,16 @@ import java.util.Random;
  *
  * @author Nate
  */
-public class SurfaceFactory implements AnimalFactory{
-    
+public class SurfaceFactory// implements AnimalFactory
+{
+/*
     private Random generator;
     
     public SurfaceFactory(){
         generator = new Random();
     }
     
-    
+*/
     /**
      * Takes a string in format name:xPos,yPos,initialMoveStrat,FeedingStrat,movespeed,gender
      * Returns an animal with those characteristics
@@ -27,6 +23,7 @@ public class SurfaceFactory implements AnimalFactory{
      * @param s
      * @return an Animal
      */
+/*
     @Override
     public Animal createAnimal(String s){
         
@@ -77,4 +74,5 @@ public class SurfaceFactory implements AnimalFactory{
         }
         return returned;
     }
+*/
 }

@@ -1,11 +1,10 @@
 package AnimalWorld;
-
 /**
- * MovementStrategy describes how the Animal will move
+ * MovementStrategy is the interface for all of the MovementStrategies
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public interface MovementStrategy
+public interface MovementStrategy 
 {
-    public void move();
+    public void doMovement();
 }

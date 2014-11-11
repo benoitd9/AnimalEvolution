@@ -1,10 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AnimalWorld;
-
+/**
+ * Organism is used as the interface for storing Animals and Plants
+ * 
+ * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
+ */
 public interface Organism {
     int[] getPosition();
     

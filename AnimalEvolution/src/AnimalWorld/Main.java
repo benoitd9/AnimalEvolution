@@ -21,5 +21,20 @@ public class Main
         
         b.printTerrainComposition();
 
+        System.out.println("\nAnimal World Game");
+        System.out.println("-----------------");
+        
+        Animal ani1 = AnimalFactorySingleton.getAnimal("BEAR");
+        ZAnimal bear = ani1.create();
+        
+        Animal ani2 = AnimalFactorySingleton.getAnimal("RABBIT");
+        ZAnimal rabbit = ani2.create();
+        
+        Animal ani3 = AnimalFactorySingleton.getAnimal("BEAR");
+        ZAnimal bear2 = ani3.create();
+        
+        System.out.println("A "+bear.getName()+" has been created");
+        System.out.println("A "+rabbit.getName()+" has been created");
+        System.out.println("A "+bear2.getName()+" has been created");
     }
 }

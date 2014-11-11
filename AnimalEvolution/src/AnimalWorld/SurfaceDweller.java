@@ -5,9 +5,9 @@ package AnimalWorld;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class SurfaceDweller extends Animal
+public class SurfaceDweller// extends Animal
 {
-
+/*
     public SurfaceDweller(String name, int[] stuff, BodyComponent body){
         super(name, stuff, body);
 
@@ -17,5 +17,5 @@ public class SurfaceDweller extends Animal
     int hide() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+*/
 }
