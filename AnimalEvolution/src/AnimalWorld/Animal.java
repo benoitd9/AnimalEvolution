@@ -1,7 +1,7 @@
 package AnimalWorld;
 
 /**
- *
+ * test commit
  *
  * Animal is the parent class of all creatures: Mammal
  *
