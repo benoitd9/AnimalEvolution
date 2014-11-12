@@ -12,7 +12,7 @@ public class DecoratorAnimalStatusWellFed extends DecoratorAnimalStatus
     {
         super(decoAni);
     }
-    
+    /*
     @Override
     public ZAnimal create()
     {
@@ -20,6 +20,7 @@ public class DecoratorAnimalStatusWellFed extends DecoratorAnimalStatus
         setWellFed(decoAni);
         return decoAni.create();
     }
+    */
     
     private void setWellFed(Animal decoAni)
     {

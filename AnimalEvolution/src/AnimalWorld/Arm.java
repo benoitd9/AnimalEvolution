@@ -1,11 +1,11 @@
 package AnimalWorld;
 /**
- * CompSkeleton extends CompositeComponent
+ * Arm extends CompositeLeafComponent
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class CompSkeleton extends CompositeComponent{
-    public CompSkeleton(int size){
+public class Arm extends CompLeafComponent{
+    public Arm(int size){
         super(size);
     }
 }

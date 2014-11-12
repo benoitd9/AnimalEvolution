@@ -1,11 +1,11 @@
 package AnimalWorld;
 /**
- * CompArm extends CompositeLeafComponent
+ * Torso extends CompositeComponent
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class CompArm extends CompLeafComponent{
-    public CompArm(int size){
+public class Torso extends CompositeComponent{
+    public Torso(int size){
         super(size);
     }
 }

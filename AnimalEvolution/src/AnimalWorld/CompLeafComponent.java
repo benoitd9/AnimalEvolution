@@ -1,10 +1,10 @@
 package AnimalWorld;
 /**
- * CompLeafComponent implements CompBodyComponent
+ * CompLeafComponent implements BodyComponent
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public abstract class CompLeafComponent implements CompBodyComponent {
+public abstract class CompLeafComponent implements BodyComponent {
     
     private CompLeafComponentException except = new CompLeafComponentException("This leaf has no children");
     private int size;
@@ -20,17 +20,17 @@ public abstract class CompLeafComponent implements CompBodyComponent {
     }
     
     @Override
-    public void add(CompBodyComponent component) throws CompLeafComponentException{
+    public void add(BodyComponent component) throws CompLeafComponentException{
         throw except;
     }
     
     @Override
-    public void remove(CompBodyComponent component) throws CompLeafComponentException{
+    public void remove(BodyComponent component) throws CompLeafComponentException{
         throw except;
     }
     
     @Override
-    public CompBodyComponent getChild(int i) throws CompLeafComponentException{
+    public BodyComponent getChild(int i) throws CompLeafComponentException{
         throw except;
     }      
 }

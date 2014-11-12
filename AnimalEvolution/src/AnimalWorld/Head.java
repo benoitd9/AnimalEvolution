@@ -1,11 +1,11 @@
 package AnimalWorld;
 /**
- * CompHead extends CompositeComponent
+ * Head extends CompositeComponent
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class CompHead extends CompositeComponent {
-    public CompHead(int size){
+public class Head extends CompositeComponent {
+    public Head(int size){
         super(size);
     }
 }

@@ -5,7 +5,7 @@ package AnimalWorld;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class ZAnimal
+public class ZAnimal implements Animal, Decoratable
 {
     protected EatingStrategy eatStrat;
     protected MovementStrategy moveStrat;
@@ -20,57 +20,52 @@ public class ZAnimal
     protected boolean canEatLarger; //0 can not eat larger creatures, 1 can eat larger
     protected String name;    //the name of this Animal
     protected int gender; //0 is a female, 1 is male
-    protected CompBodyComponent body;
+    protected BodyComponent body;
     protected int damageConstant;
     protected int damageCapacity;
     protected int markedDamage;
 
-    public ZAnimal(String aniName, int xPosition, int yPosition, int eatStrategy, int moveStrategy, int moveSpeed, int cannibal, int gender/*, CompBodyComponent initialBody*/) 
+    private ZAnimal(String aniName, int xPosition, int yPosition, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
     {
         name = aniName;
         position = new int[2];
         position[0] = xPosition;
         position[1] = yPosition;
 
-        if (eatStrategy == 1) 
-        {
-             eatStrat = new EatingStrategyCarnivore();
-        } else if (eatStrategy == 2) 
-        {
-             eatStrat = new EatingStrategyHerbivore();
-        } else 
-        {
-             eatStrat = new EatingStrategyOmnivore();
+        if (eatStrategy == 1) {
+            eatStrat = new EatingStrategyCarnivore();
+        } 
+        else if (eatStrategy == 2){
+            eatStrat = new EatingStrategyHerbivore();
+        } 
+        else {
+            eatStrat = new EatingStrategyOmnivore();
         }
         
-        if (moveStrategy == 1) 
-        {
+        if (moveStrategy == 1) {
             moveStrat = new MovementStrategyFight();
-        } else if (moveStrategy == 2) 
-        {
+        } 
+        else if (moveStrategy == 2) {
             moveStrat = new MovementStrategyFlight();
-        } else 
-        {
+        } 
+        else {
             moveStrat = new MovementStrategyRandom();
         }
 
         if (cannibal == 1) 
-        {
             isCannibal = true;
-        } else 
-        {
+        else 
             isCannibal = false;
-        }
         
-        //body = initialBody; temporarily disabled
-        //size = body.getSize();
+        body = initialBody;
+        size = body.getSize();
         damageCapacity = size/10;
         damageConstant = size/30;
         markedDamage = 0;
 
         movementSpeed = moveSpeed;
         
-        gender = gender;
+        gender = initGender;
 
     }
 
@@ -96,11 +91,15 @@ public class ZAnimal
         return name;
     }
     
+    public static ZAnimal create(String name, int[] parameters, BodyComponent body){
+        return new ZAnimal(name,parameters[0],parameters[1],parameters[2],parameters[3],parameters[4],parameters[5],parameters[6],body);
+    }
+    
     public boolean equals(ZAnimal o){
         if(o == null) return false;
         if(o == this) return true;
-        if(!(o instanceof Animal)) return false;
-        Animal otherAnimal = (Animal) o;
+        if(!(o instanceof ZAnimal)) return false;
+        ZAnimal otherAnimal = (ZAnimal) o;
         if(this.getName().equals(o.getName()))
             return true;
         else return false;

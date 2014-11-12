@@ -4,17 +4,17 @@ import java.util.List;
 import java.util.LinkedList;
 
 /**
- * CompositeComponent implements CompBodyComponent
- *      CompositeComponent is a body part that contains other body parts
+ * CompositeComponent implements BodyComponent
+      CompositeComponent is a body part that contains other body parts
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public abstract class CompositeComponent implements CompBodyComponent{
-    protected List<CompBodyComponent> children;
+public abstract class CompositeComponent implements BodyComponent{
+    protected List<BodyComponent> children;
     protected int size;
     
     public CompositeComponent(int tempSize){
-        children = new LinkedList<CompBodyComponent>();
+        children = new LinkedList<BodyComponent>();
         size = tempSize;
     }
     
@@ -30,17 +30,17 @@ public abstract class CompositeComponent implements CompBodyComponent{
     }
     
     @Override
-    public void add(CompBodyComponent component){
+    public void add(BodyComponent component){
         children.add(component);
     }
     
     @Override
-    public void remove(CompBodyComponent component){
+    public void remove(BodyComponent component){
         children.remove(component);
     }
     
     @Override
-    public CompBodyComponent getChild(int i){
+    public BodyComponent getChild(int i){
         return children.get(i);
     }
 }

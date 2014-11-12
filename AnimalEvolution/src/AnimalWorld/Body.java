@@ -1,11 +1,11 @@
 package AnimalWorld;
 /**
- * CompBone extends CompositeLeafComponent
+ * Body extends CompositeComponent
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class CompBone extends CompLeafComponent{
-    public CompBone(int size){
+public class Body extends CompositeComponent{
+    public Body(int size){
         super(size);
     }
 }

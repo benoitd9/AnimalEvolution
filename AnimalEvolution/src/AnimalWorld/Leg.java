@@ -1,11 +1,11 @@
 package AnimalWorld;
 /**
- * CompTorso extends CompositeComponent
+ * Leg extends CompositeLeafComponent
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class CompTorso extends CompositeComponent{
-    public CompTorso(int size){
+public class Leg extends CompLeafComponent{
+    public Leg(int size){
         super(size);
     }
 }
