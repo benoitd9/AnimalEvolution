@@ -46,7 +46,7 @@ public class AnimalFactorySingleton
     
     private int[] parse(String s){
         String[] splitTemp = s.split("[,]");
-        String[] temp = new String[6];
+        String[] temp = new String[7];
         
         for(int i = 0; i < splitTemp.length; i++){
             temp[i] = splitTemp[i];
@@ -54,7 +54,7 @@ public class AnimalFactorySingleton
         int[] returned = new int[7];
         
         for(int i = 0; i < returned.length; i++){
-            if(!temp[i].equals(""))
+            if(!(temp[i].equals(" ") || temp[i].equals("")))
                 returned[i] = Integer.parseInt(temp[i]);
             else{
                 if(i == 0)

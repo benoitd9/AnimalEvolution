@@ -24,13 +24,13 @@ public class Main
         System.out.println("\nAnimal World Game");
         System.out.println("-----------------");
         
-        ZAnimal bear = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("BEAR");
+        ZAnimal bear = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("BEAR: , , , , , , ");
         //ZAnimal bear = ani1.create();
         
-        ZAnimal rabbit = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("RABBIT");
+        ZAnimal rabbit = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("RABBIT: , , , , , , ");
         //ZAnimal rabbit = ani2.create();
         
-        ZAnimal bear2 = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("BEAR");
+        ZAnimal bear2 = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("BEAR: , , , , , , ");
         //ZAnimal bear2 = ani3.create();
         
         System.out.println("A "+bear.getName()+" has been created");
