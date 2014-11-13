@@ -15,7 +15,8 @@ public class ZAnimal implements Animal, Decoratable
     
     protected int size;  //the higher the number the bigger the animal
     protected int movementSpeed;   //number is how many squared that the animal can move
-    protected int[] position;    //array of size 2, with 0 being the x coord and 1 being the y
+    protected int xPosition;    
+    protected int yPosition;
     protected boolean isCannibal;  //0 is not a cannibal, 1 is a cannibal
     protected boolean canEatLarger; //0 can not eat larger creatures, 1 can eat larger
     protected String name;    //the name of this Animal
@@ -25,12 +26,11 @@ public class ZAnimal implements Animal, Decoratable
     protected int damageCapacity;
     protected int markedDamage;
 
-    private ZAnimal(String aniName, int xPosition, int yPosition, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
+    private ZAnimal(String aniName, int x, int y, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
     {
         name = aniName;
-        position = new int[2];
-        position[0] = xPosition;
-        position[1] = yPosition;
+        xPosition = x;
+        yPosition = y;
 
         if (eatStrategy == 1) {
             eatStrat = new EatingStrategyCarnivore();
@@ -75,16 +75,12 @@ public class ZAnimal implements Animal, Decoratable
         return 0;
     }
 
-    public int[] getPosition() {
-        return position;
-    }
-
     public int getX() {
-        return position[0];
+        return xPosition;
     }
 
     public int getY() {
-        return position[1];
+        return yPosition;
     }
     
     public String getName(){

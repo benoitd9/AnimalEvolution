@@ -13,14 +13,7 @@ public class DecoratorAnimalStatusStarving extends DecoratorAnimalStatus
         super(decoAni);
     }
     
-    /*@Override
-    public ZAnimal create(String name, int[] parameters, BodyComponent body)
-    {
-        decoAni.create(String name, int[] parameters, BodyComponent body);
-        setStarving(decoAni);
-        return decoAni.create(String name, int[] parameters, BodyComponent body);
-    }
-    */
+
     private void setStarving(Animal decoAni)
     {
         System.out.println("Starving");

@@ -12,15 +12,6 @@ public class DecoratorAnimalStatusWellFed extends DecoratorAnimalStatus
     {
         super(decoAni);
     }
-    /*
-    @Override
-    public ZAnimal create()
-    {
-        decoAni.create();
-        setWellFed(decoAni);
-        return decoAni.create();
-    }
-    */
     
     private void setWellFed(Animal decoAni)
     {

@@ -5,17 +5,22 @@ package AnimalWorld;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public abstract class DecoratorAnimalStatus implements Decoratable {
+public abstract class DecoratorAnimalStatus implements Animal {
     protected Animal decoAni;
     
     public DecoratorAnimalStatus(Animal decoAni)
     {
         this.decoAni = decoAni;
     }
-    /*
-    public ZAnimal create()
-    { 
-        return decoAni.create();
+    
+    @Override
+    public int getX() {
+        return decoAni.getX();
     }
-    */
+
+    @Override
+    public int getY() {
+        return decoAni.getY();
+    }
+
 }

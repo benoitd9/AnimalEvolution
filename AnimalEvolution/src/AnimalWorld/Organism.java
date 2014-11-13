@@ -5,8 +5,6 @@ package AnimalWorld;
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public interface Organism {
-    int[] getPosition();
-    
     int getX();
     
     int getY();

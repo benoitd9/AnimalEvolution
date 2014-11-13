@@ -5,5 +5,5 @@ package AnimalWorld;
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public interface Animal extends Organism{
-    //ZAnimal create(String name, int[] parameters, BodyComponent Body);
+    
 }

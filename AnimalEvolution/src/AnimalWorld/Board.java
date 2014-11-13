@@ -28,6 +28,13 @@ public class Board<T extends Organism>{
         generateLandscape();
     }
     
+    /**
+     * safely adds an organism to the board. if no empty location can be found,
+     * prints the exception message and does nothing.
+     * 
+     * @param org 
+     */
+    
     public void addActor(T org){
         try{
             int[] tempLoc = findClosest(null, org.getX(), org.getY());
@@ -38,6 +45,19 @@ public class Board<T extends Organism>{
             System.out.println("Bad Location Exception:" + e.getMessage());
         }
     }
+    
+    /**
+     * takes a x,y coordinate and returns the x,y coordinates of the location
+     * that contains the desired organism. if null is entered for org it returns
+     * the nearest location that has an empty list. If no such location can be 
+     * found, it throws BadLocationException
+     * 
+     * @param org
+     * @param x
+     * @param y
+     * @return {x, y}
+     * @throws BadLocationException 
+     */
     
     public int[] findClosest(T org, int x, int y) throws BadLocationException{
         if(organisms[x][y].contains(org))
@@ -176,6 +196,13 @@ public class Board<T extends Organism>{
         throw new BadLocationException("Your animal is bad and should feel bad", 0);
     }
     
+    /**
+     * creates a 2-dimensional array of size determined by a user entered value
+     * when the Board class is created. While running it checks the terrain
+     * around the spot being filled to determine what LandType is added to the
+     * board.
+     * 
+     */
     private void generateLandscape(){
         landscape = new LandType[organisms.length][organisms[0].length];
         int shalWater = 0, medWater = 0, deepWater = 0, rock = 0, boulder = 0, lava = 0;
@@ -385,6 +412,14 @@ public class Board<T extends Organism>{
         }
     }
     
+    
+    /**
+     * Takes in the x and y coordinates of a space on the board 
+     * and returns a list of terrain adjacent to it
+     * 
+     * @param x, y coordinates
+     * @return list of adjacent terrain
+     */
     private LandType[] getAdjacentTerrain(int x, int y){
         LandType[] adjacent;
         if(x == 0){
