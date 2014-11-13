@@ -15,14 +15,14 @@ import javax.swing.text.BadLocationException;
 
 public class Board<T extends Organism>{
     
-    private List<T> animalList;
-    private List<T>[][] organisms;
-    private LandType[][] landscape;
-    private Random generator;
+    private List<Animal> animalList; //List of all current animals on the board
+    private List<T>[][] organisms;  //2d array of lists of all organisms on each tile on the board
+    private LandType[][] landscape;  //2d array of all the tiles on the board
+    private Random generator;  //random seed
     
     
     public Board(){
-        animalList = new LinkedList<T>();
+        animalList = new LinkedList<Animal>();
         organisms = new LinkedList[100][100];
         generator = new Random();
         generateLandscape();
