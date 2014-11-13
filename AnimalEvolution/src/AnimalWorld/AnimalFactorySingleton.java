@@ -10,7 +10,7 @@ import java.util.Random;
 public class AnimalFactorySingleton 
 {
     //create an object of SingleObject
-    private static AnimalFactorySingleton instance = new AnimalFactorySingleton();
+    private static AnimalFactorySingleton instance;
     private Random generator;
 
     //make the constructor private so that this class cannot be instantiated
@@ -21,6 +21,9 @@ public class AnimalFactorySingleton
     //Get the only object available
     public static AnimalFactorySingleton getInstance()
     {
+        if(instance == null){
+            instance = new AnimalFactorySingleton();
+        }
         return instance;
     }
    
