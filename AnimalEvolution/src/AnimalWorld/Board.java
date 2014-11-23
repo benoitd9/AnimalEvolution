@@ -20,12 +20,10 @@ public class Board<T extends Organism>{
     private LandType[][] landscape;  //2d array of all the tiles on the board
     private Random generator;  //random seed
     
-    
-    public Board(){
-        animalList = new LinkedList<T>();
-        organisms = new LinkedList[100][100];
-        generator = new Random();
-        generateLandscape();
+    private Board(BoardBuilder builder){
+        animalList = builder.buildAnimalList();
+        organisms = builder.buildOrganisms();
+        landscape = builder.buildLandscape();
     }
     
     /**
@@ -197,223 +195,6 @@ public class Board<T extends Organism>{
     }
     
     /**
-     * creates a 2-dimensional array of size determined by a user entered value
-     * when the Board class is created. While running it checks the terrain
-     * around the spot being filled to determine what LandType is added to the
-     * board.
-     * 
-     */
-    private void generateLandscape(){
-        landscape = new LandType[organisms.length][organisms[0].length];
-        int shalWater = 0, medWater = 0, deepWater = 0, rock = 0, boulder = 0, lava = 0;
-        int rand;
-        LandType[] adjacent;
-        for(int i = 0; i < landscape.length; i++){
-            for(int j = 0; j < landscape.length; j++){
-                rand = generator.nextInt(100)+1;
-                adjacent = getAdjacentTerrain(i,j);
-                for(int k = 0; k < adjacent.length;k++){
-                    if(adjacent[k] != null){
-                        if(adjacent[k].equals(LandType.SHALLOW_WATER))
-                            shalWater += 1;
-                        else if(adjacent[k].equals(LandType.MEDIUM_WATER))
-                            medWater += 1;
-                        else if(adjacent[k].equals(LandType.DEEP_WATER))
-                            deepWater += 1;
-                        else if(adjacent[k].equals(LandType.ROCK))
-                            rock += 1;
-                        else if(adjacent[k].equals(LandType.BOULDER))
-                            boulder += 1;
-                       else if(adjacent[k].equals(LandType.LAVA))
-                            lava += 1;
-                    }
-                }
-                if(shalWater > 0){
-                    if(medWater > 0){
-                        if(deepWater > 0){
-                            if(rand < 20)
-                                landscape[i][j] = LandType.DIRT;
-                            else if(rand >= 20 && rand < 55)
-                                landscape[i][j] = LandType.SHALLOW_WATER;
-                            else if(rand >= 55 && rand < 80)
-                                landscape[i][j] = LandType.MEDIUM_WATER;
-                            else if(rand >= 80 && rand < 99)
-                                landscape[i][j] = LandType.DEEP_WATER;
-                            else if(rand >= 99)
-                                landscape[i][j] = LandType.ROCK;
-                        }
-                        
-                        else{
-                            if(rand < 30)
-                                landscape[i][j] = LandType.DIRT;
-                            else if(rand >= 30 && rand < 45)
-                                landscape[i][j] = LandType.SHALLOW_WATER;
-                            else if(rand >= 45 && rand < 70)
-                                landscape[i][j] = LandType.MEDIUM_WATER;
-                            else if(rand >= 70 && rand < 99)
-                                landscape[i][j] = LandType.DEEP_WATER;
-                            else if(rand >= 99)
-                                landscape[i][j] = LandType.ROCK;
-                        }
-                        
-                    }
-                    
-                    else if(deepWater > 0){
-                        if(rand < 30)
-                            landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 30 && rand < 40)
-                            landscape[i][j] = LandType.SHALLOW_WATER;
-                        else if(rand >= 40 && rand < 80)
-                            landscape[i][j] = LandType.MEDIUM_WATER;
-                        else if(rand >= 80 && rand < 99)
-                            landscape[i][j] = LandType.DEEP_WATER;
-                        else if(rand >= 99)
-                            landscape[i][j] = LandType.ROCK;
-                    }
-                    
-                    else{
-                        if(rand < 75)
-                            landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 75 && rand < 80)
-                            landscape[i][j] = LandType.SHALLOW_WATER;
-                        else if(rand >= 80 && rand < 90)
-                            landscape[i][j] = LandType.MEDIUM_WATER;
-                        else if(rand >= 90 && rand < 99)
-                            landscape[i][j] = LandType.DEEP_WATER;
-                        else if(rand >= 99)
-                            landscape[i][j] = LandType.ROCK;
-                    }
-                }
-                
-                else if(medWater > 0){
-                    if(deepWater > 0){
-                        if(rand < 20)
-                            landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 20 && rand < 50)
-                            landscape[i][j] = LandType.SHALLOW_WATER;
-                        else if(rand >= 50 && rand < 75)
-                            landscape[i][j] = LandType.MEDIUM_WATER;
-                        else if(rand >= 75 && rand < 99)
-                            landscape[i][j] = LandType.DEEP_WATER;
-                        else if(rand >= 99)
-                            landscape[i][j] = LandType.ROCK;
-                    }
-                        
-                    else{
-                        if(rand < 40)
-                            landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 40 && rand < 75)
-                            landscape[i][j] = LandType.SHALLOW_WATER;
-                        else if(rand >= 75 && rand < 90)
-                            landscape[i][j] = LandType.MEDIUM_WATER;
-                        else if(rand >= 90 && rand < 99)
-                            landscape[i][j] = LandType.DEEP_WATER;
-                        else if(rand >= 99)
-                            landscape[i][j] = LandType.ROCK;
-                    }
-                    
-                }
-                
-                else if(deepWater > 0){
-                    if(rand < 20)
-                        landscape[i][j] = LandType.DIRT;
-                    else if(rand >= 20 && rand < 55)
-                        landscape[i][j] = LandType.SHALLOW_WATER;
-                    else if(rand >= 55 && rand < 80)
-                        landscape[i][j] = LandType.MEDIUM_WATER;
-                    else if(rand >= 80 && rand < 99)
-                        landscape[i][j] = LandType.DEEP_WATER;
-                    else if(rand >= 99)
-                        landscape[i][j] = LandType.ROCK;
-                }
-                
-                else if(rock > 0){
-                    if(boulder > 0){
-                        if(lava > 0){
-                            if(rand < 55)
-                                landscape[i][j] = LandType.DIRT;
-                            else if(rand >= 55 && rand < 95)
-                                landscape[i][j] = LandType.ROCK;
-                            else if(rand >= 95)
-                                landscape[i][j] = LandType.LAVA; 
-                        }
-                        else{
-                            if(rand < 55)
-                                landscape[i][j] = LandType.DIRT;
-                            else if(rand >= 55 && rand < 95)
-                                landscape[i][j] = LandType.ROCK;
-                            else if(rand >= 95)
-                                landscape[i][j] = LandType.LAVA;
-                        }
-                    }
-                    else if(lava > 0){
-                        if(rand < 65)
-                            landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 65 && rand < 80)
-                            landscape[i][j] = LandType.ROCK;
-                        else if(rand >= 80 && rand < 90)
-                            landscape[i][j] = LandType.BOULDER;
-                        else if(rand >= 90)
-                            landscape[i][j] = LandType.LAVA;
-                    }
-                    else{
-                        if(rand < 55)
-                            landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 55 && rand < 87)
-                            landscape[i][j] = LandType.ROCK;
-                        else if(rand >= 87 && rand < 97)
-                            landscape[i][j] = LandType.BOULDER;
-                        else if(rand >= 97)
-                            landscape[i][j] = LandType.LAVA;
-                    }
-                }
-                else if(boulder > 0){
-                    if(lava > 0){
-                        if(rand < 55)
-                            landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 55 && rand < 90)
-                            landscape[i][j] = LandType.ROCK;
-                        else if(rand >= 90)
-                            landscape[i][j] = LandType.LAVA; 
-                    }
-                    else{
-                        if(rand < 55)
-                            landscape[i][j] = LandType.DIRT;
-                        else if(rand >= 55 && rand < 97)
-                            landscape[i][j] = LandType.ROCK;
-                        else if(rand >= 97)
-                            landscape[i][j] = LandType.LAVA;
-                    }
-                }
-                else if(lava > 0){
-                    if(rand < 60)
-                        landscape[i][j] = LandType.DIRT;
-                    else if(rand >= 60 && rand < 90)
-                        landscape[i][j] = LandType.ROCK;
-                    else if(rand >= 90)
-                        landscape[i][j] = LandType.LAVA; 
-                }
-                else{
-                    if(rand < 94)
-                        landscape[i][j] = LandType.DIRT;
-                    else if(rand >= 94 && rand < 99)
-                        landscape[i][j] = LandType.SHALLOW_WATER;
-                    else if(rand >= 99){
-                        landscape[i][j] = LandType.ROCK;
-                    }
-                }
-                shalWater = 0;
-                medWater = 0;
-                deepWater = 0;
-                rock = 0;
-                boulder = 0;
-                lava = 0;
-            }
-        }
-    }
-    
-    
-    /**
      * Takes in the x and y coordinates of a space on the board 
      * and returns a list of terrain adjacent to it
      * 
@@ -577,6 +358,307 @@ public class Board<T extends Organism>{
         @Override
         public void remove(){
             throw new UnsupportedOperationException("No Admittance");
+        }
+    }
+    
+    public static class BoardBuilder<T extends Organism>{
+        
+        private final int numTiles = 100;
+        private LandType[][] landscape;
+        private Random generator = new Random();
+        
+        public Board<T> build(){
+            return new Board<T>(this);
+        }
+        
+        public LinkedList<T> buildAnimalList(){
+            return new LinkedList<T>();
+        }
+        
+        public LinkedList[][] buildOrganisms(){
+            return new LinkedList[numTiles][numTiles];
+        }
+        
+        public LandType[][] buildLandscape(){
+            landscape = new LandType[numTiles][numTiles];
+            int randInt = 0;
+            int dirt = 0; int water = 0; int rock = 0;
+            int[] probabilities = new int[7];
+            int sumProb = 0;
+            BuildStrategy bStrat;
+            for(int i = 0; i < landscape.length; i++){
+                if(i % 2 == 0){
+                    for(int j = 0; j < landscape[0].length; j++){
+                        LandType[] adjacent = getAdjacentTerrain(i,j);
+                        for(int k = 0; k < adjacent.length; k++){
+                            if(adjacent[k] != null){
+                                if(adjacent[k].equals(LandType.DIRT))
+                                    dirt += 1;
+                                else if(adjacent[k].equals(LandType.SHALLOW_WATER))
+                                    water += 2;
+                                else if(adjacent[k].equals(LandType.MEDIUM_WATER))
+                                    water += 3;
+                                else if(adjacent[k].equals(LandType.DEEP_WATER))
+                                    water += 4;
+                                else if(adjacent[k].equals(LandType.ROCK))
+                                    rock += 2;
+                                else if(adjacent[k].equals(LandType.BOULDER))
+                                    rock += 3;
+                                else if(adjacent[k].equals(LandType.LAVA))
+                                    rock += 4;
+                            }
+                        }
+                        if(rock >= water && rock >= dirt){
+                            bStrat = new RockLandStrategy();
+                        }
+                        else if(water >= dirt && water > rock){
+                            if(water >= 9){
+                                bStrat = new DeepWaterStrategy();
+                            }
+                            else if(water >= 7){
+                                bStrat = new MediumWaterStrategy();
+                            }
+                            else if(generator.nextInt(100) >= 20){
+                                bStrat = new ShallowWaterStrategy();
+                            }
+                            else {
+                                bStrat = new BasicLandStrategy();
+                            }
+                        }
+                        else{
+                            bStrat = new BasicLandStrategy();
+                        }
+                        randInt = generator.nextInt(100);
+                        probabilities = bStrat.getProbabilities();
+                        for(int l = 0; l < probabilities.length; l++){
+                           sumProb += probabilities[l];
+                            if(sumProb >= randInt){
+                                if(l == 0){
+                                    landscape[i][j] = LandType.DIRT;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 1){
+                                    landscape[i][j] = LandType.SHALLOW_WATER;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 2){
+                                    landscape[i][j] = LandType.MEDIUM_WATER;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 3){
+                                    landscape[i][j] = LandType.DEEP_WATER;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 4){
+                                    landscape[i][j] = LandType.ROCK;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 5){
+                                    landscape[i][j] = LandType.BOULDER;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 6){
+                                    landscape[i][j] = LandType.LAVA;
+                                    sumProb = 0;
+                                    break;
+                                }
+                            
+                            }
+                        }
+                        dirt = 0;
+                        water = 0;
+                        rock = 0;
+                    }
+                }
+                else if(i % 2 == 1){
+                    for(int j = landscape[i].length - 1; j >= 0; j--){
+                        LandType[] adjacent = getAdjacentTerrain(i,j);
+                        for(int k = 0; k < adjacent.length; k++){
+                            if(adjacent[k] != null){
+                                if(adjacent[k].equals(LandType.DIRT))
+                                    dirt += 1;
+                                else if(adjacent[k].equals(LandType.SHALLOW_WATER))
+                                    water += 2;
+                                else if(adjacent[k].equals(LandType.MEDIUM_WATER))
+                                    water += 3;
+                                else if(adjacent[k].equals(LandType.DEEP_WATER))
+                                    water += 5;
+                                else if(adjacent[k].equals(LandType.ROCK))
+                                    rock += 2;
+                                else if(adjacent[k].equals(LandType.BOULDER))
+                                    rock += 3;
+                                else if(adjacent[k].equals(LandType.LAVA))
+                                    rock += 4;
+                            }
+                        }
+                        if(rock >= water && rock >= dirt){
+                            bStrat = new RockLandStrategy();
+                        }
+                        else if(water >= dirt && water > rock){
+                            if(water >= 7){
+                                bStrat = new DeepWaterStrategy();
+                            }
+                            else if(water >= 5){
+                                bStrat = new MediumWaterStrategy();
+                            }
+                            else if(generator.nextInt(100) >= 10){
+                                bStrat = new ShallowWaterStrategy();
+                            }
+                            else {
+                                bStrat = new BasicLandStrategy();
+                            }
+                        }
+                        else{
+                            bStrat = new BasicLandStrategy();
+                        }
+                        randInt = generator.nextInt(100);
+                        probabilities = bStrat.getProbabilities();
+                        for(int l = 0; l < probabilities.length; l++){
+                           sumProb += probabilities[l];
+                            if(sumProb >= randInt){
+                                if(l == 0){
+                                    landscape[i][j] = LandType.DIRT;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 1){
+                                    landscape[i][j] = LandType.SHALLOW_WATER;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 2){
+                                    landscape[i][j] = LandType.MEDIUM_WATER;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 3){
+                                    landscape[i][j] = LandType.DEEP_WATER;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 4){
+                                    landscape[i][j] = LandType.ROCK;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 5){
+                                    landscape[i][j] = LandType.BOULDER;
+                                    sumProb = 0;
+                                    break;
+                                }
+                                else if(l == 6){
+                                    landscape[i][j] = LandType.LAVA;
+                                    sumProb = 0;
+                                    break;
+                                }
+                            
+                            }
+                        }
+                        dirt = 0;
+                        water = 0;
+                        rock = 0;
+                    }
+                }
+            }
+            return landscape;
+        }
+        
+        private LandType[] getAdjacentTerrain(int x, int y){
+            LandType[] adjacent;
+            if(x == 0){
+                    if(y == 0){
+                        adjacent = new LandType[3];
+                        adjacent[0] = landscape[x][y+1];
+                        adjacent[1] = landscape[x+1][y+1];
+                        adjacent[2] = landscape[x+1][y];
+                        return adjacent;
+                    }
+            
+                    else if(y == landscape[0].length-1){
+                        adjacent = new LandType[3];
+                        adjacent[0] = landscape[x][y-1];
+                        adjacent[1] = landscape[x+1][y-1];
+                        adjacent[2] = landscape[x+1][y];
+                        return adjacent;
+                    }
+            
+                    else{
+                        adjacent = new LandType[5];
+                        adjacent[0] = landscape[x][y+1];
+                        adjacent[1] = landscape[x+1][y+1];
+                        adjacent[2] = landscape[x+1][y];
+                        adjacent[3] = landscape[x][y-1];
+                        adjacent[4] = landscape[x+1][y-1];
+                        return adjacent;
+                    }
+            }
+        
+            else if(x == landscape.length-1){
+                if(y == 0){
+                    adjacent = new LandType[3];
+                    adjacent[0] = landscape[x][y+1];
+                    adjacent[1] = landscape[x-1][y+1];
+                    adjacent[2] = landscape[x-1][y];
+                    return adjacent;
+                }
+            
+                else if(y == landscape.length-1){
+                    adjacent = new LandType[3];
+                    adjacent[0] = landscape[x][y-1];
+                    adjacent[1] = landscape[x-1][y-1];
+                    adjacent[2] = landscape[x-1][y];
+                    return adjacent;
+                }
+            
+                else{
+                    adjacent = new LandType[5];
+                    adjacent[0] = landscape[x][y+1];
+                    adjacent[1] = landscape[x-1][y+1];
+                    adjacent[2] = landscape[x-1][y];
+                    adjacent[3] = landscape[x][y-1];
+                    adjacent[4] = landscape[x-1][y-1];
+                    return adjacent;
+                }
+            }
+        
+            else if(y == 0){
+                adjacent = new LandType[5];
+                adjacent[0] = landscape[x][y+1];
+                adjacent[1] = landscape[x-1][y+1];
+                adjacent[2] = landscape[x-1][y];
+                adjacent[3] = landscape[x+1][y];
+                adjacent[4] = landscape[x+1][y+1];
+                return adjacent;
+            }
+        
+            else if(y == landscape[0].length-1){
+                adjacent = new LandType[5];
+                adjacent[0] = landscape[x][y-1];
+                adjacent[1] = landscape[x-1][y-1];
+                adjacent[2] = landscape[x-1][y];
+                adjacent[3] = landscape[x+1][y];
+                adjacent[4] = landscape[x+1][y-1];
+                return adjacent;
+            }
+        
+            else{
+                adjacent = new LandType[8];
+                adjacent[0] = landscape[x][y+1];
+                adjacent[1] = landscape[x+1][y+1];
+                adjacent[2] = landscape[x+1][y];
+                adjacent[3] = landscape[x+1][y-1];
+                adjacent[4] = landscape[x][y-1];
+                adjacent[5] = landscape[x-1][y-1];
+                adjacent[6] = landscape[x-1][y];
+                adjacent[7] = landscape[x-1][y-1];
+                return adjacent;
+            }
         }
     }
 }

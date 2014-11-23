@@ -11,7 +11,8 @@ public class Main
 {
     public static void main(String[] args){
         
-        Board<Organism> b = new Board<Organism>();
+        Board.BoardBuilder<Organism> builder = new Board.BoardBuilder<Organism>();
+        Board<Organism> b = builder.build();
         GUIBoard gBoard = new GUIBoard(b);
         JFrame app = new JFrame();
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
