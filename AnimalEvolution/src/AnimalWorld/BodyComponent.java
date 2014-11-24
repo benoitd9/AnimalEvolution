@@ -4,9 +4,10 @@ package AnimalWorld;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public interface BodyComponent {
+public interface BodyComponent extends Cloneable {
     public int getSize();
     public void add(BodyComponent component) throws CompLeafComponentException;
     public void remove(BodyComponent component) throws CompLeafComponentException;
     public BodyComponent getChild(int i) throws CompLeafComponentException;
+    public BodyComponent clone() throws CloneNotSupportedException;
 }

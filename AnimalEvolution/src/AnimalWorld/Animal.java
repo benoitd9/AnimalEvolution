@@ -5,5 +5,5 @@ package AnimalWorld;
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public interface Animal extends Organism{
-    
+    public abstract Object clone ( );
 }
