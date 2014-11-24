@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AnimalWorld;
+package BuildStrat;
+
+import BuildStrat.BuildStrategy;
 
 /**
  *
  * @author Nate
  */
-public class BasicLandStrategy implements BuildStrategy{
+public class MediumWaterStrategy implements BuildStrategy{
     
     private final int[] probability; //field with 7 slots Dirt, Shallow Water
                                      //Medium Water, Deep Water, Rock, Boulder
                                      //Lava
     
-    public BasicLandStrategy(){
-        probability = new int[]{96, 2, 0, 0, 2, 0, 0}; //represents the percent chances of getting each of the various LandTypes
+    public MediumWaterStrategy(){
+        probability = new int[]{0, 45, 50, 5, 0, 0, 0}; //represents the percent chances of getting each of the various LandTypes
     }
     
     @Override

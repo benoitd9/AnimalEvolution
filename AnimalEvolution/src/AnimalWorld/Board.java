@@ -1,5 +1,11 @@
 package AnimalWorld;
 
+import BuildStrat.BasicLandStrategy;
+import BuildStrat.ShallowWaterStrategy;
+import BuildStrat.MediumWaterStrategy;
+import BuildStrat.RockLandStrategy;
+import BuildStrat.DeepWaterStrategy;
+import BuildStrat.BuildStrategy;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Iterator;
