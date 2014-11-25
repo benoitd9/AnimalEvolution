@@ -34,7 +34,7 @@ public class Main
         JFrame app = new JFrame();
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         app.add(gBoard);
-        app.setSize(gBoard.getWidth(),gBoard.getHeight());
+        app.setSize(gBoard.getWidth()+15,gBoard.getHeight()+35);
         app.setVisible(true);
         
         b.printTerrainComposition();

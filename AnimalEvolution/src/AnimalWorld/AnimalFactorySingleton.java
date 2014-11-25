@@ -61,9 +61,9 @@ public class AnimalFactorySingleton
                 returned[i] = Integer.parseInt(temp[i]);
             else{
                 if(i == 0)
-                    returned[i] = generator.nextInt(100);
+                    returned[i] = generator.nextInt(50);
                 else if(i == 1)
-                    returned[i] = generator.nextInt(100);
+                    returned[i] = generator.nextInt(50);
                 else if(i == 2)
                     returned[i] = generator.nextInt(3);
                 else if(i == 3)

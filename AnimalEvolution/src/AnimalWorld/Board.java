@@ -523,7 +523,7 @@ public class Board<T extends Organism>{
     
     public static class BoardBuilder<T extends Organism>{
         
-        private final int numTiles = 100;
+        private final int numTiles = 50;
         private LandType[][] landscape;
         private Random generator = new Random();
         
