@@ -42,8 +42,12 @@ public class Board<T extends Organism>{
     public void addOrganism(T org){
         try{
             int[] tempLoc = findClosestEmpty(org.getX(), org.getY());
-            organisms[tempLoc[0]][tempLoc[1]].add(org);
-            animalList.add(org);
+            
+            if( organisms[tempLoc[0]][tempLoc[1]] != null ){
+                organisms[tempLoc[0]][tempLoc[1]].add(org);
+                animalList.add(org);
+            }
+            
         }
         catch(BadLocationException e){
             System.out.println("Bad Location Exception:" + e.getMessage());
@@ -66,6 +70,7 @@ public class Board<T extends Organism>{
     public int[] findClosest(T org, int x, int y) throws BadLocationException{
         if(organisms[x][y].contains(org))
             return new int[]{x,y};
+        
         for(int i = 1; i <= organisms.length; i++){
             if(x <= i){
                 if(y <= i){            
@@ -201,94 +206,124 @@ public class Board<T extends Organism>{
     }
     
     public int[] findClosestEmpty(int x, int y) throws BadLocationException{
-        if(organisms[x][y].isEmpty())
-            return new int[]{x,y};
-        for(int i = 1; i <= organisms.length; i++){
-            if(x <= i){
-                if(y <= i){            
-                    if(organisms[x + i][y].isEmpty())
-                        return new int[]{x + i,y};
-                    
-                    else if(organisms[x + i][y + i].isEmpty())
-                        return new int[]{x + i,y + i};
-                    
-                    else if(organisms[x][y + i].isEmpty())
-                        return new int[]{x,y+i};
-                }
-                
-                else if(y >= (organisms[0].length-i)){
-                    if(organisms[x][y - i].isEmpty())
-                        return new int[]{x,y-i};
+        if(organisms[x][y] != null){
+            
+            if(organisms[x][y].isEmpty())
+                return new int[]{x,y};
         
-                    else if(organisms[x + i][y].isEmpty())
-                        return new int[]{x + i,y};
-                    
-                    else if(organisms[x + i][y - i].isEmpty())
-                        return new int[]{x + i, y - i};
-                    
+        
+            for(int i = 1; i <= organisms.length; i++){
+                if(x <= i){
+                    if(y <= i){            
+                        if(organisms[x + i][y].isEmpty())
+                            return new int[]{x + i,y};
+
+                        else if(organisms[x + i][y + i].isEmpty())
+                            return new int[]{x + i,y + i};
+
+                        else if(organisms[x][y + i].isEmpty())
+                            return new int[]{x,y+i};
+                    }
+
+                    else if(y >= (organisms[0].length-i)){
+                        if(organisms[x][y - i].isEmpty())
+                            return new int[]{x,y-i};
+
+                        else if(organisms[x + i][y].isEmpty())
+                            return new int[]{x + i,y};
+
+                        else if(organisms[x + i][y - i].isEmpty())
+                            return new int[]{x + i, y - i};
+
+                    }
+
+                    else{
+                        if(organisms[x][y-i].isEmpty())
+                            return new int[]{x,y-i};
+
+                        if(organisms[x+i][y-i].isEmpty())
+                            return new int[]{x+i,y-i};
+
+                        if(organisms[x+i][y].isEmpty())
+                            return new int[]{x+i,y};
+
+                        if(organisms[x][y+i].isEmpty())
+                            return new int[]{x,y+i};
+
+                        if(organisms[x+i][y+i].isEmpty())
+                            return new int[]{x+i,y+i};
+                    }
                 }
-                
-                else{
-                    if(organisms[x][y-i].isEmpty())
-                        return new int[]{x,y-i};
-                    
-                    if(organisms[x+i][y-i].isEmpty())
+
+                else if(y <= i){
+                    if(x >= (organisms.length-i)){
+                        if(organisms[x-i][y].isEmpty())
+                            return new int[]{x-i,y};
+
+                        else if(organisms[x][y+i].isEmpty())
+                            return new int[]{x,y+i};
+
+                        else if(organisms[x - i][y + i].isEmpty())
+                            return new int[]{x - i, y + i};
+                    }
+
+                    else{
+                        if(organisms[x - i][y].isEmpty())
+                            return new int[]{x - i,y};
+
+                        if(organisms[x-i][y+i].isEmpty())
+                            return new int[]{x-i,y+i};
+
+                        if(organisms[x+i][y].isEmpty())
+                            return new int[]{x+i,y};
+
+                        if(organisms[x][y+i].isEmpty())
+                            return new int[]{x,y+i};
+
+                        if(organisms[x+i][y+i].isEmpty())
+                            return new int[]{x+i,y+i};
+                    }
+                }
+
+                else if(x >= (organisms.length - i)){
+                    if(y >= (organisms[0].length - i)){
+                        if(organisms[x-i][y].isEmpty())
+                            return new int[]{x-i,y};
+
+                        else if(organisms[x-i][y-i].isEmpty())
+                            return new int[]{x-i,y-i};
+
+                        else if(organisms[x][y-i].isEmpty())
+                            return new int[]{x,y-i};
+
+                    }
+
+                    else{
+                        if(organisms[x][y+i].isEmpty())
+                            return new int[]{x,y+i};
+                        else if(organisms[x-i][y+i].isEmpty())
+                            return new int[]{x-i,y+i};
+                        else if(organisms[x-i][y].isEmpty())
+                            return new int[]{x-i,y};
+                        else if(organisms[x-i][y-i].isEmpty())
+                            return new int[]{x-i,y-i};
+                        else if(organisms[x][y-i].isEmpty())
+                            return new int[]{x,y-i};
+                    }
+                }
+
+                else if(y >= (organisms[0].length - i)){
+                    if(organisms[x+i][y].isEmpty())
+                        return new int[]{x+i,y};
+                    else if(organisms[x+i][y-i].isEmpty())
                         return new int[]{x+i,y-i};
-                    
-                    if(organisms[x+i][y].isEmpty())
-                        return new int[]{x+i,y};
-                    
-                    if(organisms[x][y+i].isEmpty())
-                        return new int[]{x,y+i};
-                    
-                    if(organisms[x+i][y+i].isEmpty())
-                        return new int[]{x+i,y+i};
-                }
-            }
-            
-            else if(y <= i){
-                if(x >= (organisms.length-i)){
-                    if(organisms[x-i][y].isEmpty())
-                        return new int[]{x-i,y};
-        
-                    else if(organisms[x][y+i].isEmpty())
-                        return new int[]{x,y+i};
-                    
-                    else if(organisms[x - i][y + i].isEmpty())
-                        return new int[]{x - i, y + i};
-                }
-                
-                else{
-                    if(organisms[x - i][y].isEmpty())
-                        return new int[]{x - i,y};
-                    
-                    if(organisms[x-i][y+i].isEmpty())
-                        return new int[]{x-i,y+i};
-                    
-                    if(organisms[x+i][y].isEmpty())
-                        return new int[]{x+i,y};
-                    
-                    if(organisms[x][y+i].isEmpty())
-                        return new int[]{x,y+i};
-                    
-                    if(organisms[x+i][y+i].isEmpty())
-                        return new int[]{x+i,y+i};
-                }
-            }
-            
-            else if(x >= (organisms.length - i)){
-                if(y >= (organisms[0].length - i)){
-                    if(organisms[x-i][y].isEmpty())
-                        return new int[]{x-i,y};
-                    
-                    else if(organisms[x-i][y-i].isEmpty())
-                        return new int[]{x-i,y-i};
-                    
                     else if(organisms[x][y-i].isEmpty())
                         return new int[]{x,y-i};
-                    
+                    else if(organisms[x-i][y-i].isEmpty())
+                        return new int[]{x-i,y-i};
+                    else if(organisms[x-i][y].isEmpty())
+                        return new int[]{x-i,y};
                 }
-                
                 else{
                     if(organisms[x][y+i].isEmpty())
                         return new int[]{x,y+i};
@@ -297,44 +332,22 @@ public class Board<T extends Organism>{
                     else if(organisms[x-i][y].isEmpty())
                         return new int[]{x-i,y};
                     else if(organisms[x-i][y-i].isEmpty())
-                        return new int[]{x-i,y-i};
+                        return new int[]{x-i,y};
                     else if(organisms[x][y-i].isEmpty())
                         return new int[]{x,y-i};
+                    else if(organisms[x+i][y-i].isEmpty())
+                        return new int[]{x+i,y-i};
+                    else if(organisms[x+i][y].isEmpty())
+                        return new int[]{x+i,y};
+                    else if(organisms[x+i][y+i].isEmpty())
+                        return new int[]{x+i,y+i};
                 }
             }
-            
-            else if(y >= (organisms[0].length - i)){
-                if(organisms[x+i][y].isEmpty())
-                    return new int[]{x+i,y};
-                else if(organisms[x+i][y-i].isEmpty())
-                    return new int[]{x+i,y-i};
-                else if(organisms[x][y-i].isEmpty())
-                    return new int[]{x,y-i};
-                else if(organisms[x-i][y-i].isEmpty())
-                    return new int[]{x-i,y-i};
-                else if(organisms[x-i][y].isEmpty())
-                    return new int[]{x-i,y};
-            }
-            else{
-                if(organisms[x][y+i].isEmpty())
-                    return new int[]{x,y+i};
-                else if(organisms[x-i][y+i].isEmpty())
-                    return new int[]{x-i,y+i};
-                else if(organisms[x-i][y].isEmpty())
-                    return new int[]{x-i,y};
-                else if(organisms[x-i][y-i].isEmpty())
-                    return new int[]{x-i,y};
-                else if(organisms[x][y-i].isEmpty())
-                    return new int[]{x,y-i};
-                else if(organisms[x+i][y-i].isEmpty())
-                    return new int[]{x+i,y-i};
-                else if(organisms[x+i][y].isEmpty())
-                    return new int[]{x+i,y};
-                else if(organisms[x+i][y+i].isEmpty())
-                    return new int[]{x+i,y+i};
-            }
+            throw new BadLocationException("Your animal is bad and should feel bad", 0);
+        } else {
+            return new int[]{x,y};
         }
-        throw new BadLocationException("Your animal is bad and should feel bad", 0);
+   
     }
     
     public List[][] getOrganisms(){
