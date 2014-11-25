@@ -1,26 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AnimalWorld;
 
 import java.awt.Color;
 
 /**
+ * LandType is what each tile of the board is made of
  *
- * @author Nate
+ * @author Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class LandType {
     
+    /**
+     * basic LandType where plants can grow
+     */
     public static final LandType DIRT = new LandType(1);
+    
+    /**
+     * the water is shallow enough for medium sized Animals to cross
+     */
     public static final LandType SHALLOW_WATER = new LandType(2);
+    
+    /**
+     * the water is so deep that only larger Animals can cross without swimming
+     */
     public static final LandType MEDIUM_WATER = new LandType(3);
+    
+    /**
+     * all animals must swim to cross
+     */
     public static final LandType DEEP_WATER = new LandType(4);
+    
+    /**
+     * plants can not grow here
+     */
     public static final LandType ROCK = new LandType(5);
+    
+    /**
+     * rough terrain, slows movement
+     */
     public static final LandType BOULDER = new LandType(6);
+    
+    /**
+     * dangerous terrain, will instantly cook any Animal that falls in
+     */
     public static final LandType LAVA = new LandType(7);
     
+    /**
+     * stores the colors of the tiles as they are placed on the board
+     */
     private Color color;
     
     private LandType(int c){

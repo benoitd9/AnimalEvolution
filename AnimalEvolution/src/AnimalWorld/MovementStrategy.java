@@ -6,5 +6,8 @@ package AnimalWorld;
  */
 public interface MovementStrategy 
 {
+    /**
+     * base strategy method for moving the animal
+     */
     public void doMovement();
 }

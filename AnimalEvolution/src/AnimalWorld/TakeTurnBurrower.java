@@ -7,24 +7,37 @@ package AnimalWorld;
  */
 public class TakeTurnBurrower extends TakeTurnTemplate
 {
+    /**
+     * the animal will move towards its current objective
+     */
     @Override
     void move()
     {
         System.out.println("move");
     }
     
+    /**
+     * the animal will try to run away
+     */
     @Override
     void fight()
     {
-        System.out.println("fight");
+        System.out.println("flight");
     }
     
+    /**
+     * the animal will try to eat
+     */
     @Override
     void eat()
     {
         System.out.println("eat");
     }
     
+    /**
+     * the animal will burrow at the end of the turn to hide from predators
+     *     this will lower the range of detection for predators
+     */
     @Override
     void endTurn()
     {

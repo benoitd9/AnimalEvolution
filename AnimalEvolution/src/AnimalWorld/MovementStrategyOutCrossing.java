@@ -8,6 +8,9 @@ package AnimalWorld;
  */
 public class MovementStrategyOutCrossing implements MovementStrategy 
 {
+    /**
+     * the animal will move towards the closest suitable mate
+     */
     @Override
     public void doMovement()
     {

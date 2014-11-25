@@ -8,25 +8,91 @@ package AnimalWorld;
 
 public class ZAnimal implements Animal
 {
+    /**
+     * what the animal eats: Herbivore, Carnivore, Omnivore
+     */
     protected EatingStrategy eatStrat;
+    
+    /**
+     * how the animal moves: Fight, Flight, Burrow, Random
+     */
     protected MovementStrategy moveStrat;
+    
+    /**
+     * how the animal takes its turn
+     */
     protected TakeTurnTemplate turnStrat;
     
     //protected OutCrossing outCrossingStrat; temporarily disabled
     
+    /**
+     * the higher the number the bigger the animal
+     */
     protected int size;  //the higher the number the bigger the animal
-    protected int movementSpeed;   //number is how many squared that the animal can move
-    protected int xPosition;    
+    
+    /**
+     * number is how many squared that the animal can move
+     */
+    protected int movementSpeed;
+    
+    /**
+     * x coordinate of the animal
+     */
+    protected int xPosition;
+    
+    /**
+     * y coordinate of the animal
+     */
     protected int yPosition;
+    
+    /**
+     * 0 is not a cannibal, 1 is a cannibal
+     */
     protected boolean isCannibal;  //0 is not a cannibal, 1 is a cannibal
+    
+    /**
+     * 0 can not eat larger creatures, 1 can eat larger
+     */
     protected boolean canEatLarger; //0 can not eat larger creatures, 1 can eat larger
+    
+    /**
+     * the name of this Animal
+     */
     protected String name;    //the name of this Animal
+    
+    /**
+     * 0 is a female, 1 is male
+     */
     protected int gender; //0 is a female, 1 is male
+    
+    /**
+     * the body parts that make up the Animal
+     */
     protected BodyComponent body;
+    
+    /**
+     * how much damage the Animal can deal
+     */
     protected int damageConstant;
+    
+    /**
+     * how much damage the Animal can take
+     */
     protected int damageCapacity;
+    
+    /**
+     * how much damage the Animal has taken
+     */
     protected int markedDamage;
+    
+    /**
+     * x coordinate of the sprite of the animal
+     */
     protected int spriteX;
+    
+    /**
+     * y coordinate of the sprite of the animal
+     */
     protected int spriteY;
 
     private ZAnimal(String aniName, int x, int y, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
@@ -72,7 +138,11 @@ public class ZAnimal implements Animal
 
     }
 
-
+    /**
+     * Checks to see if the animal ate this turn
+     * 
+     * @return returns 0 if it failed to eat this turn and 1 if it did eat this turn
+     */
     int ate() //returns 0 if it did not eat and 1 if it did eat
     {
         return 0;
@@ -114,6 +184,11 @@ public class ZAnimal implements Animal
         return 5;
     }
     
+    /**
+     * creates a clone of the animal
+     * 
+     * @return the clone of the animal
+     */
     @Override
     public Object clone() {
         try {

@@ -29,16 +29,32 @@ public abstract class CompositeComponent implements BodyComponent{
         return tempSize;
     }
     
+    /**
+     * adds a child component to the body part
+     * 
+     * @param component the parent body part
+     */
     @Override
     public void add(BodyComponent component){
         children.add(component);
     }
     
+    /**
+     * removes a child component to the body part
+     * 
+     * @param component the parent body part
+     */
     @Override
     public void remove(BodyComponent component){
         children.remove(component);
     }
     
+    /**
+     * returns the specified child component from its parent body part
+     * 
+     * @param i the child component
+     * @return the child component
+     */
     @Override
     public BodyComponent getChild(int i){
         return children.get(i);

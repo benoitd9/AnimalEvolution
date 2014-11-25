@@ -7,6 +7,9 @@ package AnimalWorld;
  */
 public class MovementStrategyFight implements MovementStrategy
 {
+    /**
+     * the animal will move in to fight
+     */
     @Override
     public void doMovement()
     {

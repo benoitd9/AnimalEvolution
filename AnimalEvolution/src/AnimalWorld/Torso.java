@@ -1,6 +1,7 @@
 package AnimalWorld;
 /**
  * Torso extends CompositeComponent
+ *     Torso is a body part of a composite Animal
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */

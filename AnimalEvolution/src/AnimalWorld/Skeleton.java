@@ -1,6 +1,7 @@
 package AnimalWorld;
 /**
  * Skeleton extends CompositeComponent
+ *     it is made up of bones
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */

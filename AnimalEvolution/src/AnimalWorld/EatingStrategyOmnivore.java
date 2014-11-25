@@ -7,6 +7,9 @@ package AnimalWorld;
  */
 public class EatingStrategyOmnivore implements EatingStrategy
 {
+    /**
+     * the animal will try to eat either plants or animals
+     */
     @Override
     public void eat()
     {

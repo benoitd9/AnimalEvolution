@@ -9,9 +9,25 @@ package AnimalWorld;
 import java.awt.Shape;
 
 public abstract class Plant implements Organism{
+    
+    /**
+     * the x coordinate of the plant
+     */
     protected int xPosition;
+    
+    /**
+     * the y coordinate of the plant
+     */
     protected int yPosition;
+    
+    /**
+     * the x coordinate of the sprite of the plant
+     */
     protected int spriteX;
+    
+    /**
+     * the y coordinate of the sprite of the plant
+     */
     protected int spriteY;
     
     @Override

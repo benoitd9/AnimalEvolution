@@ -13,7 +13,12 @@ public class DecoratorAnimalStatusStarving extends DecoratorAnimalStatus
         super(decoAni);
     }
     
-
+    /**
+     * the animal has not eaten in a while and will have 
+     *     decreased movement speed
+     * 
+     * @param decoAni the debuffed animal
+     */
     private void setStarving(Animal decoAni)
     {
         System.out.println("Starving");

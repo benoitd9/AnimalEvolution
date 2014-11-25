@@ -9,16 +9,28 @@ import java.util.Random;
 
 public class AnimalFactorySingleton 
 {
-    //create an object of SingleObject
+    /**
+     * create an object of SingleObject
+     */
     private static AnimalFactorySingleton instance;
+    
+    /**
+     * random number generator
+     */
     private Random generator;
 
-    //make the constructor private so that this class cannot be instantiated
+    /**
+     * make the constructor private so that this class cannot be instantiated
+     */
     private AnimalFactorySingleton(){
         generator = new Random();
     }
 
-    //Get the only object available
+    /**
+     * singleton animal factory
+     * 
+     * @return Get the only object available
+     */
     public static AnimalFactorySingleton getInstance()
     {
         if(instance == null){
@@ -27,6 +39,12 @@ public class AnimalFactorySingleton
         return instance;
     }
    
+    /**
+     * creates an animal
+     * 
+     * @param s string to decide which animal to make
+     * @return the animal tied to the string s
+     */
     public Animal createAnimal(String s){
         
         String[] name = s.split("[:]");

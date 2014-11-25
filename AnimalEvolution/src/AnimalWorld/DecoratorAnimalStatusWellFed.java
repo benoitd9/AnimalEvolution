@@ -13,6 +13,12 @@ public class DecoratorAnimalStatusWellFed extends DecoratorAnimalStatus
         super(decoAni);
     }
     
+    /**
+     * the animal will have increased strength and movement speed
+     *    after it just finished eating
+     * 
+     * @param decoAni the buffed up animal
+     */
     private void setWellFed(Animal decoAni)
     {
         System.out.println("Just ate and is well fed");

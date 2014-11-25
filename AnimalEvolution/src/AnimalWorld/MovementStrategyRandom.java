@@ -10,6 +10,9 @@ import java.util.Random;
  */
 public class MovementStrategyRandom implements MovementStrategy
 {
+    /**
+     * the animal will randomly either head towards or away from a fight
+     */
     @Override
     public void doMovement()
     {

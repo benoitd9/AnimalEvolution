@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AnimalWorld;
 
 
@@ -16,8 +11,9 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * GUIBoard is the container for the board
  *
- * @author Nate
+ * @author Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class GUIBoard extends JPanel{
     

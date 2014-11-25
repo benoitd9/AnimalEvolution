@@ -3,12 +3,14 @@ package AnimalWorld;
 import java.util.Random;
 
 /**
+ * SurfaceFactory is an AnimalFactory to create SurfaceDwellers
  *
- * @author Nate
+ * @author Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class SurfaceFactory// implements AnimalFactory
 {
 /*
+    
     private Random generator;
     
     public SurfaceFactory(){
