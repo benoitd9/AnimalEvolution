@@ -35,5 +35,8 @@ public abstract class DecoratorAnimalStatus implements Animal {
     public int getSpriteY() {
         return decoAni.getSpriteY();
     }
+    
+    @Override
+    abstract public Object clone();
 
 }

@@ -18,4 +18,9 @@ public class DecoratorAnimalStatusWellFed extends DecoratorAnimalStatus
         System.out.println("Just ate and is well fed");
         //increase Strength and movement speed
     }
+    
+    @Override
+    public Object clone(){
+        return new DecoratorAnimalStatusWellFed(decoAni.clone());
+    }
 }

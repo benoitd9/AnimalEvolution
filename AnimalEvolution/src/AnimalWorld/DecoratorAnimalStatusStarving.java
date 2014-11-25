@@ -19,4 +19,9 @@ public class DecoratorAnimalStatusStarving extends DecoratorAnimalStatus
         System.out.println("Starving");
         //decrease strength and movement speed
     }
+    
+    @Override
+    public Object clone(){
+        return new DecoratorAnimalStatusStarving(decoAni.clone());
+    }
 }
