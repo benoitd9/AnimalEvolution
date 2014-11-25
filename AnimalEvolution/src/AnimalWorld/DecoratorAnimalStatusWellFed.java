@@ -21,6 +21,6 @@ public class DecoratorAnimalStatusWellFed extends DecoratorAnimalStatus
     
     @Override
     public Object clone(){
-        return new DecoratorAnimalStatusWellFed(decoAni.clone());
+        return new DecoratorAnimalStatusWellFed((Animal)decoAni.clone());
     }
 }

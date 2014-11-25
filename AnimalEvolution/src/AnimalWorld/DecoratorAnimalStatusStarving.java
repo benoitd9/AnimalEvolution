@@ -22,6 +22,6 @@ public class DecoratorAnimalStatusStarving extends DecoratorAnimalStatus
     
     @Override
     public Object clone(){
-        return new DecoratorAnimalStatusStarving(decoAni.clone());
+        return new DecoratorAnimalStatusStarving((Animal)decoAni.clone());
     }
 }

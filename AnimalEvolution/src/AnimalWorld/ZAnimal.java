@@ -113,4 +113,14 @@ public class ZAnimal implements Animal
     public int getSpriteY(){
         return 5;
     }
+    
+    @Override
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.getMessage();
+            throw new RuntimeException();
+        }
+    }
 }

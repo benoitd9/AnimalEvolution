@@ -1,5 +1,7 @@
 package AnimalWorld;
 
+import java.lang.CloneNotSupportedException;
+
 
 /**
  * Animal is the interface for all of the Animals
