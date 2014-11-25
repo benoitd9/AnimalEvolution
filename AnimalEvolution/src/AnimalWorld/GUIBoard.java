@@ -55,8 +55,11 @@ public class GUIBoard extends JPanel{
         List[][] temp = board.getOrganisms();
         for(int i = 0; i < temp.length; i++){
             for(int j = 0; j < temp[0].length; j++){
-                for(int k = 0; k < temp[i][j].size(); k++){
-                    g.drawImage(image, 20+i*16, 20+j*16, 36+i*16, 36+j*16,((Organism) (temp[i][j].get(k))).getSpriteX()*16,((Organism)(temp[i][j].get(k))).getSpriteY()*16,((Organism) (temp[i][j].get(k))).getSpriteX()*16+16,((Organism)(temp[i][j].get(k))).getSpriteY()*16+16, null);
+                
+                if( temp[i][j] != null ){
+                    for(int k = 0; k < temp[i][j].size(); k++){
+                        g.drawImage(image, 20+i*16, 20+j*16, 36+i*16, 36+j*16,((Organism) (temp[i][j].get(k))).getSpriteX()*16,((Organism)(temp[i][j].get(k))).getSpriteY()*16,((Organism) (temp[i][j].get(k))).getSpriteX()*16+16,((Organism)(temp[i][j].get(k))).getSpriteY()*16+16, null);
+                    }
                 }
             }
         }
