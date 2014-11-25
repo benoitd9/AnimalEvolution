@@ -6,8 +6,6 @@ package AnimalWorld;
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 
-import java.awt.Shape;
-
 public class ZAnimal implements Animal
 {
     protected EatingStrategy eatStrat;
