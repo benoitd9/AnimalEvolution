@@ -7,7 +7,6 @@ package AnimalWorld;
  */
 
 import java.awt.Shape;
-import java.awt.Circle;
 
 public class ZAnimal implements Animal
 {
