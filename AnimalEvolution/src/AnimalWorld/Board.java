@@ -536,7 +536,13 @@ public class Board<T extends Organism>{
         }
         
         public LinkedList[][] buildOrganisms(){
-            return new LinkedList[numTiles][numTiles];
+            LinkedList[][] temp = new LinkedList[numTiles][numTiles];
+            for(int i = 0; i < temp.length; i++){
+                for(int j = 0; j < temp[0].length; j++){
+                    temp[i][j] = new LinkedList();
+                }
+            }
+            return temp;
         }
         
         public LandType[][] buildLandscape(){
