@@ -1,4 +1,5 @@
 package AnimalWorld;
+
 /**
  * CompLeafComponent implements BodyComponent
  * 
@@ -7,7 +8,6 @@ package AnimalWorld;
 public abstract class CompLeafComponent implements BodyComponent {
     
     private CompLeafComponentException except = new CompLeafComponentException("This leaf has no children");
-    private CloneNotSupportedException cloneExcept = new CloneNotSupportedException("clone unsupported");
     private int size;
     
     
@@ -36,7 +36,12 @@ public abstract class CompLeafComponent implements BodyComponent {
     }
     
     @Override
-    public BodyComponent clone() throws CloneNotSupportedException{
-        throw except;
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {		
+            e.getMessage();
+            throw new RuntimeException();
+        }
     }
 }

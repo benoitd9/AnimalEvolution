@@ -43,4 +43,14 @@ public abstract class CompositeComponent implements BodyComponent{
     public BodyComponent getChild(int i){
         return children.get(i);
     }
+    
+    @Override
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.getMessage();
+            throw new RuntimeException();
+        }
+    }
 }

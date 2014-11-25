@@ -1,4 +1,7 @@
 package AnimalWorld;
+
+import java.lang.CloneNotSupportedException;
+
 /**
  * BodyComponent is the interface that the Animal's body parts are based on
  * 
@@ -9,5 +12,5 @@ public interface BodyComponent extends Cloneable {
     public void add(BodyComponent component) throws CompLeafComponentException;
     public void remove(BodyComponent component) throws CompLeafComponentException;
     public BodyComponent getChild(int i) throws CompLeafComponentException;
-    public BodyComponent clone() throws CloneNotSupportedException;
+    public Object clone() throws CloneNotSupportedException;
 }
