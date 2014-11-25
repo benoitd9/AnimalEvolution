@@ -5,7 +5,11 @@ package AnimalWorld;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class ZAnimal implements Animal, Decoratable
+
+import java.awt.Shape;
+import java.awt.Circle;
+
+public class ZAnimal implements Animal
 {
     protected EatingStrategy eatStrat;
     protected MovementStrategy moveStrat;
@@ -25,6 +29,8 @@ public class ZAnimal implements Animal, Decoratable
     protected int damageConstant;
     protected int damageCapacity;
     protected int markedDamage;
+    protected int spriteX;
+    protected int spriteY;
 
     private ZAnimal(String aniName, int x, int y, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
     {
@@ -99,5 +105,15 @@ public class ZAnimal implements Animal, Decoratable
         if(this.getName().equals(o.getName()))
             return true;
         else return false;
+    }
+    
+    @Override
+    public int getSpriteX(){
+        return 0;
+    }
+    
+    @Override
+    public int getSpriteY(){
+        return 5;
     }
 }

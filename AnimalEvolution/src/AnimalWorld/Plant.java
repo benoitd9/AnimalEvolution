@@ -5,9 +5,14 @@ package AnimalWorld;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
+
+import java.awt.Shape;
+
 public abstract class Plant implements Organism{
     protected int xPosition;
     protected int yPosition;
+    protected int spriteX;
+    protected int spriteY;
     
     @Override
     public int getX(){
@@ -17,5 +22,15 @@ public abstract class Plant implements Organism{
     @Override
     public int getY(){
         return yPosition;
+    }
+    
+    @Override
+    public int getSpriteX(){
+        return spriteX;
+    }
+    
+    @Override
+    public int getSpriteY(){
+        return spriteY;
     }
 }

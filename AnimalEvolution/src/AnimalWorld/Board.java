@@ -200,6 +200,10 @@ public class Board<T extends Organism>{
         throw new BadLocationException("Your animal is bad and should feel bad", 0);
     }
     
+    public List[][] getOrganisms(){
+        return organisms;
+    }
+    
     /**
      * Takes in the x and y coordinates of a space on the board 
      * and returns a list of terrain adjacent to it
@@ -207,7 +211,7 @@ public class Board<T extends Organism>{
      * @param x, y coordinates
      * @return list of adjacent terrain
      */
-    private LandType[] getAdjacentTerrain(int x, int y){
+    public LandType[] getAdjacentTerrain(int x, int y){
         LandType[] adjacent;
         if(x == 0){
             if(y == 0){

@@ -4,8 +4,15 @@ package AnimalWorld;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
+
+import java.awt.Shape;
+
 public interface Organism {
     int getX();
     
     int getY();
+    
+    int getSpriteX();
+    
+    int getSpriteY();
 }

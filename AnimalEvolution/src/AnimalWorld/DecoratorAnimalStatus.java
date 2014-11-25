@@ -5,6 +5,9 @@ package AnimalWorld;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
+
+import java.awt.Shape;
+
 public abstract class DecoratorAnimalStatus implements Animal {
     protected Animal decoAni;
     
@@ -21,6 +24,16 @@ public abstract class DecoratorAnimalStatus implements Animal {
     @Override
     public int getY() {
         return decoAni.getY();
+    }
+    
+    @Override
+    public int getSpriteX() {
+        return decoAni.getSpriteX();
+    }
+
+    @Override
+    public int getSpriteY() {
+        return decoAni.getSpriteY();
     }
 
 }
