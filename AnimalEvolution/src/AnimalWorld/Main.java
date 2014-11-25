@@ -12,17 +12,7 @@ public class Main
     public static void main(String[] args){
         
         Board.BoardBuilder<Organism> builder = new Board.BoardBuilder<Organism>();
-        Board<Organism> b = builder.build();
-        GUIBoard gBoard = new GUIBoard(b);
-        JFrame app = new JFrame();
-        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        app.add(gBoard);
-        app.setSize(gBoard.getWidth(),gBoard.getHeight());
-        app.setVisible(true);
-        
-        b.printTerrainComposition();
-
-        System.out.println("\nAnimal World Game");
+        Board<Organism> b = builder.build();System.out.println("\nAnimal World Game");
         System.out.println("-----------------");
         
         ZAnimal bear = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("BEAR: , , , , , , ");
@@ -37,5 +27,20 @@ public class Main
         System.out.println("A "+bear.getName()+" has been created");
         System.out.println("A "+rabbit.getName()+" has been created");
         System.out.println("A "+bear2.getName()+" has been created");
+        b.addOrganism(bear);
+        b.addOrganism(rabbit);
+        b.addOrganism(bear2);
+        GUIBoard gBoard = new GUIBoard(b);
+        JFrame app = new JFrame();
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        app.add(gBoard);
+        app.setSize(gBoard.getWidth(),gBoard.getHeight());
+        app.setVisible(true);
+        
+        b.printTerrainComposition();
+
+        
+        
+        
     }
 }
