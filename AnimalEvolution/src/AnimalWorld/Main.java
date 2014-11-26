@@ -24,15 +24,12 @@ public class Main
         
         ConcreteAnimal bear = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("BEAR: , , , , , , ");
         AnimalFactorySingleton.getInstance().addAnimal("Bear",bear);
-        //ZAnimal bear = ani1.create();
         
         ConcreteAnimal rabbit = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("RABBIT: , , , , , , ");
         AnimalFactorySingleton.getInstance().addAnimal("Rabbit",rabbit);
-        //ZAnimal rabbit = ani2.create();
         
         ConcreteAnimal kangaroo = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("Kangaroo: , , , , , , ");
         AnimalFactorySingleton.getInstance().addAnimal("Kangaroo",kangaroo);
-        //ZAnimal rabbit = ani2.create();
         
         
         Map<String, ConcreteAnimal> animalList = AnimalFactorySingleton.getInstance().animalList;
