@@ -1,5 +1,10 @@
 package AnimalWorld;
 
+import AnimalCreation.AnimalFactorySingleton;
+import Lifeforms.ConcreteAnimal;
+import Lifeforms.Organism;
+import AnimalBoard.Board;
+import AnimalBoard.GUIBoard;
 import javax.swing.JFrame;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,23 +22,23 @@ public class Main
         Board<Organism> b = builder.build();System.out.println("\nAnimal World Game");
         System.out.println("-----------------");
         
-        ZAnimal bear = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("BEAR: , , , , , , ");
+        ConcreteAnimal bear = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("BEAR: , , , , , , ");
         AnimalFactorySingleton.getInstance().addAnimal("Bear",bear);
         //ZAnimal bear = ani1.create();
         
-        ZAnimal rabbit = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("RABBIT: , , , , , , ");
+        ConcreteAnimal rabbit = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("RABBIT: , , , , , , ");
         AnimalFactorySingleton.getInstance().addAnimal("Rabbit",rabbit);
         //ZAnimal rabbit = ani2.create();
         
-        ZAnimal kangaroo = (ZAnimal) AnimalFactorySingleton.getInstance().createAnimal("Kangaroo: , , , , , , ");
+        ConcreteAnimal kangaroo = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("Kangaroo: , , , , , , ");
         AnimalFactorySingleton.getInstance().addAnimal("Kangaroo",kangaroo);
         //ZAnimal rabbit = ani2.create();
         
         
-        Map<String, ZAnimal> animalList = AnimalFactorySingleton.getInstance().animalList;
+        Map<String, ConcreteAnimal> animalList = AnimalFactorySingleton.getInstance().animalList;
         
         
-        ZAnimal bearCopy = animalList.get("Bear");
+        ConcreteAnimal bearCopy = animalList.get("Bear");
         AnimalFactorySingleton.getInstance().addAnimal("Bear2", bearCopy);
 
         
