@@ -2,15 +2,13 @@ package AnimalWorld;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * AnimalFactorySingleton creates Animals
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-
-import java.util.Random;
-import java.util.ArrayList;
 
 public class AnimalFactorySingleton{
     

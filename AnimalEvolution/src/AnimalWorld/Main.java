@@ -34,7 +34,7 @@ public class Main
         
         
         ZAnimal bearCopy = animalList.get("Bear");
-        AnimalFactorySingleton.getInstance().addAnimal("Bear2",(ZAnimal)bear.clone());
+        AnimalFactorySingleton.getInstance().addAnimal("Bear2", bearCopy);
 
         
         System.out.println(animalList.toString());
