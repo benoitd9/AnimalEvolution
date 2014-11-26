@@ -1,4 +1,8 @@
 package AnimalWorld;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * AnimalFactorySingleton creates Animals
  * 
@@ -6,9 +10,14 @@ package AnimalWorld;
  */
 
 import java.util.Random;
+import java.util.ArrayList;
 
-public class AnimalFactorySingleton 
-{
+public class AnimalFactorySingleton{
+    
+
+Map<String, ZAnimal> animalList = new HashMap<String, ZAnimal>();
+
+
     /**
      * create an object of SingleObject
      */
@@ -63,6 +72,10 @@ public class AnimalFactorySingleton
         catch(Exception e){}
         
         return ZAnimal.create(name[0], attributes, body);
+    }
+        
+    protected void addAnimal(String name, ZAnimal a){
+        this.animalList.put(name, a);
     }
     
     private int[] parse(String s){
