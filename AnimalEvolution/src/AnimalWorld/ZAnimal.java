@@ -147,11 +147,13 @@ public class ZAnimal implements Animal
     {
         return 0;
     }
-
+    
+    @Override
     public int getX() {
         return xPosition;
     }
 
+    @Override
     public int getY() {
         return yPosition;
     }
