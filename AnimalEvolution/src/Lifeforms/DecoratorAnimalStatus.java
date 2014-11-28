@@ -7,7 +7,7 @@ package Lifeforms;
  */
 
 import Lifeforms.Animal;
-import java.awt.Shape;
+import AnimalBoard.Direction;
 
 public abstract class DecoratorAnimalStatus implements Animal {
     protected Animal decoAni;
@@ -28,16 +28,26 @@ public abstract class DecoratorAnimalStatus implements Animal {
     }
     
     @Override
-    public int getSpriteX() {
-        return decoAni.getSpriteX();
-    }
-
+    abstract public Object clone();
+    
     @Override
-    public int getSpriteY() {
-        return decoAni.getSpriteY();
+    public Direction getDirection(){
+        return decoAni.getDirection();
     }
     
     @Override
-    abstract public Object clone();
+    public void turnClockwise(){
+        decoAni.turnClockwise();
+    }
+    
+    @Override
+    public void turnCounterClockwise(){
+        decoAni.turnCounterClockwise();
+    }
+    
+    @Override
+    public void turnToFace(Direction d){
+        decoAni.turnToFace(d);
+    }
 
 }

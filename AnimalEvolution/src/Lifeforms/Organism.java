@@ -12,7 +12,4 @@ public interface Organism {
     
     int getY();
     
-    int getSpriteX();
-    
-    int getSpriteY();
 }

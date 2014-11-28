@@ -1,6 +1,7 @@
 package AnimalBoard;
 
 import Lifeforms.Organism;
+import Lifeforms.Animal;
 import BuildStrat.BasicLandStrategy;
 import BuildStrat.ShallowWaterStrategy;
 import BuildStrat.MediumWaterStrategy;
@@ -353,6 +354,11 @@ public class Board<T extends Organism>{
     
     public List[][] getOrganisms(){
         return organisms;
+    }
+    
+    public int[][] getVision(Animal ani){
+        int[][] returned = new int[41][2];
+        return returned;
     }
     
     /**

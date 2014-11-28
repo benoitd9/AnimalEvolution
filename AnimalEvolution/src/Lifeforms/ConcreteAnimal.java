@@ -9,6 +9,7 @@ import AnimalLogic.EatingStrategyOmnivore;
 import AnimalLogic.EatingStrategyCarnivore;
 import AnimalLogic.MovementStrategyFight;
 import AnimalLogic.MovementStrategy;
+import AnimalBoard.Direction;
 import AnimalComposite.BodyComponent;
 
 /**
@@ -97,15 +98,8 @@ public class ConcreteAnimal implements Animal
      */
     protected int markedDamage;
     
-    /**
-     * x coordinate of the sprite of the animal
-     */
-    protected int spriteX;
-    
-    /**
-     * y coordinate of the sprite of the animal
-     */
-    protected int spriteY;
+    protected Direction dir;
+
 
     private ConcreteAnimal(String aniName, int x, int y, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
     {
@@ -147,6 +141,8 @@ public class ConcreteAnimal implements Animal
         movementSpeed = moveSpeed;
         
         gender = initGender;
+        
+        dir = Direction.NORTH;
 
     }
 
@@ -174,6 +170,68 @@ public class ConcreteAnimal implements Animal
         return name;
     }
     
+    public void turnToFace(Direction d){
+        dir = d;
+    }
+    
+    public void turnClockwise(){
+        if(dir == Direction.NORTH){
+            dir = Direction.NORTHEAST;
+        }
+        else if(dir == Direction.NORTHEAST){
+            dir = Direction.EAST;
+        }
+        else if(dir == Direction.EAST){
+            dir = Direction.SOUTHEAST;
+        }
+        else if(dir == Direction.SOUTHEAST){
+            dir = Direction.SOUTH;
+        }
+        else if(dir == Direction.SOUTH){
+            dir = Direction.SOUTHWEST;
+        }
+        else if(dir == Direction.SOUTHWEST){
+            dir = Direction.WEST;
+        }
+        else if(dir == Direction.WEST){
+            dir = Direction.NORTHWEST;
+        }
+        else if(dir == Direction.NORTHWEST){
+            dir = Direction.NORTH;
+        }
+    }
+    
+    public void turnCounterClockwise(){
+        if(dir == Direction.NORTH){
+            dir = Direction.NORTHWEST;
+        }
+        else if(dir == Direction.NORTHWEST){
+            dir = Direction.WEST;
+        }
+        else if(dir == Direction.WEST){
+            dir = Direction.SOUTHWEST;
+        }
+        else if(dir == Direction.SOUTHWEST){
+            dir = Direction.SOUTH;
+        }
+        else if(dir == Direction.SOUTH){
+            dir = Direction.SOUTHEAST;
+        }
+        else if(dir == Direction.SOUTHEAST){
+            dir = Direction.EAST;
+        }
+        else if(dir == Direction.EAST){
+            dir = Direction.NORTHEAST;
+        }
+        else if(dir == Direction.NORTHEAST){
+            dir = Direction.NORTH;
+        }
+    }
+    
+    public Direction getDirection(){
+        return dir;
+    }
+    
     public static ConcreteAnimal create(String name, int[] parameters, BodyComponent body){
         return new ConcreteAnimal(name,parameters[0],parameters[1],parameters[2],parameters[3],parameters[4],parameters[5],parameters[6],body);
     }
@@ -186,16 +244,6 @@ public class ConcreteAnimal implements Animal
         if(this.getName().equals(o.getName()))
             return true;
         else return false;
-    }
-    
-    @Override
-    public int getSpriteX(){
-        return 0;
-    }
-    
-    @Override
-    public int getSpriteY(){
-        return 5;
     }
     
     /**

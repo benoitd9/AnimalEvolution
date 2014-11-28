@@ -58,7 +58,6 @@ public class GUIBoard extends JPanel{
                         System.out.println("IMG");
                         g.setColor(Color.GREEN);
                         g.fillRect(i*16+24, j*16+24, 8, 8);
-                        //g.drawImage(image, 20+i*16, 20+j*16, 36+i*16, 36+j*16,((Organism) (temp[i][j].get(k))).getSpriteX()*16,((Organism)(temp[i][j].get(k))).getSpriteY()*16,((Organism) (temp[i][j].get(k))).getSpriteX()*16+16,((Organism)(temp[i][j].get(k))).getSpriteY()*16+16, null);
                     }
                 }
             }

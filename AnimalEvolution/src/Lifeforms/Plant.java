@@ -20,16 +20,6 @@ public abstract class Plant implements Organism{
      */
     protected int yPosition;
     
-    /**
-     * the x coordinate of the sprite of the plant
-     */
-    protected int spriteX;
-    
-    /**
-     * the y coordinate of the sprite of the plant
-     */
-    protected int spriteY;
-    
     @Override
     public int getX(){
         return xPosition;
@@ -40,13 +30,4 @@ public abstract class Plant implements Organism{
         return yPosition;
     }
     
-    @Override
-    public int getSpriteX(){
-        return spriteX;
-    }
-    
-    @Override
-    public int getSpriteY(){
-        return spriteY;
-    }
 }
