@@ -33,4 +33,16 @@ public class Direction {
         return new int[] {xDir,yDir};
     }
     
+    @Override
+    public boolean equals(Object o){
+        if(o == null) return false;
+        if(o == this) return true;
+        if(!(o instanceof Direction)) return false;
+        Direction otherDirection = (Direction) o;
+        if(this.getDirection()[0] == otherDirection.getDirection()[0] &&
+           this.getDirection()[1] == otherDirection.getDirection()[1])
+            return true;
+        else return false;
+    }
+    
 }

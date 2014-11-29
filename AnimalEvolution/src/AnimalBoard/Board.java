@@ -356,8 +356,214 @@ public class Board<T extends Organism>{
         return organisms;
     }
     
+    /**
+     * Takes in an animal and based on the direction the animal is currently facing,
+     * returns a 2-dimensional array of positions [*][0] will give you the X-coordinate
+     * of the position, [*][1] will give you the Y-coordinate. the array contains all the tiles
+     * the animal can currently see
+     * 
+     * @param animal
+     * @return int[][]
+     */
     public int[][] getVision(Animal ani){
-        int[][] returned = new int[41][2];
+        int[][] tempReturned = new int[41][2];
+        int returnedSize = 0;
+        if(ani.getDirection().equals(Direction.NORTH)){
+            for(int i = 0; i < 5; i++){
+                for(int x = ani.getX() + i; x >= ani.getX()-i; x--){
+                    for(int y = ani.getY() + i; y >= ani.getY()-i; y--){
+                        if(x >= 0 && x <= landscape.length-1
+                           && y >= 0 && y <= landscape[0].length-1){
+                            if(i > 2){
+                                if(y == ani.getY() + i){
+                                    tempReturned[returnedSize][0] = x;
+                                    tempReturned[returnedSize][1] = y;
+                                    returnedSize += 1;
+                                }
+                            }
+                            else{
+                                tempReturned[returnedSize][0] = x;
+                                tempReturned[returnedSize][1] = y;
+                                returnedSize += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else if(ani.getDirection().equals(Direction.NORTHEAST)){
+            for(int i = 0; i < 5; i++){
+                for(int x = ani.getX() + i; x >= ani.getX()-i; x--){
+                    for(int y = ani.getY() + i; y >= ani.getY()-i; y--){
+                        if(x >= 0 && x <= landscape.length-1
+                           && y >= 0 && y <= landscape[0].length-1){
+                            if(i > 2){
+                                if((y == ani.getY() + i && x >= ani.getX()) || (x == ani.getX() + i && y >= ani.getY())){
+                                    tempReturned[returnedSize][0] = x;
+                                    tempReturned[returnedSize][1] = y;
+                                    returnedSize += 1;
+                                }
+                            }
+                            else{
+                                tempReturned[returnedSize][0] = x;
+                                tempReturned[returnedSize][1] = y;
+                                returnedSize += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else if(ani.getDirection().equals(Direction.EAST)){
+            for(int i = 0; i < 5; i++){
+                for(int x = ani.getX() + i; x >= ani.getX()-i; x--){
+                    for(int y = ani.getY() + i; y >= ani.getY()-i; y--){
+                        if(x >= 0 && x <= landscape.length-1
+                           && y >= 0 && y <= landscape[0].length-1){
+                            if(i > 2){
+                                if(x == ani.getX() + i){
+                                    tempReturned[returnedSize][0] = x;
+                                    tempReturned[returnedSize][1] = y;
+                                    returnedSize += 1;
+                                }
+                            }
+                            else{
+                                tempReturned[returnedSize][0] = x;
+                                tempReturned[returnedSize][1] = y;
+                                returnedSize += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        else if(ani.getDirection().equals(Direction.SOUTHEAST)){
+            for(int i = 0; i < 5; i++){
+                for(int x = ani.getX() + i; x >= ani.getX()-i; x--){
+                    for(int y = ani.getY() + i; y >= ani.getY()-i; y--){
+                        if(x >= 0 && x <= landscape.length-1
+                           && y >= 0 && y <= landscape[0].length-1){
+                            if(i > 2){
+                                if((x == ani.getY() + i && y <= ani.getY()) || (y == ani.getY() - i && x >= ani.getX())){
+                                    tempReturned[returnedSize][0] = x;
+                                    tempReturned[returnedSize][1] = y;
+                                    returnedSize += 1;
+                                }
+                            }
+                            else{
+                                tempReturned[returnedSize][0] = x;
+                                tempReturned[returnedSize][1] = y;
+                                returnedSize += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else if(ani.getDirection().equals(Direction.SOUTH)){
+            for(int i = 0; i < 5; i++){
+                for(int x = ani.getX() + i; x >= ani.getX()-i; x--){
+                    for(int y = ani.getY() + i; y >= ani.getY()-i; y--){
+                        if(x >= 0 && x <= landscape.length-1
+                           && y >= 0 && y <= landscape[0].length-1){
+                            if(i > 2){
+                                if(y == ani.getY() - i){
+                                    tempReturned[returnedSize][0] = x;
+                                    tempReturned[returnedSize][1] = y;
+                                    returnedSize += 1;
+                                }
+                            }
+                            else{
+                                tempReturned[returnedSize][0] = x;
+                                tempReturned[returnedSize][1] = y;
+                                returnedSize += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        else if(ani.getDirection().equals(Direction.SOUTHWEST)){
+            for(int i = 0; i < 5; i++){
+                for(int x = ani.getX() + i; x >= ani.getX()-i; x--){
+                    for(int y = ani.getY() + i; y >= ani.getY()-i; y--){
+                        if(x >= 0 && x <= landscape.length-1
+                           && y >= 0 && y <= landscape[0].length-1){
+                            if(i > 2){
+                                if((x == ani.getY() - i && y <= ani.getY()) || (y == ani.getY() - i && x <= ani.getX())){
+                                    tempReturned[returnedSize][0] = x;
+                                    tempReturned[returnedSize][1] = y;
+                                    returnedSize += 1;
+                                }
+                            }
+                            else{
+                                tempReturned[returnedSize][0] = x;
+                                tempReturned[returnedSize][1] = y;
+                                returnedSize += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        else if(ani.getDirection().equals(Direction.WEST)){
+            for(int i = 0; i < 5; i++){
+                for(int x = ani.getX() + i; x >= ani.getX()-i; x--){
+                    for(int y = ani.getY() + i; y >= ani.getY()-i; y--){
+                        if(x >= 0 && x <= landscape.length-1
+                           && y >= 0 && y <= landscape[0].length-1){
+                            if(i > 2){
+                                if(x == ani.getX() - i){
+                                    tempReturned[returnedSize][0] = x;
+                                    tempReturned[returnedSize][1] = y;
+                                    returnedSize += 1;
+                                }
+                            }
+                            else{
+                                tempReturned[returnedSize][0] = x;
+                                tempReturned[returnedSize][1] = y;
+                                returnedSize += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        else if(ani.getDirection().equals(Direction.NORTHWEST)){
+            for(int i = 0; i < 5; i++){
+                for(int x = ani.getX() + i; x >= ani.getX()-i; x--){
+                    for(int y = ani.getY() + i; y >= ani.getY()-i; y--){
+                        if(x >= 0 && x <= landscape.length-1
+                           && y >= 0 && y <= landscape[0].length-1){
+                            if(i > 2){
+                                if((x == ani.getY() - i && y >= ani.getY()) || (y == ani.getY() + i && x <= ani.getX())){
+                                    tempReturned[returnedSize][0] = x;
+                                    tempReturned[returnedSize][1] = y;
+                                    returnedSize += 1;
+                                }
+                            }
+                            else{
+                                tempReturned[returnedSize][0] = x;
+                                tempReturned[returnedSize][1] = y;
+                                returnedSize += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        int[][] returned = new int[returnedSize][2];
+        for(int i = 0; i < returned.length; i++){
+            for(int j = 0; j < returned[0].length; j++){
+                returned[i][j] = tempReturned[i][j];
+            }
+        }
+        
         return returned;
     }
     
