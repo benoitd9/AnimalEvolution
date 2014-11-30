@@ -2,6 +2,7 @@ package Lifeforms;
 
 import java.lang.CloneNotSupportedException;
 import AnimalBoard.Direction;
+import java.awt.Color;
 
 
 /**
@@ -20,4 +21,5 @@ public interface Animal extends Organism{
     public void setY(int y);
     public String getName();
     public boolean getIsCannibal();
+    public Color getColor();
 }

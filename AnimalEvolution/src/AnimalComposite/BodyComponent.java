@@ -9,21 +9,21 @@ import java.lang.CloneNotSupportedException;
  */
 public interface BodyComponent extends Cloneable {
     
-    public int getSize();
+    public int getSize() throws LeafComponentException;
     
     /**
      * adds a child component to the body part
      * 
      * @param component the parent body part
      */
-    public void add(BodyComponent component) throws CompLeafComponentException;
+    public void add(BodyComponent component) throws LeafComponentException;
     
     /**
      * removes a child component to the body part
      * 
      * @param component the parent body part
      */
-    public void remove(BodyComponent component) throws CompLeafComponentException;
+    public void remove(BodyComponent component) throws LeafComponentException;
     
     /**
      * returns the specified child component from its parent body part
@@ -31,7 +31,7 @@ public interface BodyComponent extends Cloneable {
      * @param i the child component
      * @return the child component
      */
-    public BodyComponent getChild(int i) throws CompLeafComponentException;
+    public BodyComponent getChild(int i) throws LeafComponentException;
     
     public Object clone() throws CloneNotSupportedException;
 }

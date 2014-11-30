@@ -8,6 +8,7 @@ package Lifeforms;
 
 import Lifeforms.Animal;
 import AnimalBoard.Direction;
+import java.awt.Color;
 
 public abstract class DecoratorAnimalStatus implements Animal {
     protected Animal decoAni;
@@ -48,6 +49,11 @@ public abstract class DecoratorAnimalStatus implements Animal {
     @Override
     public void turnToFace(Direction d){
         decoAni.turnToFace(d);
+    }
+    
+    @Override
+    public Color getColor(){
+        return decoAni.getColor();
     }
 
 }

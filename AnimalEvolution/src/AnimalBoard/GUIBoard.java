@@ -6,10 +6,6 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.util.List;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * GUIBoard is the container for the board
@@ -19,7 +15,6 @@ import java.io.IOException;
 public class GUIBoard extends JPanel{
     
     private Board board;
-    private BufferedImage image;
     
     public GUIBoard(Board b){
         super();
@@ -27,11 +22,6 @@ public class GUIBoard extends JPanel{
         super.setSize(b.getWidth()*16+40,b.getHeight()*16+40);
         super.setVisible(true);
         board = b;
-        try{
-            image = ImageIO.read(new File("AnimalTiles.png"));
-        } catch (IOException ex){
-            
-        }
     }
     
     public void paintComponent(Graphics g){

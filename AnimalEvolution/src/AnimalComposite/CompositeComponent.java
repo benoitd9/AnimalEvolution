@@ -11,22 +11,24 @@ import java.util.LinkedList;
  */
 public abstract class CompositeComponent implements BodyComponent{
     protected List<BodyComponent> children;
-    protected int size;
     
-    public CompositeComponent(int tempSize){
+    public CompositeComponent(){
         children = new LinkedList<BodyComponent>();
-        size = tempSize;
     }
     
     @Override
     public int getSize(){
-        int tempSize = 0;
-        for(int i = 0; i < children.size(); i++){
-            tempSize += children.get(i).getSize();
+            
+        int temp = 0;
+            
+        for(BodyComponent bc : children){
+            try{
+                temp = bc.getSize();
+            }
+            catch(Exception e){}
         }
-        if(tempSize <= size)
-            tempSize = size;
-        return tempSize;
+            
+        return temp;
     }
     
     /**

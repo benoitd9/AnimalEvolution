@@ -4,8 +4,8 @@ package AnimalComposite;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class Leg extends CompLeafComponent{
-    public Leg(int size){
-        super(size);
+public class Leg extends LeafComponent{
+    public Leg(){
+        super();
     }
 }

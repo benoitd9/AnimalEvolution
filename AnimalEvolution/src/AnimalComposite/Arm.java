@@ -4,8 +4,8 @@ package AnimalComposite;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public class Arm extends CompLeafComponent{
-    public Arm(int size){
-        super(size);
+public class Arm extends LeafComponent{
+    public Arm(){
+        super();
     }
 }

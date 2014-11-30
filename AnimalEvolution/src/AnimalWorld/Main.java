@@ -18,6 +18,7 @@ public class Main
 {
     public static void main(String[] args){
         
+        int numTurns = 10;
         Board.BoardBuilder<Organism> builder = new Board.BoardBuilder<Organism>();
         Board<Organism> b = builder.build();System.out.println("\nAnimal World Game");
         System.out.println("-----------------");
@@ -54,6 +55,14 @@ public class Main
         app.add(gBoard);
         app.setSize(gBoard.getWidth()+15,gBoard.getHeight()+35);
         app.setVisible(true);
+        
+        while(numTurns > 0){
+            
+            for(int i = 0; i < b.getAnimalList().size(); i++){
+                
+            }
+            numTurns--;
+        }
         
         b.printTerrainComposition();
 

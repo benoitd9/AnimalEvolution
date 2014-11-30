@@ -11,6 +11,7 @@ import AnimalLogic.MovementStrategyHunt;
 import AnimalLogic.MovementStrategy;
 import AnimalBoard.Direction;
 import AnimalComposite.BodyComponent;
+import java.awt.Color;
 
 /**
  * ConcreteAnimal contains all of the attributes for the animals along with
@@ -41,7 +42,7 @@ public class ConcreteAnimal implements Animal
     /**
      * the higher the number the bigger the animal
      */
-    protected int size;  //the higher the number the bigger the animal
+    protected int size;
     
     /**
      * number is how many squared that the animal can move
@@ -98,7 +99,15 @@ public class ConcreteAnimal implements Animal
      */
     protected int markedDamage;
     
+    /**
+     * The direction this animal is currently facing
+     */
     protected Direction dir;
+    
+    /**
+     * The color this animal is
+     */
+    protected Color color;
 
 
     private ConcreteAnimal(String aniName, int x, int y, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
@@ -232,6 +241,10 @@ public class ConcreteAnimal implements Animal
         return dir;
     }
     
+    public Color getColor(){
+        return color;
+    }
+    
     public static ConcreteAnimal create(String name, int[] parameters, BodyComponent body){
         return new ConcreteAnimal(name,parameters[0],parameters[1],parameters[2],parameters[3],parameters[4],parameters[5],parameters[6],body);
     }
@@ -241,8 +254,13 @@ public class ConcreteAnimal implements Animal
         if(o == this) return true;
         if(!(o instanceof ConcreteAnimal)) return false;
         ConcreteAnimal otherAnimal = (ConcreteAnimal) o;
-        if(this.getName().equals(o.getName()))
-            return true;
+        if(this.getName().equals(otherAnimal.getName())){
+            if(this.getX() == otherAnimal.getX() &&
+               this.getY() == otherAnimal.getY()){
+                return true;
+            }
+            else return false;
+        }
         else return false;
     }
     

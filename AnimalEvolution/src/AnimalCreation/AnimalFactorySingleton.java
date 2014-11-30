@@ -8,6 +8,7 @@ import AnimalComposite.Head;
 import AnimalComposite.Leg;
 import AnimalComposite.Arm;
 import AnimalComposite.Body;
+import AnimalComposite.Bone;
 import AnimalComposite.BodyComponent;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,15 +67,20 @@ public class AnimalFactorySingleton{
         String[] name = s.split("[:]");
         int[] attributes = parse(name[1]);
         
-        BodyComponent body = new Body(generator.nextInt(50)+10);
+        BodyComponent body = new Body();
+        BodyComponent skele = new Skeleton();
         try{
-            body.add(new Head(body.getSize()/8));
-            body.add(new Torso((body.getSize()/8)*7));
-            body.add(new Skeleton(0));
-            body.getChild(1).add(new Arm(body.getChild(1).getSize()/6));
-            body.getChild(1).add(new Arm(body.getChild(1).getSize()/6));
-            body.getChild(1).add(new Leg(body.getChild(1).getSize()/3));
-            body.getChild(1).add(new Leg(body.getChild(1).getSize()/3));
+            for(int i = 0; i < 5; i++){
+                skele.add(new Bone());
+            }
+            
+            body.add(skele);
+            body.add(new Head());
+            body.add(new Arm());
+            body.add(new Arm());
+            body.add(new Leg());
+            body.add(new Leg());
+            
         }
         catch(Exception e){}
         

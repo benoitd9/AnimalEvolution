@@ -5,7 +5,7 @@ package AnimalComposite;
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class Head extends CompositeComponent {
-    public Head(int size){
-        super(size);
+    public Head(){
+        super();
     }
 }

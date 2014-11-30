@@ -9,7 +9,15 @@ import AnimalComposite.CompositeComponent;
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class Skeleton extends CompositeComponent{
-    public Skeleton(int size){
-        super(size);
+    public Skeleton(){
+        super();
+    }
+    
+    public int getSize(){
+        int temp = 0;
+        for(BodyComponent bc : children){
+            temp += 1;
+        }
+        return temp;
     }
 }

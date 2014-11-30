@@ -2,6 +2,7 @@ package AnimalBoard;
 
 import Lifeforms.Organism;
 import Lifeforms.Animal;
+import Lifeforms.Plant;
 import BuildStrat.BasicLandStrategy;
 import BuildStrat.ShallowWaterStrategy;
 import BuildStrat.MediumWaterStrategy;
@@ -24,7 +25,9 @@ import javax.swing.text.BadLocationException;
 public class Board<T extends Organism>{
     
     private List<T> organismList; //List of all current organisms on the board
-    private List<T>[][] organisms;  //2d array of lists of all organisms on each tile on the board
+    private List<T>[][] organisms; //2d array of lists of all organisms on each tile on the board
+    private List<Animal> animalList; //list of all animals on the board
+    private List<Plant> plantList; //list of all plants of the board
     private LandType[][] landscape;  //2d array of all the tiles on the board
     private Random generator;  //random seed
     
@@ -355,13 +358,17 @@ public class Board<T extends Organism>{
     public List[][] getOrganisms(){
         return organisms;
     }
+
+    public List getOrganismList(){
+        return organismList;
+    }
     
-    public List<T> getAnimals(){
+    public List getAnimalList(){
         return animalList;
     }
     
-    public List<T> getPlants(){
-        return plantLIst;
+    public List getPlantList(){
+        return plantList;
     }
     /**
      * Takes in an animal and based on the direction the animal is currently facing,
