@@ -24,20 +24,22 @@ public class MovementStrategyHunt implements MovementStrategy
         Lifeforms.Animal target = null;
 
         //get list of organisms that can be seen
-        int k = 0;
-        for(int i = 0; i < 41; i++)
+        for(int j = 0; j < aniList.size(); j++)
         {
-            for(int j = 0; j < aniList.size(); j++)
-                if(aniList.get(j) != null)
+            if(aniList.get(j) != null)
+            {
+                Lifeforms.Animal z = aniList.get(j);
+                for(int i = 0; i < 41; i++)
                 {
+                    if(z.getX()==seen[j][0] && z.getY()==seen[j][1])
                     seenAnimals.add(aniList.get(j));
-                    k++;
                 }
+            }
         }
         
         //I want to specify a specific type of organism as the target here
         //animal or plant for example
-        k = 0;
+        int k = 0;
         while(seenAnimals.get(k) != null && target == null)
         {
             Lifeforms.Animal temp = seenAnimals.get(k);

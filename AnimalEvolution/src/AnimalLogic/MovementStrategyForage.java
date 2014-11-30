@@ -23,15 +23,18 @@ public class MovementStrategyForage implements MovementStrategy
         List<Lifeforms.Plant> plantList = board.getPlants();
         List<Lifeforms.Plant> seenPlants = null;
         Lifeforms.Plant target = null;
-
-        //get list of Plants that can be seen
-        for(int i = 0; i < 41; i++)
+        
+        for(int j = 0; j < plantList.size(); j++)
         {
-            for(int j = 0; j < plantList.size(); j++)
-                if(plantList.get(j) != null)
+            if(plantList.get(j) != null)
+            {
+                Lifeforms.Plant z = plantList.get(j);
+                for(int i = 0; i < 41; i++)
                 {
+                    if(z.getX()==seen[j][0] && z.getY()==seen[j][1])
                     seenPlants.add(plantList.get(j));
                 }
+            }
         }
 
         target = seenPlants.get(0);
