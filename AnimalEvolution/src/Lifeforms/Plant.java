@@ -29,5 +29,5 @@ public abstract class Plant implements Organism{
     public int getY(){
         return yPosition;
     }
-    
+        
 }

@@ -356,6 +356,10 @@ public class Board<T extends Organism>{
         return organisms;
     }
     
+    public List<T> getAnimals(){
+        return animalList;
+    }
+    
     /**
      * Takes in an animal and based on the direction the animal is currently facing,
      * returns a 2-dimensional array of positions [*][0] will give you the X-coordinate

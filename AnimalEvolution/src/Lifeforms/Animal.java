@@ -15,4 +15,9 @@ public interface Animal extends Organism{
     public void turnClockwise();
     public void turnCounterClockwise();
     public void turnToFace(Direction d);
+    public int getSpeed();
+    public void setX(int x);
+    public void setY(int y);
+    public String getName();
+    public boolean getIsCannibal();
 }

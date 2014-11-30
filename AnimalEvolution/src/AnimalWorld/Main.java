@@ -58,7 +58,5 @@ public class Main
         b.printTerrainComposition();
 
         
-        
-        
     }
 }

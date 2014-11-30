@@ -9,5 +9,5 @@ public interface MovementStrategy
     /**
      * base strategy method for moving the animal
      */
-    public void doMovement();
+    public void doMovement(AnimalBoard.Board board, Lifeforms.Animal a);
 }

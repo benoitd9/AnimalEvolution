@@ -14,17 +14,17 @@ public class MovementStrategyRandom implements MovementStrategy
      * the animal will randomly either head towards or away from a fight
      */
     @Override
-    public void doMovement()
+    public void doMovement(AnimalBoard.Board board, Lifeforms.Animal a)
     {
         Random rand = new Random();
         int x = rand.nextInt(10);
         if(x < 5)
         {
-            System.out.println("Move in to fight");
+            //hunt
         }
         else
         {
-            System.out.println("Run away");
+            //forage
         }
     }
 }

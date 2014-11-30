@@ -4,10 +4,10 @@ import AnimalLogic.EatingStrategyHerbivore;
 import AnimalLogic.TakeTurnTemplate;
 import AnimalLogic.MovementStrategyRandom;
 import AnimalLogic.EatingStrategy;
-import AnimalLogic.MovementStrategyFlight;
+import AnimalLogic.MovementStrategyForage;
 import AnimalLogic.EatingStrategyOmnivore;
 import AnimalLogic.EatingStrategyCarnivore;
-import AnimalLogic.MovementStrategyFight;
+import AnimalLogic.MovementStrategyHunt;
 import AnimalLogic.MovementStrategy;
 import AnimalBoard.Direction;
 import AnimalComposite.BodyComponent;
@@ -118,10 +118,10 @@ public class ConcreteAnimal implements Animal
         }
         
         if (moveStrategy == 1) {
-            moveStrat = new MovementStrategyFight();
+            moveStrat = new MovementStrategyHunt();
         } 
         else if (moveStrategy == 2) {
-            moveStrat = new MovementStrategyFlight();
+            moveStrat = new MovementStrategyForage();
         } 
         else {
             moveStrat = new MovementStrategyRandom();
@@ -165,11 +165,11 @@ public class ConcreteAnimal implements Animal
     public int getY() {
         return yPosition;
     }
-    
+  
     public String getName(){
         return name;
     }
-    
+
     public void turnToFace(Direction d){
         dir = d;
     }
@@ -260,4 +260,25 @@ public class ConcreteAnimal implements Animal
             throw new RuntimeException();
         }
     }
+
+    @Override
+    public void setX(int x) {
+        xPosition = x;
+    }
+
+    @Override
+    public void setY(int y) {
+        yPosition = y;
+    }
+
+    @Override
+    public int getSpeed() {
+        return movementSpeed;
+    }
+
+    @Override
+    public boolean getIsCannibal() {
+        return isCannibal;
+    }
+    
 }
