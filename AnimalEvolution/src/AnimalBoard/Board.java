@@ -362,7 +362,7 @@ public class Board<T extends Organism>{
      * of the position, [*][1] will give you the Y-coordinate. the array contains all the tiles
      * the animal can currently see
      * 
-     * @param animal
+     * @param ani
      * @return int[][]
      */
     public int[][] getVision(Animal ani){
@@ -381,7 +381,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -404,7 +407,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -427,7 +433,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -451,7 +460,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -474,7 +486,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -498,7 +513,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -522,7 +540,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -546,7 +567,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
