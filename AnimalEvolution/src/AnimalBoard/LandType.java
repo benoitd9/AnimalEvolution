@@ -49,39 +49,64 @@ public class LandType {
      */
     private Color color;
     
+    /**
+     * how much it costs an animal to move through
+     */
+    private int movementWeight;
+    
     private LandType(int c){
         
         if(c == 1){
             color = new Color(0xdeb887);
+            movementWeight = 1;
         }
         
         else if(c == 2){
             color = Color.BLUE;
+            movementWeight = 2;
         }
         
         else if(c == 3){
             color = new Color(0x0000B0);
+            movementWeight = 5;
         }
         
         else if(c == 4){
             color = new Color(0x000080);
+            movementWeight = 10;
         }
         
         else if(c == 5){
             color = new Color(0xa9a9a9);
+            movementWeight = 1;
         }
         
         else if(c == 6){
             color = Color.GRAY;
+            movementWeight = 99;
         }
         
         else if(c == 7){
             color = Color.RED;
+            movementWeight = 99;
         }
     }
-    
+    /**
+     * returns the color of the tile
+     * 
+     * @return color
+     */
     public Color getColor(){
         return color;
+    }
+    
+    /**
+     * returns the weight of the land tile
+     * 
+     * @return movementWeight
+     */
+    public int getWeight(){
+        return movementWeight;
     }
     
     @Override

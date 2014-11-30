@@ -23,14 +23,14 @@ import javax.swing.text.BadLocationException;
 
 public class Board<T extends Organism>{
     
-    private List<T> animalList; //List of all current organisms on the board
+    private List<T> organismList; //List of all current organisms on the board
     private List<T>[][] organisms;  //2d array of lists of all organisms on each tile on the board
     private LandType[][] landscape;  //2d array of all the tiles on the board
     private Random generator;  //random seed
     
     private Board(BoardBuilder builder){
-        animalList = builder.buildAnimalList();
-        organisms = builder.buildOrganisms();
+        organismList = builder.buildOrganismList();
+        organisms = builder.buildOrganismsBoard();
         landscape = builder.buildLandscape();
     }
     
@@ -47,7 +47,7 @@ public class Board<T extends Organism>{
             
             if( organisms[tempLoc[0]][tempLoc[1]] != null ){
                 organisms[tempLoc[0]][tempLoc[1]].add(org);
-                animalList.add(org);
+                organismList.add(org);
             }
             
         }
@@ -366,7 +366,7 @@ public class Board<T extends Organism>{
      * of the position, [*][1] will give you the Y-coordinate. the array contains all the tiles
      * the animal can currently see
      * 
-     * @param animal
+     * @param ani
      * @return int[][]
      */
     public int[][] getVision(Animal ani){
@@ -385,7 +385,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -408,7 +411,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -431,7 +437,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -455,7 +464,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -478,7 +490,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -502,7 +517,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -526,7 +544,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -550,7 +571,10 @@ public class Board<T extends Organism>{
                                     returnedSize += 1;
                                 }
                             }
-                            else{
+                            else if(y == ani.getY() + i ||
+                                    y == ani.getY() - i ||
+                                    x == ani.getX() + i ||
+                                    x == ani.getX() - i){
                                 tempReturned[returnedSize][0] = x;
                                 tempReturned[returnedSize][1] = y;
                                 returnedSize += 1;
@@ -705,7 +729,7 @@ public class Board<T extends Organism>{
     }
     
     public Iterator<T> aniListIterator(){
-        return new AnimalIterator(animalList.iterator());
+        return new AnimalIterator(organismList.iterator());
     }
     
     protected static class AnimalIterator<S> implements Iterator{
@@ -748,11 +772,11 @@ public class Board<T extends Organism>{
             return new Board<T>(this);
         }
         
-        public LinkedList<T> buildAnimalList(){
+        public LinkedList<T> buildOrganismList(){
             return new LinkedList<T>();
         }
         
-        public LinkedList[][] buildOrganisms(){
+        public LinkedList[][] buildOrganismsBoard(){
             LinkedList[][] temp = new LinkedList[numTiles][numTiles];
             for(int i = 0; i < temp.length; i++){
                 for(int j = 0; j < temp[0].length; j++){
