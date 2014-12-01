@@ -77,8 +77,6 @@ public class AnimalFactorySingleton{
         
         BodyComponent body = makeBody();
         
-        System.out.println("attributes facotry level: " + Arrays.toString(attributes));
-
         return ConcreteAnimal.create(name[0], attributes, body);
         
     }
