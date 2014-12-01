@@ -32,6 +32,10 @@ public class Main
         ConcreteAnimal kangaroo = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("Kangaroo: , , , , , , ");
         AnimalFactorySingleton.getInstance().addAnimal("Kangaroo",kangaroo);
         
+        //test create animal with only name
+        ConcreteAnimal walrus = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("Walrus");
+        AnimalFactorySingleton.getInstance().addAnimal("Walrus",walrus);
+        
         
         Map<String, ConcreteAnimal> animalList = AnimalFactorySingleton.getInstance().animalList;
         
