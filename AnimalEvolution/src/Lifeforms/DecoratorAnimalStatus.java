@@ -9,8 +9,9 @@ package Lifeforms;
 import Lifeforms.Animal;
 import AnimalBoard.Direction;
 import java.awt.Color;
+import java.awt.Graphics;
 
-public abstract class DecoratorAnimalStatus implements Animal {
+public abstract class DecoratorAnimalStatus extends Animal {
     protected Animal decoAni;
     
     public DecoratorAnimalStatus(Animal decoAni)
@@ -54,6 +55,11 @@ public abstract class DecoratorAnimalStatus implements Animal {
     @Override
     public Color getColor(){
         return decoAni.getColor();
+    }
+    
+    @Override
+    public void paintComponent(Graphics g){
+        decoAni.paint(g);
     }
 
 }

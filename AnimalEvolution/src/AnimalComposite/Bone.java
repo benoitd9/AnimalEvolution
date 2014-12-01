@@ -9,4 +9,9 @@ public class Bone extends LeafComponent{
     public Bone(){
         super();
     }
+    
+    @Override
+    public int getNumLimbs(){
+        return 0;
+    }
 }

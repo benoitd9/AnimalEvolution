@@ -10,16 +10,16 @@ import java.awt.Color;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public interface Animal extends Organism{
-    public abstract Object clone ( );
-    public Direction getDirection();
-    public void turnClockwise();
-    public void turnCounterClockwise();
-    public void turnToFace(Direction d);
-    public int getSpeed();
-    public void setX(int x);
-    public void setY(int y);
-    public String getName();
-    public boolean getIsCannibal();
-    public Color getColor();
+public abstract class Animal extends Organism implements Cloneable{
+    public abstract Object clone();
+    public abstract Direction getDirection();
+    public abstract void turnClockwise();
+    public abstract void turnCounterClockwise();
+    public abstract void turnToFace(Direction d);
+    public abstract int getSpeed();
+    public abstract void setX(int x);
+    public abstract void setY(int y);
+    public abstract String getName();
+    public abstract boolean getIsCannibal();
+    public abstract Color getColor();
 }

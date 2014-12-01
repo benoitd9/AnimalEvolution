@@ -33,5 +33,7 @@ public interface BodyComponent extends Cloneable {
      */
     public BodyComponent getChild(int i) throws LeafComponentException;
     
+    public int getNumLimbs();
+    
     public Object clone() throws CloneNotSupportedException;
 }

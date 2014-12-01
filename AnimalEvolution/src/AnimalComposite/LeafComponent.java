@@ -54,4 +54,9 @@ public abstract class LeafComponent implements BodyComponent {
             throw new RuntimeException();
         }
     }
+    
+    @Override
+    public int getNumLimbs(){
+        return 0;
+    }
 }

@@ -8,4 +8,9 @@ public class Head extends CompositeComponent {
     public Head(){
         super();
     }
+    
+    @Override
+    public int getNumLimbs(){
+        return 1;
+    }
 }

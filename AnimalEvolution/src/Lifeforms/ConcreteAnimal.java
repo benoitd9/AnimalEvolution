@@ -12,6 +12,8 @@ import AnimalLogic.MovementStrategy;
 import AnimalBoard.Direction;
 import AnimalComposite.BodyComponent;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  * ConcreteAnimal contains all of the attributes for the animals along with
@@ -20,8 +22,7 @@ import java.awt.Color;
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 
-public class ConcreteAnimal implements Animal
-{
+public class ConcreteAnimal extends Animal{
     /**
      * what the animal eats: Herbivore, Carnivore, Omnivore
      */
@@ -142,7 +143,14 @@ public class ConcreteAnimal implements Animal
             isCannibal = false;
         
         body = initialBody;
-        size = body.getSize();
+        try{
+            size = body.getSize();
+        }
+        catch(Exception e){
+            size = 10;
+        }
+        
+        size = 4;
         damageCapacity = size/10;
         damageConstant = size/30;
         markedDamage = 0;
@@ -152,6 +160,8 @@ public class ConcreteAnimal implements Animal
         gender = initGender;
         
         dir = Direction.NORTH;
+        
+        color = Color.GREEN;
 
     }
 
@@ -271,12 +281,13 @@ public class ConcreteAnimal implements Animal
      */
     @Override
     public Object clone() {
-        try {
+        /*try {
             return super.clone();
         } catch (CloneNotSupportedException e) {
             e.getMessage();
             throw new RuntimeException();
-        }
+        }*/
+        return null;
     }
 
     @Override
@@ -297,6 +308,28 @@ public class ConcreteAnimal implements Animal
     @Override
     public boolean getIsCannibal() {
         return isCannibal;
+    }
+    
+    public void paintComponent(Graphics g){
+        int limbs = body.getNumLimbs();
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(this.color);
+        g2d.rotate(Math.toRadians(dir.getRotation()));
+        g2d.fillRect(xPosition*16+(28-size), yPosition*16+(28-size), size, size);
+        if(limbs == 1){
+            g2d.fillRect((xPosition*16+(28+(dir.getDirection()[0]*size))), (yPosition*16+(28+(dir.getDirection()[0]*size))), size/4, size/4);
+        }
+        else if(limbs == 2 || limbs == 3 || limbs == 4){
+            g2d.fillRect(xPosition*16+28-(size/2), yPosition*16+28-((size*3)/4), size/2, size/2);
+            g2d.drawLine(xPosition*16+28,yPosition*16+28,xPosition*16+28,yPosition*16+28+((size*3)/4));
+        }
+        else if(limbs >= 5){
+            g2d.fillRect(xPosition*16+28-(size/2), yPosition*16+28-((size*3)/4), size/2, size/2);
+            g2d.drawLine(xPosition*16+28,yPosition*16+28,xPosition*16+28,yPosition*16+28+((size*3)/4));
+            g2d.drawLine(xPosition*16+28-((size*3)/4),yPosition*16+28-(size/2),xPosition*16+28+((size*3)/4),yPosition*16+28+(size/2));
+            g2d.drawLine(xPosition*16+28-((size*3)/4),yPosition*16+28+(size/2),xPosition*16+28+((size*3)/4),yPosition*16+28-(size/2));
+            
+        }
     }
     
 }

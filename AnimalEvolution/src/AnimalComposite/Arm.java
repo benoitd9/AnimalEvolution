@@ -8,4 +8,9 @@ public class Arm extends LeafComponent{
     public Arm(){
         super();
     }
+    
+    @Override
+    public int getNumLimbs(){
+        return 1;
+    }
 }

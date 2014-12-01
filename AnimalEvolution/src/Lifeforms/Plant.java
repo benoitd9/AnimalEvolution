@@ -8,7 +8,7 @@ package Lifeforms;
 
 import java.awt.Shape;
 
-public abstract class Plant implements Organism{
+public abstract class Plant extends Organism{
     
     /**
      * the x coordinate of the plant

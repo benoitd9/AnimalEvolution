@@ -8,4 +8,9 @@ public class Leg extends LeafComponent{
     public Leg(){
         super();
     }
+    
+    @Override
+    public int getNumLimbs(){
+        return 1;
+    }
 }

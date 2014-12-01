@@ -35,6 +35,8 @@ public class Board<T extends Organism>{
         organismList = builder.buildOrganismList();
         organisms = builder.buildOrganismsBoard();
         landscape = builder.buildLandscape();
+        animalList = builder.buildAnimalList();
+        plantList = builder.buildPlantList();
     }
     
     /**
@@ -51,6 +53,21 @@ public class Board<T extends Organism>{
             if( organisms[tempLoc[0]][tempLoc[1]] != null ){
                 organisms[tempLoc[0]][tempLoc[1]].add(org);
                 organismList.add(org);
+            }
+            
+        }
+        catch(BadLocationException e){
+            System.out.println("Bad Location Exception:" + e.getMessage());
+        }
+    }
+    
+    public void addAnimal(Animal ani){
+        try{
+            int[] tempLoc = findClosestEmpty(ani.getX(), ani.getY());
+            
+            if( organisms[tempLoc[0]][tempLoc[1]] != null ){
+                organisms[tempLoc[0]][tempLoc[1]].add((T) ani);
+                animalList.add(ani);
             }
             
         }
@@ -784,6 +801,14 @@ public class Board<T extends Organism>{
         
         public LinkedList<T> buildOrganismList(){
             return new LinkedList<T>();
+        }
+        
+        public LinkedList<Animal> buildAnimalList(){
+            return new LinkedList<Animal>();
+        }
+        
+        public LinkedList<Plant> buildPlantList(){
+            return new LinkedList<Plant>();
         }
         
         public LinkedList[][] buildOrganismsBoard(){

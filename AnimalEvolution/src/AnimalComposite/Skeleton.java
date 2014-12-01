@@ -13,11 +13,17 @@ public class Skeleton extends CompositeComponent{
         super();
     }
     
+    @Override
     public int getSize(){
         int temp = 0;
         for(BodyComponent bc : children){
             temp += 1;
         }
         return temp;
+    }
+    
+    @Override
+    public int getNumLimbs(){
+        return 0;
     }
 }

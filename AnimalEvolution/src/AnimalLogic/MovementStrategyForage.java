@@ -1,5 +1,6 @@
 package AnimalLogic;
 
+import AnimalBoard.Board;
 import static java.lang.Math.abs;
 import java.util.List;
 import java.util.Random;
@@ -16,11 +17,11 @@ public class MovementStrategyForage implements MovementStrategy
      * the animal will try to run away from a fight
      */
     @Override
-    public void doMovement(AnimalBoard.Board board, Lifeforms.Animal a)
+    public void doMovement(Board board, Lifeforms.Animal a)
     {
         int[][] seen = board.getVision(a);
-        List<Lifeforms.Animal> aniList = board.getAnimals();
-        List<Lifeforms.Plant> plantList = board.getPlants();
+        List<Lifeforms.Animal> aniList = board.getAnimalList();
+        List<Lifeforms.Plant> plantList = board.getPlantList();
         List<Lifeforms.Plant> seenPlants = null;
         Lifeforms.Plant target = null;
         

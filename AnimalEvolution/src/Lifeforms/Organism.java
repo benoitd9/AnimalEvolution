@@ -5,11 +5,15 @@ package Lifeforms;
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 
-import java.awt.Shape;
+import java.awt.Graphics;
+import javax.swing.JComponent;
 
-public interface Organism {
-    int getX();
+public abstract class Organism extends JComponent{
     
-    int getY();
+    abstract public int getX();
+    
+    abstract public int getY();
+    
+    abstract public void paintComponent(Graphics g);
     
 }

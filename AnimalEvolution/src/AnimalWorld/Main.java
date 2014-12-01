@@ -46,9 +46,9 @@ public class Main
         System.out.println("A "+bear.getName()+" has been created");
         System.out.println("A "+rabbit.getName()+" has been created");
         System.out.println("A "+kangaroo.getName()+" has been created");
-        b.addOrganism(bear);
-        b.addOrganism(rabbit);
-        b.addOrganism(kangaroo);
+        b.addAnimal(bear);
+        b.addAnimal(rabbit);
+        b.addAnimal(kangaroo);
         GUIBoard gBoard = new GUIBoard(b);
         JFrame app = new JFrame();
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

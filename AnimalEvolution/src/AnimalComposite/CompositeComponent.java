@@ -31,6 +31,15 @@ public abstract class CompositeComponent implements BodyComponent{
         return temp;
     }
     
+    @Override
+    public int getNumLimbs(){
+        int temp = 0;
+        for(BodyComponent bc : children){
+            temp += bc.getNumLimbs();
+        }
+        return temp;
+    }
+    
     /**
      * adds a child component to the body part
      * 

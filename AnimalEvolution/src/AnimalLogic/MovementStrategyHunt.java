@@ -1,5 +1,6 @@
 package AnimalLogic;
 
+import AnimalBoard.Board;
 import static java.lang.Math.abs;
 import java.util.List;
 import javax.swing.text.BadLocationException;
@@ -16,10 +17,10 @@ public class MovementStrategyHunt implements MovementStrategy
      * the animal will move in to fight
      */
     @Override
-    public void doMovement(AnimalBoard.Board board, Lifeforms.Animal a)
+    public void doMovement(Board board, Lifeforms.Animal a)
     {
         int[][] seen = board.getVision(a);
-        List<Lifeforms.Animal> aniList = board.getAnimals();
+        List<Lifeforms.Animal> aniList = board.getAnimalList();
         List<Lifeforms.Animal> seenAnimals = null;
         Lifeforms.Animal target = null;
 

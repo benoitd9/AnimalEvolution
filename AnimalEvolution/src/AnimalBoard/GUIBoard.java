@@ -2,6 +2,7 @@ package AnimalBoard;
 
 
 import Lifeforms.Organism;
+import Lifeforms.Animal;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -39,18 +40,9 @@ public class GUIBoard extends JPanel{
             }
         }
         
-        List[][] temp = board.getOrganisms();
-        for(int i = 0; i < temp.length; i++){
-            for(int j = 0; j < temp[0].length; j++){
-                
-                if( !temp[i][j].isEmpty() ){
-                    for(int k = 0; k < temp[i][j].size(); k++){
-                        System.out.println("IMG");
-                        g.setColor(Color.GREEN);
-                        g.fillRect(i*16+24, j*16+24, 8, 8);
-                    }
-                }
-            }
+        List<Animal> list = board.getAnimalList();
+        for(Animal ani : list){
+            add(ani);
         }
     }
 }
