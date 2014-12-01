@@ -66,25 +66,32 @@ public class AnimalFactorySingleton{
         
         String[] name = s.split("[:]");
         int[] attributes = parse(name[1]);
+
+        BodyComponent body = makeBody();
+
+        return ConcreteAnimal.create(name[0], attributes, body);
         
+    }
+    
+    public BodyComponent makeBody(){
         BodyComponent body = new Body();
         BodyComponent skele = new Skeleton();
-        try{
-            for(int i = 0; i < 16; i++){
-                skele.add(new Bone());
-            }
             
+        try{
+           for(int i = 0; i < 5; i++){
+            skele.add(new Bone());
+           }
+
             body.add(skele);
             body.add(new Head());
             body.add(new Arm());
             body.add(new Arm());
             body.add(new Leg());
             body.add(new Leg());
+           
+        } catch(Exception e){}
             
-        }
-        catch(Exception e){}
-        
-        return ConcreteAnimal.create(name[0], attributes, body);
+        return body;
     }
         
     public void addAnimal(String name, ConcreteAnimal a){
