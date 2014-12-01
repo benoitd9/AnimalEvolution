@@ -110,13 +110,54 @@ public class ConcreteAnimal extends Animal{
      */
     protected Color color;
 
+//    private ConcreteAnimal(String aniName, int x, int y, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
 
-    private ConcreteAnimal(String aniName, int x, int y, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
-    {
+    private ConcreteAnimal(String aniName, int[] attr, BodyComponent initialBody) 
+    {   
         name = aniName;
-        xPosition = x;
-        yPosition = y;
-
+        
+        //attributes
+        int x = 0, y = 0, eatStrategy = 0, moveStrategy = 0, cannibal = 0, moveSpeed = 0, initGender = 0;
+        
+        for( int i = 0; i < attr.length; i++ ){
+            switch(i){
+                case 0:
+                    x = attr[i];
+                    break;
+                case 1:
+                    y = attr[i];
+                    break;
+                case 2:
+                    eatStrategy = attr[i];
+                    break;
+                case 3:
+                    moveStrategy = attr[i];
+                    break;
+                case 4:
+                    cannibal = attr[i];
+                    break;
+                case 5:
+                    moveSpeed = attr[i];
+                    break;
+                case 6:
+                    initGender = attr[i];
+                    break;
+                default:
+                    //attribute is undefined.
+                    
+            }
+        }
+        
+        System.out.println("Animal Properties: ");
+        System.out.println("x = " + x);
+        System.out.println("y = " + y);
+        System.out.println("eatingStrategy = " + eatStrategy);
+        System.out.println("movementStrategy = " + moveStrategy);
+        System.out.println("cannibal = " + cannibal);
+        System.out.println("moveSpeed = " + moveSpeed);
+        System.out.println("gender = " + initGender);
+        System.out.println("-----------------------");
+        
         if (eatStrategy == 1) {
             eatStrat = new EatingStrategyCarnivore();
         } 
@@ -251,7 +292,7 @@ public class ConcreteAnimal extends Animal{
     }
     
     public static ConcreteAnimal create(String name, int[] parameters, BodyComponent body){
-        return new ConcreteAnimal(name,parameters[0],parameters[1],parameters[2],parameters[3],parameters[4],parameters[5],parameters[6],body);
+        return new ConcreteAnimal(name,parameters,body);
     }
     
     public boolean equals(ConcreteAnimal o){
