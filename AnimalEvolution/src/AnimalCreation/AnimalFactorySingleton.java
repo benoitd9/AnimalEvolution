@@ -10,6 +10,7 @@ import AnimalComposite.Arm;
 import AnimalComposite.Body;
 import AnimalComposite.Bone;
 import AnimalComposite.BodyComponent;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -65,12 +66,27 @@ public class AnimalFactorySingleton{
     public Animal createAnimal(String s){
         
         String[] name = s.split("[:]");
-        int[] attributes = parse(name[1]);
-
+        
+        int[] attributes = new int[7];
+        if(name.length > 1){
+           attributes = parse(name[1], true); 
+        } else {
+           String placeholder = ""; // must pass a string
+           attributes = parse(placeholder, false);
+        }
+        
         BodyComponent body = makeBody();
+        
+        System.out.println("attributes facotry level: " + Arrays.toString(attributes));
 
         return ConcreteAnimal.create(name[0], attributes, body);
         
+    }
+    
+    public int[] makeAttributes(){
+        int[] attr = {0};  // initialize set first value to zero.
+        
+        return attr;
     }
     
     public BodyComponent makeBody(){
@@ -98,19 +114,34 @@ public class AnimalFactorySingleton{
         this.animalList.put(name, a);
     }
     
-    private int[] parse(String s){
-        String[] splitTemp = s.split("[,]");
+    private int[] parse(String s, boolean knowLength){
+        
+        int numAttributes;
         String[] temp = new String[7];
         
-        for(int i = 0; i < splitTemp.length; i++){
-            temp[i] = splitTemp[i];
+        if( knowLength ){
+            String[] splitTemp = s.split("[,]");
+            
+            numAttributes = splitTemp.length;
+            
+            for(int i = 0; i < numAttributes; i++){
+                temp[i] = splitTemp[i];
+            }
+        } else{
+            numAttributes = 7;
+            
+            for(int i = 0; i < numAttributes; i++){
+                temp[i] = "";
+            }
         }
+            
+        
         int[] returned = new int[7];
         
-        for(int i = 0; i < returned.length; i++){
-            if(!(temp[i].equals(" ") || temp[i].equals("")))
+        for(int i = 0; i < returned.length; i++){  
+            if(!(temp[i].equals(" ") || temp[i].equals(""))){
                 returned[i] = Integer.parseInt(temp[i]);
-            else{
+            } else {
                 if(i == 0)
                     returned[i] = generator.nextInt(50);
                 else if(i == 1)
