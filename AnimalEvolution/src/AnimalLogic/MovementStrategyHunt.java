@@ -23,7 +23,7 @@ public class MovementStrategyHunt implements MovementStrategy
         List<Lifeforms.Animal> aniList = board.getAnimalList();
         List<Lifeforms.Animal> seenAnimals = null;
         Lifeforms.Animal target = null;
-
+        
         //get list of organisms that can be seen
         for(int j = 0; j < aniList.size(); j++)
         {

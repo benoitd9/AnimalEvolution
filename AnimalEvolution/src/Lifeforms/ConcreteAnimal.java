@@ -330,6 +330,11 @@ public class ConcreteAnimal extends Animal{
         return isCannibal;
     }
     
+    public MovementStrategy getMovement()
+    {
+        return moveStrat;
+    }
+    
     public void paintComponent(Graphics g){
         int limbs = body.getNumLimbs();
         Graphics2D g2d = (Graphics2D) g;

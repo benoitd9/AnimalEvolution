@@ -37,8 +37,8 @@ public class MovementStrategyForage implements MovementStrategy
                 }
             }
         }
-
-        target = seenPlants.get(0);
+        if(seenPlants.get(0) != null)
+            target = seenPlants.get(0);
 
         int run = 0;
         for(int i = 0; i<aniList.size();i++)

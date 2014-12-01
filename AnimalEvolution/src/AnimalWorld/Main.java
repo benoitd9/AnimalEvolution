@@ -29,8 +29,14 @@ public class Main
         ConcreteAnimal rabbit = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("RABBIT: , , , , , , ");
         AnimalFactorySingleton.getInstance().addAnimal("Rabbit",rabbit);
         
-        ConcreteAnimal kangaroo = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("Kangaroo: , , , , , , ");
+        ConcreteAnimal squirrel = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("SQUIRREL: , , , , , , ");
+        AnimalFactorySingleton.getInstance().addAnimal("Squirel",squirrel);
+        
+        ConcreteAnimal kangaroo = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("KANGAROO: , , , , , , ");
         AnimalFactorySingleton.getInstance().addAnimal("Kangaroo",kangaroo);
+        
+        ConcreteAnimal wolf = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("WOLF: , , , , , , ");
+        AnimalFactorySingleton.getInstance().addAnimal("Wolf",wolf);
         
         //test create animal with only name
         ConcreteAnimal walrus = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal("Walrus");
@@ -53,6 +59,9 @@ public class Main
         b.addAnimal(bear);
         b.addAnimal(rabbit);
         b.addAnimal(kangaroo);
+        b.addAnimal(wolf);
+        b.addAnimal(squirrel);
+        
         GUIBoard gBoard = new GUIBoard(b);
         JFrame app = new JFrame();
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,6 +80,20 @@ public class Main
         
         b.printTerrainComposition();
 
+        rabbit.setX(2);
+        rabbit.setY(0);
+        squirrel.setX(0);
+        squirrel.setY(2);
+        wolf.setX(4);
+        wolf.setY(2);
+        kangaroo.setX(2);
+        kangaroo.setY(4);
+        bear.setX(2);
+        bear.setY(2);
+        System.out.println("bear is at "+bear.getX()+", "+bear.getY());
+        bear.getMovement().doMovement(b, bear);
+        System.out.println("bear is at "+bear.getX()+", "+bear.getY());
         
+
     }
 }
