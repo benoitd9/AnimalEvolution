@@ -10,8 +10,7 @@ import java.awt.Color;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public abstract class Animal extends Organism implements Cloneable{
-    public abstract Object clone();
+public abstract class Animal extends Organism{
     public abstract Direction getDirection();
     public abstract void turnClockwise();
     public abstract void turnCounterClockwise();

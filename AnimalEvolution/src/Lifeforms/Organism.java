@@ -8,12 +8,16 @@ package Lifeforms;
 import java.awt.Graphics;
 import javax.swing.JComponent;
 
-public abstract class Organism extends JComponent{
+public abstract class Organism extends JComponent implements Cloneable{
     
     abstract public int getX();
     
     abstract public int getY();
     
     abstract public void paintComponent(Graphics g);
+    
+    public Object clone() throws CloneNotSupportedException{
+        return super.clone();
+    }
     
 }

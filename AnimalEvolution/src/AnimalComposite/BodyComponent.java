@@ -9,7 +9,7 @@ import java.lang.CloneNotSupportedException;
  */
 public interface BodyComponent extends Cloneable {
     
-    public int getSize() throws LeafComponentException;
+    public int getSize();
     
     /**
      * adds a child component to the body part

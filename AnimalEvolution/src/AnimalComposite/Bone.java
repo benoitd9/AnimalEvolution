@@ -11,6 +11,11 @@ public class Bone extends LeafComponent{
     }
     
     @Override
+    public int getSize(){
+        return 1;
+    }
+    
+    @Override
     public int getNumLimbs(){
         return 0;
     }

@@ -42,7 +42,9 @@ public class GUIBoard extends JPanel{
         
         List<Animal> list = board.getAnimalList();
         for(Animal ani : list){
+            ani.paintComponent(g);
             add(ani);
+            ani.setVisible(true);
         }
     }
 }

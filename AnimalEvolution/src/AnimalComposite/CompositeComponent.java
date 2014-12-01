@@ -22,12 +22,9 @@ public abstract class CompositeComponent implements BodyComponent{
         int temp = 0;
             
         for(BodyComponent bc : children){
-            try{
-                temp = bc.getSize();
-            }
-            catch(Exception e){}
+            temp += bc.getSize();
         }
-            
+        
         return temp;
     }
     

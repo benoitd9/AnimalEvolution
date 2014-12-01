@@ -70,7 +70,7 @@ public class AnimalFactorySingleton{
         BodyComponent body = new Body();
         BodyComponent skele = new Skeleton();
         try{
-            for(int i = 0; i < 5; i++){
+            for(int i = 0; i < 16; i++){
                 skele.add(new Bone());
             }
             

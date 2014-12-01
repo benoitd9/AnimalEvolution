@@ -30,7 +30,12 @@ public class DecoratorAnimalStatusStarving extends DecoratorAnimalStatus
     
     @Override
     public Object clone(){
-        return new DecoratorAnimalStatusStarving((Animal)decoAni.clone());
+        try{
+            return new DecoratorAnimalStatusStarving((Animal)decoAni.clone());
+        }
+        catch(CloneNotSupportedException e){
+            return null;
+        }
     }
 
     @Override

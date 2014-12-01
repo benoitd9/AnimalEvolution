@@ -143,14 +143,9 @@ public class ConcreteAnimal extends Animal{
             isCannibal = false;
         
         body = initialBody;
-        try{
-            size = body.getSize();
-        }
-        catch(Exception e){
-            size = 10;
-        }
         
-        size = 4;
+        size = body.getSize();
+        
         damageCapacity = size/10;
         damageConstant = size/30;
         markedDamage = 0;
@@ -272,22 +267,6 @@ public class ConcreteAnimal extends Animal{
             else return false;
         }
         else return false;
-    }
-    
-    /**
-     * creates a clone of the animal
-     * 
-     * @return the clone of the animal
-     */
-    @Override
-    public Object clone() {
-        /*try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.getMessage();
-            throw new RuntimeException();
-        }*/
-        return null;
     }
 
     @Override

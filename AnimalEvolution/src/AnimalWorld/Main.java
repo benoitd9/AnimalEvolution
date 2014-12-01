@@ -55,6 +55,7 @@ public class Main
         app.add(gBoard);
         app.setSize(gBoard.getWidth()+15,gBoard.getHeight()+35);
         app.setVisible(true);
+        app.repaint();
         
         while(numTurns > 0){
             

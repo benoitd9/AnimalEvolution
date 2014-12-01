@@ -16,8 +16,8 @@ public abstract class LeafComponent implements BodyComponent {
     }
     
     @Override
-    public int getSize() throws LeafComponentException{
-        throw except;
+    public int getSize(){
+        return 0;
     }
     
     /**
