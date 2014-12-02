@@ -3,10 +3,8 @@ package AnimalLogic;
 import AnimalBoard.Board;
 import Lifeforms.Animal;
 import static java.lang.Math.abs;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import javax.swing.text.BadLocationException;
 
 /**
  * MovementStrategyHunt implements MovementStrategy
@@ -28,6 +26,9 @@ public class MovementStrategyHunt implements MovementStrategy
         List<Lifeforms.Animal> aniList = board.getAnimalList();
         LinkedList<Lifeforms.Animal> seenAnimals = new LinkedList<>();
         Lifeforms.Animal target = null;
+        int found = 0;
+        
+        //turning testing
         /*
         for(int k = 0;aniList.get(k)!= null; k++)
         {
@@ -53,15 +54,16 @@ public class MovementStrategyHunt implements MovementStrategy
             {
                 if(b.getX() == seen[i][0] && b.getY() == seen[i][1])
                 {
-                    System.out.println("An Animal has been added "+b.getName()+" at " + seen[i][0] + ", " + seen[i][1]);
+                    //System.out.println("An Animal has been added "+b.getName()+" at " + seen[i][0] + ", " + seen[i][1]);
                     seenAnimals.add(b);
+                    found++;
                 }
             }
         }
 
-        //I want to specify a specific type of organism as the target here
-        //animal or plant for example
-        target = seenAnimals.get(1);
+        if(found > 0)
+            target = seenAnimals.get(1);
+        
         int k = 0;
         while(seenAnimals.get(k) != null && target == null)
         {
