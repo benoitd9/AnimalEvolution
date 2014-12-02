@@ -5,6 +5,7 @@ import Lifeforms.Animal;
 import Lifeforms.Plant;
 import Lifeforms.Grass;
 import Lifeforms.Tree;
+import Lifeforms.Meat;
 import BuildStrat.BasicLandStrategy;
 import BuildStrat.ShallowWaterStrategy;
 import BuildStrat.MediumWaterStrategy;
@@ -30,6 +31,7 @@ public class Board<T extends Organism>{
     private List<T>[][] organisms; //2d array of lists of all organisms on each tile on the board
     private List<Animal> animalList; //list of all animals on the board
     private List<Plant> plantList; //list of all plants of the board
+    private List<Meat> meatList; //list of all the meat on the board
     private LandType[][] landscape;  //2d array of all the tiles on the board
     private Random generator;  //random seed
     
@@ -39,6 +41,7 @@ public class Board<T extends Organism>{
         landscape = builder.buildLandscape();
         animalList = builder.buildAnimalList();
         plantList = builder.buildPlantList();
+        meatList = builder.buildMeatList();
         builder.populatePlants(this);
     }
     
@@ -51,6 +54,11 @@ public class Board<T extends Organism>{
     
     public void addPlant(Plant p){
         plantList.add(p);
+        organisms[p.getX()][p.getY()].add((T) p);
+    }
+    
+    public void addMeat(Meat p){
+        meatList.add(p);
         organisms[p.getX()][p.getY()].add((T) p);
     }
     
@@ -380,6 +388,11 @@ public class Board<T extends Organism>{
     public List getPlantList(){
         return plantList;
     }
+    
+    public List getMeatList(){
+        return meatList;
+    }
+    
     /**
      * Takes in an animal and based on the direction the animal is currently facing,
      * returns a 2-dimensional array of positions [*][0] will give you the X-coordinate
@@ -802,6 +815,10 @@ public class Board<T extends Organism>{
         
         public LinkedList<Plant> buildPlantList(){
             return new LinkedList<Plant>();
+        }
+        
+        public LinkedList<Meat> buildMeatList(){
+            return new LinkedList<Meat>();
         }
         
         public void populatePlants(Board b){
