@@ -8,14 +8,14 @@ import java.util.List;
 
 /**
  * MovementStrategyHunt implements MovementStrategy
-      The animal will look for other Animals to kill and eat
+      The animal will hunt for other Animals to kill and eat
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class MovementStrategyHunt implements MovementStrategy
 {
     /**
-     * the animal will move in to fight
+     * the animal will move hunt for other animals to kill and eat
      */
     @Override
     public void doMovement(Board board, Lifeforms.Animal a)

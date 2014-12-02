@@ -9,14 +9,14 @@ import java.util.Random;
 
 /**
  * MovementStrategyForage implements MovementStrategy
-      The animal can fly over rough terrain
+      The animal will forage for plants to eat or run from predators
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class MovementStrategyForage implements MovementStrategy
 {
     /**
-     * the animal will try to run away from a fight
+     * the animal will forage for plants to eat or run from predators
      */
     @Override
     public void doMovement(Board board, Lifeforms.Animal a)
