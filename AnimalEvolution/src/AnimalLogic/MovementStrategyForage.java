@@ -1,7 +1,9 @@
 package AnimalLogic;
 
 import AnimalBoard.Board;
+import Lifeforms.Animal;
 import static java.lang.Math.abs;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -19,37 +21,45 @@ public class MovementStrategyForage implements MovementStrategy
     @Override
     public void doMovement(Board board, Lifeforms.Animal a)
     {
+        System.out.println("The "+a.getName()+" is foraging.");
+        
         int[][] seen = board.getVision(a);
         List<Lifeforms.Animal> aniList = board.getAnimalList();
         List<Lifeforms.Plant> plantList = board.getPlantList();
-        List<Lifeforms.Plant> seenPlants = null;
+        List<Lifeforms.Plant> seenPlants = new LinkedList<>();
         Lifeforms.Plant target = null;
+        int found = 0;
         
-        for(int j = 0; j < plantList.size(); j++)
+        for(Lifeforms.Plant b: plantList)
         {
-            if(plantList.get(j) != null)
+            for(int i = 0; i<seen.length; i++)
             {
-                Lifeforms.Plant z = plantList.get(j);
-                for(int i = 0; i < 41; i++)
+                if(b.getX() == seen[i][0] && b.getY() == seen[i][1])
                 {
-                    if(z.getX()==seen[j][0] && z.getY()==seen[j][1])
-                    seenPlants.add(plantList.get(j));
+                    //System.out.println("A plant has been added "+b.getName()+" at " + seen[i][0] + ", " + seen[i][1]);
+                    seenPlants.add(b);
+                    found = 1;
                 }
             }
         }
-        if(seenPlants.get(0) != null)
+        
+        if(found == 1)
             target = seenPlants.get(0);
 
         int run = 0;
-        for(int i = 0; i<aniList.size();i++)
+        //check if any enemies are in the same location
+        for(Animal b: aniList)
         {
-            Lifeforms.Animal q = aniList.get(i);
-            if(q.getX()==a.getX() && q.getY()==a.getY())
+            if(!(b.getName().equals(a.getName())))
             {
-                run = 1;
+                if(b.getX() == a.getX() && b.getY() == a.getY())
+                {
+                    run = 1;
+                }
             }
         }
 
+        //run away from danger
         //need to add a restriction to stop animals from leaving the board
         if(run == 1)
         {
@@ -57,19 +67,25 @@ public class MovementStrategyForage implements MovementStrategy
             int x = rand.nextInt(8);
             if(x <= 2)
             {
-                a.setY(a.getY()+a.getSpeed());
+                if(a.getY()+a.getSpeed() < board.getHeight())
+                    a.setY(a.getY()+a.getSpeed());
+                else
+                    a.setY(a.getY()-a.getSpeed());
             }
             else if(x <= 4)
             {
-                a.setX(a.getX()+a.getSpeed());
+                if(a.getX()+a.getSpeed() < board.getHeight())
+                    a.setY(a.getX()+a.getSpeed());
             }
             else if(x <= 6)
             {
-                a.setY(a.getY()-a.getSpeed());
+                if(a.getY()-a.getSpeed() > board.getHeight())
+                    a.setY(a.getY()-a.getSpeed());
             }
             else if(x <= 8)
             {
-                a.setX(a.getX()-a.getSpeed());
+                if(a.getY()-a.getSpeed() > board.getHeight())
+                    a.setY(a.getY()+a.getSpeed());
             }
         }
         
