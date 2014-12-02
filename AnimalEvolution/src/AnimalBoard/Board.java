@@ -3,6 +3,8 @@ package AnimalBoard;
 import Lifeforms.Organism;
 import Lifeforms.Animal;
 import Lifeforms.Plant;
+import Lifeforms.Grass;
+import Lifeforms.Tree;
 import BuildStrat.BasicLandStrategy;
 import BuildStrat.ShallowWaterStrategy;
 import BuildStrat.MediumWaterStrategy;
@@ -37,6 +39,7 @@ public class Board<T extends Organism>{
         landscape = builder.buildLandscape();
         animalList = builder.buildAnimalList();
         plantList = builder.buildPlantList();
+        builder.populatePlants(this);
     }
     
     /**
@@ -46,19 +49,9 @@ public class Board<T extends Organism>{
      * @param org 
      */
     
-    public void addOrganism(T org){
-        try{
-            int[] tempLoc = findClosestEmpty(org.getX(), org.getY());
-            
-            if( organisms[tempLoc[0]][tempLoc[1]] != null ){
-                organisms[tempLoc[0]][tempLoc[1]].add(org);
-                organismList.add(org);
-            }
-            
-        }
-        catch(BadLocationException e){
-            System.out.println("Bad Location Exception:" + e.getMessage());
-        }
+    public void addPlant(Plant p){
+        plantList.add(p);
+        organisms[p.getX()][p.getY()].add((T) p);
     }
     
     public void addAnimal(Animal ani){
@@ -809,6 +802,28 @@ public class Board<T extends Organism>{
         
         public LinkedList<Plant> buildPlantList(){
             return new LinkedList<Plant>();
+        }
+        
+        public void populatePlants(Board b){
+            for(int i = 0; i < b.landscape.length; i++){
+                for(int j = 0; j < b.landscape[0].length; j++){
+                    if(b.landscape[i][j].equals(LandType.DIRT)){
+                        b.addPlant(new Grass(generator.nextInt(6)+1, i, j));
+                    }
+                }
+            }
+            List<Plant> pList = b.getPlantList();
+            int[] temp;
+            for(int i = 0; i < 10; i++){
+                for(Plant p: pList){
+                    temp = p.grow();
+                    if(temp[0] != -1){
+                        if(generator.nextInt(100) > 90){
+                            p = new Tree(p.getPlantSize(),p.getX(),p.getY());
+                        }
+                    }
+                }
+            }
         }
         
         public LinkedList[][] buildOrganismsBoard(){

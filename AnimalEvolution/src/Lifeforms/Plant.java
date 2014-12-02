@@ -20,6 +20,21 @@ public abstract class Plant extends Organism{
      */
     protected int yPosition;
     
+    protected int size;
+    
+    public Plant(int s, int x, int y){
+        size = s;
+        xPosition = x;
+        yPosition = y;
+    }
+    
+    public abstract int[] grow();
+    protected abstract int[] spread();
+    
+    public int getPlantSize(){
+        return size;
+    }
+    
     @Override
     public int getX(){
         return xPosition;

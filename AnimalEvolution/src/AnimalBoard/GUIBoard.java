@@ -3,6 +3,7 @@ package AnimalBoard;
 
 import Lifeforms.Organism;
 import Lifeforms.Animal;
+import Lifeforms.Plant;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Color;
@@ -40,8 +41,15 @@ public class GUIBoard extends JPanel{
             }
         }
         
-        List<Animal> list = board.getAnimalList();
-        for(Animal ani : list){
+        List<Plant> pList = board.getPlantList();
+        for(Plant p: pList){
+            p.paintComponent(g);
+            add(p);
+            p.setVisible(true);
+        }
+        
+        List<Animal> alist = board.getAnimalList();
+        for(Animal ani : alist){
             ani.paintComponent(g);
             add(ani);
             ani.setVisible(true);
