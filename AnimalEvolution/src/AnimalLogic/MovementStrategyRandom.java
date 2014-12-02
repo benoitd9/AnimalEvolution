@@ -8,14 +8,14 @@ import java.util.Random;
 
 /**
  * MovementStrategyRandom implements MovementStrategy
- *      The Animal will either Fight or Flight
+ *      The Animal will either Hunt or Forage
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class MovementStrategyRandom implements MovementStrategy
 {
     /**
-     * the animal will randomly either head towards or away from a fight
+     * the animal will randomly either Hunt or Forage
      */
     @Override
     public void doMovement(AnimalBoard.Board board, Lifeforms.Animal a)

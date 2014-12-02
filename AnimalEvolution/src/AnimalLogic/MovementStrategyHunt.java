@@ -15,7 +15,7 @@ import java.util.List;
 public class MovementStrategyHunt implements MovementStrategy
 {
     /**
-     * the animal will move in to fight
+     * the animal will Hunt for other animals
      */
     @Override
     public void doMovement(Board board, Lifeforms.Animal a)
