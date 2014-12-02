@@ -25,13 +25,27 @@ public class MovementStrategyHunt implements MovementStrategy
         List<Lifeforms.Animal> aniList = board.getAnimalList();
         List<Lifeforms.Animal> seenAnimals = null;
         Lifeforms.Animal target = null;
+        /*
+        for(int k = 0;aniList.get(k)!= null; k++)
+        {
+            Animal x = aniList.get(k);
+            System.out.println(x.getName()+","+x.getX()+","+x.getY());
+        }
+        */
+        
+        System.out.println("Seen is "+seen.length);
+        for(int j = 0; j<seen.length;j++)
+            System.out.println(seen[j][0]+", "+seen[j][1]);
+        
         
         for(Animal b: aniList)
         {
             for(int i = 0; i<seen.length; i++)
             {
+                System.out.println("Currently trying to add "+b.getName());
                 if(b.getX() == seen[i][0] && b.getY() == seen[i][1])
                 {
+                    System.out.println("An Animal has been added "+b.getName()+" at " + seen[i][0] + ", " + seen[i][1]);
                     seenAnimals.add(b);
                 }
             }
