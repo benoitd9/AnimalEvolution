@@ -81,12 +81,6 @@ public class AnimalFactorySingleton{
         
     }
     
-    public int[] makeAttributes(){
-        int[] attr = {0};  // initialize set first value to zero.
-        
-        return attr;
-    }
-    
     public BodyComponent makeBody(){
         BodyComponent body = new Body();
         BodyComponent skele = new Skeleton();

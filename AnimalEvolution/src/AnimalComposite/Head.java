@@ -9,8 +9,17 @@ public class Head extends CompositeComponent {
         super();
     }
     
+    public Head(Head orig){
+        this.children = orig.children;
+    }
+    
     @Override
     public int getNumLimbs(){
         return 1;
+    }
+    
+    @Override
+    public Object clone() {
+            return new Head(this);
     }
 }

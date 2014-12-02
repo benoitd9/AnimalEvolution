@@ -16,6 +16,14 @@ public abstract class CompositeComponent implements BodyComponent{
         children = new LinkedList<BodyComponent>();
     }
     
+    public CompositeComponent(CompositeComponent orig){
+        children = orig.getChildren();
+    }
+    
+    private List<BodyComponent> getChildren(){
+        return children;
+    }
+    
     @Override
     public int getSize(){
             
@@ -69,12 +77,5 @@ public abstract class CompositeComponent implements BodyComponent{
     }
     
     @Override
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.getMessage();
-            throw new RuntimeException();
-        }
-    }
+    public abstract Object clone() throws CloneNotSupportedException;
 }

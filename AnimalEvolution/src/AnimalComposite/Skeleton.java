@@ -13,6 +13,10 @@ public class Skeleton extends CompositeComponent{
         super();
     }
     
+    public Skeleton(Skeleton orig){
+        this.children = orig.children;
+    }
+    
     @Override
     public int getSize(){
         int temp = 0;
@@ -25,5 +29,10 @@ public class Skeleton extends CompositeComponent{
     @Override
     public int getNumLimbs(){
         return 0;
+    }
+    
+    @Override
+    public Object clone() {
+            return new Skeleton(this);
     }
 }
