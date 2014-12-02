@@ -1,7 +1,9 @@
 package AnimalLogic;
 
 import AnimalBoard.Board;
+import Lifeforms.Animal;
 import static java.lang.Math.abs;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.text.BadLocationException;
 
@@ -24,7 +26,30 @@ public class MovementStrategyHunt implements MovementStrategy
         List<Lifeforms.Animal> seenAnimals = null;
         Lifeforms.Animal target = null;
         
-        //get list of organisms that can be seen
+        for(Animal b: aniList)
+        {
+            for(int i = 0; i<seen.length; i++)
+            {
+                if(b.getX() == seen[i][0] && b.getY() == seen[i][1])
+                {
+                    seenAnimals.add(b);
+                }
+            }
+        }
+        /*
+        for (Iterator<Animal> it = aniList.iterator(); it.hasNext();) 
+        {
+            Animal b = it.next();
+            for(int i = 0; i<seen.length; i++)
+            {
+                if(b.getX() == seen[i][0] && b.getY() == seen[i][1])
+                {
+                    seenAnimals.add(b);
+                }
+            }
+        }
+        */
+        /*
         for(int j = 0; j < aniList.size(); j++)
         {
             if(aniList.get(j) != null)
@@ -37,7 +62,7 @@ public class MovementStrategyHunt implements MovementStrategy
                 }
             }
         }
-        
+        */
         //I want to specify a specific type of organism as the target here
         //animal or plant for example
         int k = 0;
