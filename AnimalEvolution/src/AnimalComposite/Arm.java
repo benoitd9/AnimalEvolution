@@ -13,4 +13,9 @@ public class Arm extends LeafComponent{
     public int getNumLimbs(){
         return 1;
     }
+    
+    @Override
+    public Object clone() {
+            return new Arm();
+    }
 }
