@@ -12,7 +12,7 @@ package AnimalBoard;
 public class Direction {
     private int xDir;
     private int yDir;
-    private int rotation;
+    private double rotation;
     
     
     public static final Direction NORTH = new Direction(0,-1);
@@ -30,32 +30,32 @@ public class Direction {
         yDir = y;
         if(x == 0){
             if(y == -1){
-                rotation = 0;
+                rotation = 0.0;
             }
             if(y == 1){
-                rotation = 180;
+                rotation = 180.0;
             }
         }
         else if(x == 1){
             if(y == -1){
-                rotation = 45;
+                rotation = 45.0;
             }
             else if(y == 0){
-                rotation = 90;
+                rotation = 90.0;
             }
             else if(y == -1){
-                rotation = 135;
+                rotation = 135.0;
             }
         }
         else if(x == -1){
             if(y == -1){
-                rotation = 315;
+                rotation = 315.0;
             }
             if(y == 0){
-                rotation = 270;
+                rotation = 270.0;
             }
             if(y == 1){
-                rotation = 225;
+                rotation = 225.0;
             }
         }
     }
@@ -64,7 +64,7 @@ public class Direction {
         return new int[] {xDir,yDir};
     }
     
-    public int getRotation(){
+    public double getRotation(){
         return rotation;
     }
     
