@@ -28,26 +28,6 @@ public class MovementStrategyHunt implements MovementStrategy
         Lifeforms.Animal target = null;
         int found = 0;
         
-        //turning testing
-        /*
-        for(int k = 0;aniList.get(k)!= null; k++)
-        {
-            Animal x = aniList.get(k);
-            System.out.println(x.getName()+","+x.getX()+","+x.getY());
-        }
-        */
-        /*
-        System.out.println("Seen is "+seen.length);
-        for(int j = 0; j<seen.length;j++)
-            System.out.println(seen[j][0]+", "+seen[j][1]);
-        
-        a.turnClockwise();
-        
-        System.out.println("Seen is "+seen.length);
-        for(int j = 0; j<seen.length;j++)
-            System.out.println(seen[j][0]+", "+seen[j][1]);
-        */
-        
         for(Animal b: aniList)
         {
             for(int i = 0; i<seen.length; i++)

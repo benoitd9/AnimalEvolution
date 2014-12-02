@@ -21,4 +21,7 @@ public abstract class Animal extends Organism{
     public abstract String getName();
     public abstract boolean getIsCannibal();
     public abstract Color getColor();
+    public abstract void giveXP(int x);
+    public abstract void ate(int yum);
+    public abstract void reduceFullness();
 }

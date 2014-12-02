@@ -24,6 +24,18 @@ import java.awt.Graphics2D;
 
 public class ConcreteAnimal extends Animal{
     /**
+     * experience points for leveling
+     * animals gain xp every time they eat
+     */
+    protected int xp = 0;
+    
+    /**
+     * how much food the animal has in its belly
+     * decreases by 1 each turn
+     */
+    protected int fullness = 1;
+    
+    /**
      * what the animal eats: Herbivore, Carnivore, Omnivore
      */
     protected EatingStrategy eatStrat;
@@ -206,9 +218,20 @@ public class ConcreteAnimal extends Animal{
      * 
      * @return returns 0 if it failed to eat this turn and 1 if it did eat this turn
      */
-    int ate() //returns 0 if it did not eat and 1 if it did eat
+    @Override
+    public void ate(int yum)
     {
-        return 0;
+        fullness = fullness + yum;
+    }
+    
+    
+    /**
+     * reduced fullness by 1
+     */
+    @Override
+    public void reduceFullness()
+    {
+        fullness--;
     }
     
     @Override
@@ -227,6 +250,10 @@ public class ConcreteAnimal extends Animal{
 
     public void turnToFace(Direction d){
         dir = d;
+    }
+    
+    public void giveXP(int x){
+        xp = xp + x;
     }
     
     public void turnClockwise(){
@@ -333,6 +360,11 @@ public class ConcreteAnimal extends Animal{
     public MovementStrategy getMovement()
     {
         return moveStrat;
+    }
+    
+    public EatingStrategy getEatStrat()
+    {
+        return eatStrat;
     }
     
     public void paintComponent(Graphics g){

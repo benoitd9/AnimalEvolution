@@ -5,6 +5,7 @@ import Lifeforms.ConcreteAnimal;
 import Lifeforms.Organism;
 import AnimalBoard.Board;
 import AnimalBoard.GUIBoard;
+import Lifeforms.Meat;
 import javax.swing.JFrame;
 import java.util.HashMap;
 import java.util.Map;
@@ -94,6 +95,8 @@ public class Main
         bear.getMovement().doMovement(b, bear);
         System.out.println("bear is at "+bear.getX()+", "+bear.getY());
         
+        b.addMeat(new Meat(2,4,2));
+        wolf.getEatStrat().eat(b, wolf);
 
     }
 }

@@ -1,4 +1,8 @@
 package AnimalLogic;
+
+import AnimalBoard.Board;
+import Lifeforms.Animal;
+
 /**
  * EatinstStrategyHerbivore implements EatingStrategy
  *      The Animal will only eat plants
@@ -8,11 +12,10 @@ package AnimalLogic;
 public class EatingStrategyHerbivore implements EatingStrategy
 {
     /**
-     * the animal try to eat plants
-     */
+     * the animal try to eat plants at its coordinates
+    */
     @Override
-    public void eat()
-    {
-        System.out.println("An herbivore has been created.");
+    public void eat(Board b, Animal a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
