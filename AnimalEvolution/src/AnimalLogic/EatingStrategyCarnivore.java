@@ -24,7 +24,7 @@ public class EatingStrategyCarnivore implements EatingStrategy
         int found = 0;
         for(Meat m: mList)
         {
-            for(int i = 0; i<mList.size(); i++)
+            for(int i = 0; i<mList.size() && found == 0; i++)
             {
                 if(m.getX() == a.getX() && m.getY() == a.getY())
                 {

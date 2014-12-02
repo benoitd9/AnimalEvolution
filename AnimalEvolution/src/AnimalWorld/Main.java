@@ -96,7 +96,8 @@ public class Main
         System.out.println("bear is at "+bear.getX()+", "+bear.getY());
         
         b.addMeat(new Meat(2,4,2));
-        wolf.getEatStrat().eat(b, wolf);
+        //wolf.getEatStrat().eat(b, wolf);
+        //bear.getEatStrat().eat(b, bear);
 
     }
 }

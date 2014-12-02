@@ -44,5 +44,18 @@ public abstract class Plant extends Organism{
     public int getY(){
         return yPosition;
     }
+    
+     /**
+     * the Plant is reduced in size when it is eaten
+     * a Plant of size 0 can not be eaten
+     * 
+     * @return  the amount that was eaten
+     */
+    public int eatPlant()
+    {
+        int temp = size;
+        size = 0;
+        return temp;
+    }
         
 }

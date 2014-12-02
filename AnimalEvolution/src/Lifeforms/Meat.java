@@ -31,16 +31,18 @@ public class Meat extends Organism
         xPosition = x;
         yPosition = y;
     }    
+    
     /**
      * the meat is reduced in size when it is eaten
-     * a meat of size less than 0 can not be eaten
+     * a meat of size 0 can not be eaten
      * 
-     * @param s how much of the meat has been eaten
      * @return  the amount that was eaten
      */
     public int eatMeat()
     {
-        return size;
+        int temp = size;
+        size = 0;
+        return temp;
     }
     
     @Override
