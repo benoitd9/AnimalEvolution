@@ -12,4 +12,13 @@ public class Torso extends CompositeComponent{
     public Torso(){
         super();
     }
+    
+    public Torso(Torso orig){
+        this.children = orig.children;
+    }
+    
+    @Override
+    public Object clone() {
+            return new Torso(this);
+    }
 }

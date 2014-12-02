@@ -13,4 +13,9 @@ public class Leg extends LeafComponent{
     public int getNumLimbs(){
         return 1;
     }
+    
+    @Override
+    public Object clone() {
+            return new Leg();
+    }
 }
