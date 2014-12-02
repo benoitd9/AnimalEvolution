@@ -19,4 +19,9 @@ public class Bone extends LeafComponent{
     public int getNumLimbs(){
         return 0;
     }
+    
+    @Override
+    public Object clone() {
+            return new Bone();
+    }
 }
