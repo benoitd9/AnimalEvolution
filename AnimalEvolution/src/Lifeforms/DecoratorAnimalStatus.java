@@ -28,6 +28,25 @@ public abstract class DecoratorAnimalStatus extends Animal {
         return decoAni.getY();
     }
     
+    @Override
+    public int getOrganismSize(){
+        return decoAni.getOrganismSize();
+    }
+    
+    @Override
+    public boolean isDead(){
+        return decoAni.isDead();
+    }
+    
+    @Override
+    public int getDamage(){
+        return decoAni.getDamage();
+    }
+    
+    @Override
+    public void damage(int dam){
+        decoAni.damage(dam);
+    }
     //@Override
     //abstract public Object clone();
     

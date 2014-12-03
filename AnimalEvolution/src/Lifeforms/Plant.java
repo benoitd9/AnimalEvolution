@@ -28,6 +28,11 @@ public abstract class Plant extends Organism{
         yPosition = y;
     }
     
+    @Override
+    public int getOrganismSize(){
+        return size;
+    }
+    
     public abstract int[] grow();
     protected abstract int[] spread();
     

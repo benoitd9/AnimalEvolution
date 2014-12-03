@@ -38,7 +38,8 @@ public class EatingStrategyHerbivore implements EatingStrategy
         if(found == 1)
         {
             a.giveXP(target.eatPlant());
-            a.ate(1);
+            a.ate(target.getOrganismSize());
+            b.remove(target);
         }
     }
 }

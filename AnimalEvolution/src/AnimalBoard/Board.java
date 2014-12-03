@@ -63,8 +63,9 @@ public class Board<T extends Organism>{
             plantList.add(p);
             organisms[p.getX()][p.getY()].add((T) p);
             gBoard.add(p);
-            p.repaint();
             p.setVisible(true);
+            p.repaint();
+            
         }
         catch(BadLocationException e){
             System.out.println("Bad Location Exception" + e.getMessage());
@@ -76,8 +77,9 @@ public class Board<T extends Organism>{
         meatList.add(m);
         organisms[m.getX()][m.getY()].add((T) m);
         gBoard.add(m);
-        m.repaint();
         m.setVisible(true);
+        m.repaint();
+        
     }
     
     
@@ -95,8 +97,9 @@ public class Board<T extends Organism>{
             animalList.add(ani);
             organisms[ani.getX()][ani.getY()].add((T) ani);
             gBoard.add(ani);
-            ani.repaint();
             ani.setVisible(true);
+            ani.repaint();
+            
         }
         catch(BadLocationException e){
             System.out.println("Bad Location Exception:" + e.getMessage());
@@ -589,15 +592,15 @@ public class Board<T extends Organism>{
         return organismList;
     }
     
-    public List getAnimalList(){
+    public List<Animal> getAnimalList(){
         return animalList;
     }
     
-    public List getPlantList(){
+    public List<Plant> getPlantList(){
         return plantList;
     }
     
-    public List getMeatList(){
+    public List<Meat> getMeatList(){
         return meatList;
     }
     
@@ -615,7 +618,7 @@ public class Board<T extends Organism>{
      * @return int[][]
      */
     public int[][] getVision(Animal ani){
-        int[][] tempReturned = new int[41][2];
+        int[][] tempReturned = new int[50][2];
         int returnedSize = 0;
         if(ani.getDirection().equals(Direction.NORTH)){
             for(int i = 0; i < 5; i++){

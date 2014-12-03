@@ -15,25 +15,16 @@ public class TakeTurnNormal extends TakeTurnTemplate
      * moves the Animal towards its current objective
      */
     @Override
-    void move(Board b, Animal a)
+    protected void move(Board b, Animal a)
     {
         a.getMovement().doMovement(b, a);
-    }
-    
-    /**
-     * the animal will try to fight
-     */
-    @Override
-    void fight(Animal a, Animal b)
-    {
-        System.out.println("fight");
     }
     
     /**
      * the animal will try to eat
      */
     @Override
-    void eat(Board b, Animal a)
+    protected void eat(Board b, Animal a)
     {
         a.getEatStrat().eat(b, a);
     }
@@ -42,7 +33,7 @@ public class TakeTurnNormal extends TakeTurnTemplate
      * end the animals turn
      */
     @Override
-    void endTurn(Animal a)
+    protected void endTurn(Animal a)
     {
     }
 }

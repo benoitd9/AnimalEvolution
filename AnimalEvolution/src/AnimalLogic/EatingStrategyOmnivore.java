@@ -44,7 +44,8 @@ public class EatingStrategyOmnivore implements EatingStrategy
             if(found == 1)
             {
                 a.giveXP(target.eatMeat());
-                a.ate(1);
+                a.ate(target.getOrganismSize());
+                b.remove(target);
             }
 
         }
@@ -69,7 +70,8 @@ public class EatingStrategyOmnivore implements EatingStrategy
             if(found == 1)
             {
                 a.giveXP(target.eatPlant());
-                a.ate(1);
+                a.ate(target.getOrganismSize());
+                b.remove(target);
             }
         }
     }

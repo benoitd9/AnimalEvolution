@@ -29,4 +29,7 @@ public abstract class Animal extends Organism{
     public abstract MovementStrategy getMovement();
     public abstract EatingStrategy getEatStrat();
     public abstract void hide();
+    public abstract boolean isDead();
+    public abstract int getDamage();
+    public abstract void damage(int dam);
 }

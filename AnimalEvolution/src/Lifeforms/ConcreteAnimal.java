@@ -108,7 +108,7 @@ public class ConcreteAnimal extends Animal{
     /**
      * how much damage the Animal can take
      */
-    protected int damageCapacity;
+    protected int hitPoints;
     
     /**
      * how much damage the Animal has taken
@@ -176,15 +176,12 @@ public class ConcreteAnimal extends Animal{
                     eatStrategy = attr[i];
                     break;
                 case 3:
-                    moveStrategy = attr[i];
-                    break;
-                case 4:
                     cannibal = attr[i];
                     break;
-                case 5:
+                case 4:
                     moveSpeed = attr[i];
                     break;
-                case 6:
+                case 5:
                     initGender = attr[i];
                     break;
                 default:
@@ -213,15 +210,8 @@ public class ConcreteAnimal extends Animal{
             eatStrat = new EatingStrategyOmnivore();
         }
         
-        if (moveStrategy == 1) {
-            moveStrat = new MovementStrategyHunt();
-        } 
-        else if (moveStrategy == 2) {
-            moveStrat = new MovementStrategyForage();
-        } 
-        else {
-            moveStrat = new MovementStrategyRandom();
-        }
+        moveStrat = new MovementStrategyRandom();
+        
 
         if (cannibal == 1) 
             isCannibal = true;
@@ -232,8 +222,8 @@ public class ConcreteAnimal extends Animal{
         
         size = body.getBodySize();
         
-        damageCapacity = size/10;
-        damageConstant = size/30;
+        hitPoints = size;
+        damageConstant = size/2+body.getNumLimbs();
         markedDamage = 0;
 
         movementSpeed = moveSpeed;
@@ -287,6 +277,34 @@ public class ConcreteAnimal extends Animal{
     
     public void giveXP(int x){
         xp = xp + x;
+    }
+    
+    @Override
+    public int getOrganismSize(){
+        return size;
+    }
+    
+    public int getCurrentHealth(){
+        return hitPoints-markedDamage;
+    }
+    
+    public int getDamage(){
+        return damageConstant;
+    }
+    
+    public void damage(int damage){
+        markedDamage += damage;
+    }
+    
+    public void heal(){
+        if(markedDamage > 0)
+            markedDamage -= 1;
+    }
+    
+    public boolean isDead(){
+        if(markedDamage >= hitPoints)
+            return true;
+        else return false;
     }
     
     public void turnClockwise(){

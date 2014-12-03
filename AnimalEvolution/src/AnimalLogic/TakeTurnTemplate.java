@@ -10,37 +10,33 @@ import Lifeforms.Animal;
  */
 public abstract class TakeTurnTemplate 
 {
+    
+    public TakeTurnTemplate(){
+        
+    }
      /**
      * moves the Animal towards its current objective
      */
-    abstract void move(Board b, Animal a);
-    
-    /**
-     * Animal will fight
-     */
-    abstract void fight(Animal a, Animal b);
+    abstract protected void move(Board b, Animal a);
     
     /**
      * implements the Animals eating strategy
      */
-    abstract void eat(Board b, Animal a);
+    abstract protected void eat(Board b, Animal a);
     
     /**
      * ends the animal turn
      */
-    abstract void endTurn(Animal a);
+    abstract protected void endTurn(Animal a);
     
     /**
      * template method
      *   runs the animal through the turn order
      */
-    public final void act()
+    public final void act(Animal aniA, Board b)
     {
-        Animal a = null,c = null;    
-        Board b = null;
-        move(b, a);
-        fight(a, c);
-        eat(b, a);
-        endTurn(a);
+        move(b, aniA);
+        eat(b, aniA);
+        endTurn(aniA);
     }
 }

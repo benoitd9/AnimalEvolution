@@ -47,26 +47,36 @@ public class GUIBoard extends JPanel{
                 g.fillRect(i*16+20, j*16+20, 16, 16);
             }
         }
+        for(int i = 0; i < 5000; i++)
+            System.out.print("");
         
         List<Plant> pList = board.getPlantList();
         for(Plant p: pList){
-            p.paintComponent(g);
             add(p);
+            p.repaint();
             p.setVisible(true);
         }
         
-        List<Animal> alist = board.getAnimalList();
-        for(Animal ani : alist){
-            ani.paintComponent(g);
-            add(ani);
-            ani.setVisible(true);
-        }
+        for(int i = 0; i < 5000; i++)
+            System.out.print("");
         
         List<Meat> mList = board.getMeatList();
         for(Meat m: mList){
-            m.paintComponent(g);
             add(m);
+            m.repaint();
             m.setVisible(true);
         }
+        
+        for(int i = 0; i < 5000; i++)
+            System.out.print("");
+        
+        List<Animal> alist = board.getAnimalList();
+        for(Animal ani : alist){
+            add(ani);
+            ani.repaint();
+            ani.setVisible(true);
+        }
+        
+        
     }
 }

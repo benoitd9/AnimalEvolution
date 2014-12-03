@@ -98,5 +98,9 @@ public class MovementStrategyHunt implements MovementStrategy
         {
             a.turnClockwise();
         }
+        
+        if(a.getX() == target.getX() && a.getY() == target.getY()){
+            Fight.fight(a, target, board);
+        }
     }
 }

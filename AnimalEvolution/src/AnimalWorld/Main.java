@@ -12,6 +12,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import FileReader.TextFileReader;
+import AnimalLogic.TakeTurnNormal;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * Main
@@ -21,8 +25,15 @@ import java.util.logging.Logger;
 public class Main
 {
     public static void main(String[] args){
-        
         System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
+        TextFileReader txt = new TextFileReader();
+        txt.read();
+        if(txt.strings() != null){
+            for(String s: txt.strings()){
+                ConcreteAnimal ani = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal(s);
+                AnimalFactorySingleton.getInstance().addAnimal(ani.getName(), ani);
+            }
+        }
         int numTurns = 10;
         Board.BoardBuilder<Organism> builder = new Board.BoardBuilder<Organism>();
         Board<Organism> b = builder.build();System.out.println("\nAnimal World Game");
@@ -87,13 +98,43 @@ public class Main
         app.setVisible(true);
         app.repaint();
         
-        while(numTurns > 0){
+        TakeTurnNormal turnTaker = new TakeTurnNormal();
+        boolean cont = true;
+        Scanner s = new Scanner(System.in);
+        /*(while(cont){
             
-            for(int i = 0; i < b.getAnimalList().size(); i++){
+            while(animalList.size() > 0){
+                LinkedList<Animal> deadAnimalList = new LinkedList<Animal>();
+                for(Animal a: b.getAnimalList()){
+                    if(!a.isDead()){
+                        turnTaker.act(a, b);
+                        app.repaint();
+                    }
+                    System.out.println("Animal Loop");
+                }
+                for(Animal a: b.getAnimalList()){
+                    if(a.isDead()){
+                        deadAnimalList.add(a);
+                    }
+                }
+                if(!deadAnimalList.isEmpty()){
+                    for(Animal a: deadAnimalList){
+                        b.remove(a);
+                        app.repaint();
+                   }
+                }
                 
             }
+            
+            String str = s.next();
+            if(str.equalsIgnoreCase("n")){
+                cont = false;
+            }
+            
+            System.out.println("end loop");
+            
             numTurns--;
-        }
+        }*/
         
         b.printTerrainComposition();
 
@@ -108,12 +149,16 @@ public class Main
         bear.setX(2);
         bear.setY(2);
         System.out.println("bear is at "+bear.getX()+", "+bear.getY());
-        bear.getMovement().doMovement(b, bear);
+        //bear.getMovement().doMovement(b, bear);
         System.out.println("bear is at "+bear.getX()+", "+bear.getY());
         
         b.addMeat(new Meat(2,2,2));
         //wolf.getEatStrat().eat(b, wolf);
         //bear.getEatStrat().eat(b, bear);
+        
+        
+        System.out.println(rabbit.getCurrentHealth());
+        System.out.println(bear.getCurrentHealth());
 
     }
 }

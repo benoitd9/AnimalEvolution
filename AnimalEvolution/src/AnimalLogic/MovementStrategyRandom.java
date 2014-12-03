@@ -45,11 +45,11 @@ public class MovementStrategyRandom implements MovementStrategy
                 }
             }
 
-            if(found > 0)
+            if(found > 1)
                 target = seenAnimals.get(1);
 
             int k = 0;
-            while(seenAnimals.get(k) != null && target == null)
+            while(seenAnimals.get(k) != null && target != null)
             {
                 Lifeforms.Animal temp = seenAnimals.get(k);
                 //check to see if the organism is an animal

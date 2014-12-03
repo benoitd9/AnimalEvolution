@@ -66,19 +66,24 @@ public class Meat extends Organism
     public void setY(int y) {
         yPosition = y;
     }
+    
+    @Override
+    public int getOrganismSize(){
+        return size;
+    }
 
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        
+        int sizeFact = size/4;
         
         g2d.setColor(Color.WHITE);
-        g2d.fillRect(xPosition*16+(28-size),yPosition*16+(28-(size/4)),size*2+size/2,size);
-        g2d.fillOval(xPosition*16+(28-(size+size/2)),yPosition*16+(28-(size/2)),size,size);
-        g2d.fillOval(xPosition*16+(28-(size+size/2)),yPosition*16+(28+(size/2)),size,size);
-        g2d.fillOval(xPosition*16+(28+(size+size/2)),yPosition*16+(28-(size/2)),size,size);
-        g2d.fillOval(xPosition*16+(28+(size+size/2)),yPosition*16+(28+(size/2)),size,size);
+        g2d.fillRect(xPosition*16+(28-sizeFact),yPosition*16+(28-(sizeFact/4)),sizeFact*2+sizeFact/2,sizeFact);
+        g2d.fillOval(xPosition*16+(28-(sizeFact+sizeFact/2)),yPosition*16+(28-(sizeFact/2)),sizeFact,sizeFact);
+        g2d.fillOval(xPosition*16+(28-(sizeFact+sizeFact/2)),yPosition*16+(28+(sizeFact/2)),sizeFact,sizeFact);
+        g2d.fillOval(xPosition*16+(28+(sizeFact+sizeFact/2)),yPosition*16+(28-(sizeFact/2)),sizeFact,sizeFact);
+        g2d.fillOval(xPosition*16+(28+(sizeFact+sizeFact/2)),yPosition*16+(28+(sizeFact/2)),sizeFact,sizeFact);
         g2d.setColor(new Color(102,0,0));
-        g2d.fillOval(xPosition*16+(28-(size)),yPosition*16+(28-(size/2)),size*3,size*2);
+        g2d.fillOval(xPosition*16+(28-(sizeFact)),yPosition*16+(28-(sizeFact/2)),sizeFact*3,sizeFact*2);
     }
 }
