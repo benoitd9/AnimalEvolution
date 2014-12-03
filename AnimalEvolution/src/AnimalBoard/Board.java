@@ -1044,7 +1044,8 @@ public class Board<T extends Organism>{
             for(int i = 0; i < b.landscape.length; i++){
                 for(int j = 0; j < b.landscape[0].length; j++){
                     if(b.landscape[i][j].equals(LandType.DIRT)){
-                        b.addPlant(new Grass(generator.nextInt(6)+1, i, j));
+                        if(generator.nextInt(1000)>100)
+                            b.addPlant(new Grass(generator.nextInt(6)+1, i, j));
                     }
                 }
             }
@@ -1055,7 +1056,7 @@ public class Board<T extends Organism>{
                 for(Plant p: pList){
                     temp = p.grow();
                     if(temp[0] != -1){
-                        if(generator.nextInt(100) > 98){
+                        if(generator.nextInt(1000) > 980){
                             addedPlants.add(new Tree(p.getPlantSize(),p.getX(),p.getY()));
                         }
                     }
