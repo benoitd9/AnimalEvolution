@@ -1,4 +1,8 @@
 package AnimalLogic;
+
+import AnimalBoard.Board;
+import Lifeforms.Animal;
+
 /**
  * TakeTurnBurrower extends TakeTurnTemplate
  *      Allows the animal to burrow/hide at the end of each turn
@@ -11,27 +15,27 @@ public class TakeTurnBurrower extends TakeTurnTemplate
      * the animal will move towards its current objective
      */
     @Override
-    void move()
+    void move(Board b, Animal a)
     {
-        System.out.println("move");
+        a.getMovement().doMovement(b, a);
     }
     
     /**
-     * the animal will try to run away
+     * the animal fight if necessary
      */
     @Override
-    void fight()
+    void fight(Animal a, Animal b)
     {
-        System.out.println("flight");
+        System.out.println("fight");
     }
     
     /**
      * the animal will try to eat
      */
     @Override
-    void eat()
+    void eat(Board b, Animal a)
     {
-        System.out.println("eat");
+        a.getEatStrat().eat(b, a);
     }
     
     /**
@@ -39,9 +43,8 @@ public class TakeTurnBurrower extends TakeTurnTemplate
      *     this will lower the range of detection for predators
      */
     @Override
-    void endTurn()
+    void endTurn(Animal a)
     {
-        //burrowing results in hiding
-        System.out.println("burrow");
+        a.hide();
     }
 }
