@@ -122,8 +122,6 @@ public class ConcreteAnimal extends Animal{
      */
     protected Color color;
 
-//    private ConcreteAnimal(String aniName, int x, int y, int eatStrategy, int moveStrategy, int cannibal, int moveSpeed, int initGender, BodyComponent initialBody) 
-
     private ConcreteAnimal(String aniName, int[] attr, BodyComponent initialBody) 
     {   
         name = aniName;
@@ -135,9 +133,11 @@ public class ConcreteAnimal extends Animal{
             switch(i){
                 case 0:
                     x = attr[i];
+                    xPosition = x;
                     break;
                 case 1:
                     y = attr[i];
+                    yPosition = y;
                     break;
                 case 2:
                     eatStrategy = attr[i];
