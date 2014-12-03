@@ -1,4 +1,6 @@
 package AnimalComposite;
+
+import java.awt.Graphics;
 /**
  * Bone extends CompositeLeafComponent
  *     bones make up the skeleton
@@ -11,7 +13,7 @@ public class Bone extends LeafComponent{
     }
     
     @Override
-    public int getSize(){
+    public int getBodySize(){
         return 1;
     }
     
@@ -23,5 +25,10 @@ public class Bone extends LeafComponent{
     @Override
     public Object clone() {
             return new Bone();
+    }
+    
+    @Override
+    public void paintComponent(Graphics g, int size){
+        
     }
 }

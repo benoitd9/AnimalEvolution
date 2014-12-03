@@ -1,6 +1,9 @@
 package AnimalComposite;
 
 import java.util.List;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JComponent;
 
 /**
  * Body extends CompositeComponent
@@ -25,9 +28,9 @@ public class Body extends CompositeComponent{
 
             for(BodyComponent comps : childs){
                 if( comps instanceof Torso){
-                    bod.add( (BodyComponent) comps.clone() );
+                    bod.addChild( (BodyComponent) comps.clone() );
                 } else if( comps instanceof Skeleton){
-                    bod.add( (BodyComponent) comps.clone() );
+                    bod.addChild( (BodyComponent) comps.clone() );
                 }
             }
 
@@ -39,4 +42,5 @@ public class Body extends CompositeComponent{
        
         
     }
+    
 }

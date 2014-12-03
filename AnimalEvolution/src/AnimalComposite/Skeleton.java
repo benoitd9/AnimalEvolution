@@ -2,6 +2,7 @@ package AnimalComposite;
 
 import AnimalComposite.CompositeComponent;
 import java.util.List;
+import java.awt.Graphics;
 
 /**
  * Skeleton extends CompositeComponent
@@ -19,7 +20,7 @@ public class Skeleton extends CompositeComponent{
     }
     
     @Override
-    public int getSize(){
+    public int getBodySize(){
         int temp = 0;
         for(BodyComponent bc : children){
             temp += 1;
@@ -41,7 +42,7 @@ public class Skeleton extends CompositeComponent{
 
             for(BodyComponent bone : bones){
                 if( bone instanceof Bone){
-                      skele.add( new Bone() );
+                      skele.addChild( new Bone() );
                 }
             }
 
@@ -52,6 +53,11 @@ public class Skeleton extends CompositeComponent{
         }
          
  
+    }
+    
+    @Override
+    public void paintComponent(Graphics g, int size){
+        
     }
  
        

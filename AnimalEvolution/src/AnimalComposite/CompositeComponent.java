@@ -2,6 +2,9 @@ package AnimalComposite;
 
 import java.util.List;
 import java.util.LinkedList;
+import javax.swing.JComponent;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 /**
  * CompositeComponent implements BodyComponent
@@ -25,12 +28,12 @@ public abstract class CompositeComponent extends BodyComponent{
     }
     
     @Override
-    public int getSize(){
+    public int getBodySize(){
             
         int temp = 0;
             
         for(BodyComponent bc : children){
-            temp += bc.getSize();
+            temp += bc.getBodySize();
         }
         
         return temp;
@@ -51,7 +54,7 @@ public abstract class CompositeComponent extends BodyComponent{
      * @param component the parent body part
      */
     @Override
-    public void add(BodyComponent component){
+    public void addChild(BodyComponent component){
         children.add(component);
     }
     
@@ -78,4 +81,13 @@ public abstract class CompositeComponent extends BodyComponent{
     
     @Override
     public abstract Object clone() throws CloneNotSupportedException;
+    
+    
+    public void paintComponent(Graphics g, int size){
+        for(BodyComponent b: children){
+            add((JComponent) b);
+            b.paintComponent(g, size);
+            b.setVisible(true);
+        }
+    }
 }

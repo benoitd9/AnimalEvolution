@@ -228,7 +228,7 @@ public class ConcreteAnimal extends Animal{
         
         body = initialBody;
         
-        size = body.getSize();
+        size = body.getBodySize();
         
         damageCapacity = size/10;
         damageConstant = size/30;
@@ -404,28 +404,15 @@ public class ConcreteAnimal extends Animal{
         int limbs = body.getNumLimbs();
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(this.color);
-        
         g2d.translate(xPosition*16+28, yPosition*16+28);
         g2d.rotate(Math.toRadians(dir.getRotation()));
-        g2d.translate(-(xPosition*16+28),-(yPosition*16+28));
-        g2d.fillRect(xPosition*16+(28-size/2), yPosition*16+(28-size/2), size, size);
-        if(limbs == 1){
-            g2d.fillRect((xPosition*16+(28+(dir.getDirection()[0]*size))), (yPosition*16+(28+(dir.getDirection()[0]*size))), size/4, size/4);
-        }
-        else if(limbs == 2 || limbs == 3 || limbs == 4){
-            g2d.fillRect(xPosition*16+28-(size/2), yPosition*16+28-((size*3)/4), size/2, size/2);
-            g2d.drawLine(xPosition*16+28,yPosition*16+28,xPosition*16+28,yPosition*16+28+((size*3)/4));
-        }
-        else if(limbs >= 5){
-            g2d.fillRect(xPosition*16+28-(size/4), yPosition*16+28-((size*3)/4), size/2, size/2);
-            g2d.drawLine(xPosition*16+28,yPosition*16+28,xPosition*16+28,yPosition*16+28+((size*3)/4));
-            g2d.drawLine(xPosition*16+28-((size*3)/4),yPosition*16+28-(size/2),xPosition*16+28+((size*3)/4),yPosition*16+28+(size/2));
-            g2d.drawLine(xPosition*16+28-((size*3)/4),yPosition*16+28+(size/2),xPosition*16+28+((size*3)/4),yPosition*16+28-(size/2));
-        }
-        g2d.translate(xPosition*16+28, yPosition*16+28);
-        g2d.rotate(Math.toRadians(360.0-dir.getRotation()));
-        g2d.translate(-(xPosition*16+28),-(yPosition*16+28));
         
+        add(body);
+        body.paintComponent(g2d, size);
+        body.setVisible(true);
+        
+        g2d.rotate(Math.toRadians(360.0 - dir.getRotation()));
+        g2d.translate(-(xPosition*16+28), -(yPosition*16+28));
     }
     
 }

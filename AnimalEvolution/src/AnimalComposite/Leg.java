@@ -1,4 +1,6 @@
 package AnimalComposite;
+
+import java.awt.Graphics;
 /**
  * Leg extends CompositeLeafComponent
  * 
@@ -17,5 +19,10 @@ public class Leg extends LeafComponent{
     @Override
     public Object clone() {
             return new Leg();
+    }
+    
+    @Override
+    public void paintComponent(Graphics g, int size){
+        g.drawLine(0, 0, 0, -size);
     }
 }

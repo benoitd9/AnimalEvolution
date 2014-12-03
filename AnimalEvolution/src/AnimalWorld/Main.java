@@ -2,6 +2,7 @@ package AnimalWorld;
 
 import AnimalCreation.AnimalFactorySingleton;
 import Lifeforms.ConcreteAnimal;
+import Lifeforms.Animal;
 import Lifeforms.Organism;
 import AnimalBoard.Board;
 import AnimalBoard.GUIBoard;
@@ -46,7 +47,7 @@ public class Main
         AnimalFactorySingleton.getInstance().addAnimal("Walrus",walrus);
         
         
-        Map<String, ConcreteAnimal> animalList = AnimalFactorySingleton.getInstance().animalList;
+        Map<String, Animal> animalList = AnimalFactorySingleton.getInstance().animalList;
         
         try {
             ConcreteAnimal bear2 = (ConcreteAnimal) bear.clone();

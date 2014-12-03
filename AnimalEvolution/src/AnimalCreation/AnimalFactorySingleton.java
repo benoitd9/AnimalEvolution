@@ -2,14 +2,7 @@ package AnimalCreation;
 
 import Lifeforms.ConcreteAnimal;
 import Lifeforms.Animal;
-import AnimalComposite.Skeleton;
-import AnimalComposite.Torso;
-import AnimalComposite.Head;
-import AnimalComposite.Leg;
-import AnimalComposite.Arm;
-import AnimalComposite.Body;
-import AnimalComposite.Bone;
-import AnimalComposite.BodyComponent;
+import AnimalComposite.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +17,7 @@ import java.util.Random;
 public class AnimalFactorySingleton{
     
 
-    public Map<String, ConcreteAnimal> animalList = new HashMap<String, ConcreteAnimal>();
+    public Map<String, Animal> animalList = new HashMap<String, Animal>();
 
 
     /**
@@ -81,28 +74,30 @@ public class AnimalFactorySingleton{
         
     }
     
-    public Body makeBody(){
-        AnimalComposite.Body body = new Body();
+    private Body makeBody(){
+        Body body = new Body();
         Skeleton skele = new Skeleton();
+        Torso torso = new Torso();
             
         try{
-           for(int i = 0; i < 5; i++){
-            skele.add(new Bone());
+           for(int i = 0; i < 8; i++){
+            skele.addChild(new Bone());
            }
 
-            body.add(skele);
-            body.add(new Head());
-            body.add(new Arm());
-            body.add(new Arm());
-            body.add(new Leg());
-            body.add(new Leg());
+            body.addChild(skele);
+            body.addChild(torso);
+            torso.addChild(new Head());
+            torso.addChild(new Arm());
+            torso.addChild(new Arm());
+            torso.addChild(new Leg());
+            torso.addChild(new Leg());
            
         } catch(Exception e){}
             
         return body;
     }
         
-    public void addAnimal(String name, ConcreteAnimal a){
+    public void addAnimal(String name, Animal a){
         this.animalList.put(name, a);
     }
     

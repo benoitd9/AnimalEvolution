@@ -16,7 +16,7 @@ public abstract class LeafComponent extends BodyComponent {
     }
     
     @Override
-    public int getSize(){
+    public int getBodySize(){
         return 0;
     }
     
@@ -26,7 +26,7 @@ public abstract class LeafComponent extends BodyComponent {
      * @param component the parent body part
      */
     @Override
-    public void add(BodyComponent component) throws LeafComponentException{
+    public void addChild(BodyComponent component) throws LeafComponentException{
         throw except;
     }
     
