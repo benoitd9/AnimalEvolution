@@ -73,12 +73,12 @@ public class Meat extends Organism
         
         
         g2d.setColor(Color.WHITE);
-        g2d.fillRect(xPosition*16+(28-size),yPosition*16+(28-size/4),size*2,size/2);
-        g2d.fillOval(xPosition*16+(28-size+size/4),yPosition*16+(28-size/2),size/2,size/2);
-        g2d.fillOval(xPosition*16+(28-size+size/4),yPosition*16+(28+size/2),size/2,size/2);
-        g2d.fillOval(xPosition*16+(28+size+size/4),yPosition*16+(28-size/2),size/2,size/2);
-        g2d.fillOval(xPosition*16+(28+size+size/4),yPosition*16+(28+size/2),size/2,size/2);
+        g2d.fillRect(xPosition*16+(28-size),yPosition*16+(28-(size/4)),size*2+size/2,size);
+        g2d.fillOval(xPosition*16+(28-(size+size/2)),yPosition*16+(28-(size/2)),size,size);
+        g2d.fillOval(xPosition*16+(28-(size+size/2)),yPosition*16+(28+(size/2)),size,size);
+        g2d.fillOval(xPosition*16+(28+(size+size/2)),yPosition*16+(28-(size/2)),size,size);
+        g2d.fillOval(xPosition*16+(28+(size+size/2)),yPosition*16+(28+(size/2)),size,size);
         g2d.setColor(new Color(102,0,0));
-        g2d.fillOval(xPosition*16+(28-size/2),yPosition*16+(28-size/4),size,size/2);
+        g2d.fillOval(xPosition*16+(28-(size)),yPosition*16+(28-(size/2)),size*3,size*2);
     }
 }

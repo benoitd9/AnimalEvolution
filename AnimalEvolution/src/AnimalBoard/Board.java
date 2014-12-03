@@ -34,6 +34,7 @@ public class Board<T extends Organism>{
     private List<Meat> meatList; //list of all the meat on the board
     private LandType[][] landscape;  //2d array of all the tiles on the board
     private Random generator;  //random seed
+    private GUIBoard gBoard; //graphics object
     
     private Board(BoardBuilder builder){
         organismList = builder.buildOrganismList();
@@ -42,7 +43,9 @@ public class Board<T extends Organism>{
         animalList = builder.buildAnimalList();
         plantList = builder.buildPlantList();
         meatList = builder.buildMeatList();
+        gBoard = builder.buildGUI(this);
         builder.populatePlants(this);
+        
     }
     
     /**
@@ -59,6 +62,9 @@ public class Board<T extends Organism>{
             p.setY(temp[1]);
             plantList.add(p);
             organisms[p.getX()][p.getY()].add((T) p);
+            gBoard.add(p);
+            p.repaint();
+            p.setVisible(true);
         }
         catch(BadLocationException e){
             System.out.println("Bad Location Exception" + e.getMessage());
@@ -69,6 +75,9 @@ public class Board<T extends Organism>{
     public void addMeat(Meat m){
         meatList.add(m);
         organisms[m.getX()][m.getY()].add((T) m);
+        gBoard.add(m);
+        m.repaint();
+        m.setVisible(true);
     }
     
     
@@ -85,6 +94,9 @@ public class Board<T extends Organism>{
             ani.setY(tempLoc[1]);
             animalList.add(ani);
             organisms[ani.getX()][ani.getY()].add((T) ani);
+            gBoard.add(ani);
+            ani.repaint();
+            ani.setVisible(true);
         }
         catch(BadLocationException e){
             System.out.println("Bad Location Exception:" + e.getMessage());
@@ -92,13 +104,13 @@ public class Board<T extends Organism>{
     }
     
     public void remove(Object o){
-        if(o instanceof Plant){
+        if( o instanceof Plant){
             removePlant((Plant) o);
         }
-        if(o instanceof Animal){
+        else if(o instanceof Animal){
             removeAnimal((Animal) o);
         }
-        if(o instanceof Meat){
+        else if(o instanceof Meat){
             removeMeat((Meat) o);
         }
     }
@@ -106,16 +118,25 @@ public class Board<T extends Organism>{
     private void removePlant(Plant p){
         organisms[p.getX()][p.getY()].remove(p);
         plantList.remove(p);
+        gBoard.remove(p);
+        p.setVisible(false);
+        gBoard.update(p.getX()*16+20, p.getY()*16+20, p.getX()*16+36, p.getY()*16+36);
     }
     
     private void removeAnimal(Animal a){
         organisms[a.getX()][a.getY()].remove(a);
-        plantList.remove(a);
+        animalList.remove(a);
+        gBoard.remove(a);
+        a.setVisible(false);
+        gBoard.update(a.getX()*16+20, a.getY()*16+20, a.getX()*16+36, a.getY()*16+36);
     }
     
     private void removeMeat(Meat m){
         organisms[m.getX()][m.getY()].remove(m);
-        plantList.remove(m);
+        meatList.remove(m);
+        gBoard.remove(m);
+        m.setVisible(false);
+        gBoard.update(m.getX()*16+20, m.getY()*16+20, m.getX()*16+36, m.getY()*16+36);
     }
     
     /**
@@ -580,6 +601,10 @@ public class Board<T extends Organism>{
         return meatList;
     }
     
+    public GUIBoard getGUI(){
+        return gBoard;
+    }
+    
     /**
      * Takes in an animal and based on the direction the animal is currently facing,
      * returns a 2-dimensional array of positions [*][0] will give you the X-coordinate
@@ -1006,6 +1031,13 @@ public class Board<T extends Organism>{
         
         public LinkedList<Meat> buildMeatList(){
             return new LinkedList<Meat>();
+        }
+        
+        public GUIBoard buildGUI(Board b){
+            GUIBoard gBoard = new GUIBoard(b);
+            gBoard.repaint();
+            gBoard.setVisible(true);
+            return gBoard;
         }
         
         public void populatePlants(Board b){

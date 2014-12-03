@@ -22,6 +22,7 @@ public class Main
 {
     public static void main(String[] args){
         
+        System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
         int numTurns = 10;
         Board.BoardBuilder<Organism> builder = new Board.BoardBuilder<Organism>();
         Board<Organism> b = builder.build();System.out.println("\nAnimal World Game");
@@ -79,11 +80,10 @@ public class Main
         b.addAnimal(wolf);
         b.addAnimal(squirrel);
         
-        GUIBoard gBoard = new GUIBoard(b);
         JFrame app = new JFrame();
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        app.add(gBoard);
-        app.setSize(gBoard.getWidth()+15,gBoard.getHeight()+35);
+        app.add(b.getGUI());
+        app.setSize(b.getGUI().getWidth(),b.getGUI().getHeight()+20);
         app.setVisible(true);
         app.repaint();
         
@@ -111,7 +111,7 @@ public class Main
         bear.getMovement().doMovement(b, bear);
         System.out.println("bear is at "+bear.getX()+", "+bear.getY());
         
-        b.addMeat(new Meat(2,4,2));
+        b.addMeat(new Meat(2,2,2));
         //wolf.getEatStrat().eat(b, wolf);
         //bear.getEatStrat().eat(b, bear);
 

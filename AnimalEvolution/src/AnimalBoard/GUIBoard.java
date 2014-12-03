@@ -4,8 +4,10 @@ package AnimalBoard;
 import Lifeforms.Organism;
 import Lifeforms.Animal;
 import Lifeforms.Plant;
+import Lifeforms.Meat;
 import javax.swing.JPanel;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Color;
 import java.util.List;
 
@@ -25,6 +27,11 @@ public class GUIBoard extends JPanel{
         super.setVisible(true);
         board = b;
     }
+    
+    public void update(int x1, int y1, int x2, int y2){
+        repaint(x1,y1,x2,y2);
+    }
+    
     
     public void paintComponent(Graphics g){
         int width = getWidth();
@@ -53,6 +60,13 @@ public class GUIBoard extends JPanel{
             ani.paintComponent(g);
             add(ani);
             ani.setVisible(true);
+        }
+        
+        List<Meat> mList = board.getMeatList();
+        for(Meat m: mList){
+            m.paintComponent(g);
+            add(m);
+            m.setVisible(true);
         }
     }
 }
