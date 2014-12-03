@@ -1,4 +1,7 @@
 package AnimalComposite;
+
+import java.util.List;
+
 /**
  * Body extends CompositeComponent
  * 
@@ -15,6 +18,13 @@ public class Body extends CompositeComponent{
     
     @Override
     public Object clone() {
-            return new Body(this);
+        Body bod = new Body(this);
+        List<BodyComponent> childs = bod.children;
+
+        for(BodyComponent comps : childs){
+            
+        }
+
+        return bod;
     }
 }

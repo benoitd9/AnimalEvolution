@@ -16,6 +16,6 @@ public class Arm extends LeafComponent{
     
     @Override
     public Object clone() {
-            return new Arm();
+        return new Arm();
     }
 }
