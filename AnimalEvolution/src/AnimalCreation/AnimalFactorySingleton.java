@@ -59,7 +59,9 @@ public class AnimalFactorySingleton{
     public Animal createAnimal(String s){
         
         String[] name = s.split("[:]");
-        
+        if(animalList.containsKey(name[0])){
+            return new ConcreteAnimal((ConcreteAnimal) animalList.get(name[0]));
+        }
         int[] attributes = new int[7];
         if(name.length > 1){
            attributes = parse(name[1], true); 
@@ -68,19 +70,19 @@ public class AnimalFactorySingleton{
            attributes = parse(placeholder, false);
         }
         
-        Body body = makeBody();
+        Body body = makeBody(attributes[6]);
         
         return ConcreteAnimal.create(name[0], attributes, body);
         
     }
     
-    private Body makeBody(){
+    private Body makeBody(int size){
         Body body = new Body();
         Skeleton skele = new Skeleton();
         Torso torso = new Torso();
             
         try{
-           for(int i = 0; i < 8; i++){
+           for(int i = 0; i < size; i++){
             skele.addChild(new Bone());
            }
 
@@ -127,22 +129,47 @@ public class AnimalFactorySingleton{
         
         for(int i = 0; i < returned.length; i++){  
             if(!(temp[i].equals(" ") || temp[i].equals(""))){
-                returned[i] = Integer.parseInt(temp[i]);
+                if(i == 0 || i == 1 || i == 4 || i == 6)
+                    returned[i] = Integer.parseInt(temp[i]);
+                else if(i == 2){
+                    if(temp[i].equalsIgnoreCase("Herbivore")){
+                        returned[i] = 2;
+                    }
+                    else if(temp[i].equalsIgnoreCase("Carnivore")){
+                        returned[i] = 1;
+                    }
+                    else{
+                        returned[i] = 0;
+                    }
+                }
+                else if(i == 3){
+                    if(temp[i].equalsIgnoreCase("True")){
+                        returned[i] = 1;
+                    }
+                    else
+                        returned[i] = 0;
+                }
+                else if(i == 5){
+                    if(temp[i].equalsIgnoreCase("Male"))
+                        returned[i] = 1;
+                    else
+                        returned[i] = 0;
+                }
             } else {
                 if(i == 0)
-                    returned[i] = generator.nextInt(50);
+                    returned[0] = generator.nextInt(50); //xposition
                 else if(i == 1)
-                    returned[i] = generator.nextInt(50);
+                    returned[i] = generator.nextInt(50); //yposition
                 else if(i == 2)
-                    returned[i] = generator.nextInt(3);
+                    returned[i] = generator.nextInt(3); //Eat Strat
                 else if(i == 3)
-                    returned[3] = generator.nextInt(3);
+                    returned[i] = generator.nextInt(1); //isCannibal
                 else if(i == 4)
-                    returned[4] = generator.nextInt(1);
+                    returned[i] = generator.nextInt(5)+1; //MoveSpeed
                 else if(i == 5)
-                    returned[5] = generator.nextInt(5)+1;
+                    returned[i] = generator.nextInt(1); //Gender
                 else if(i == 6)
-                    returned[6] = generator.nextInt(1);
+                    returned[i] = generator.nextInt(16) + 1; //size
             }
         }
         return returned;
