@@ -46,15 +46,22 @@ public class Board<T extends Organism>{
     }
     
     /**
-     * safely adds an organism to the board. if no empty location can be found,
+     * safely adds a plant to the board. if no empty location can be found,
      * prints the exception message and does nothing.
      * 
-     * @param org 
+     * @param plant
      */
     
     public void addPlant(Plant p){
-        plantList.add(p);
-        organisms[p.getX()][p.getY()].add((T) p);
+        try{
+            findClosestLandType(LandType.DIRT,p.getX(),p.getY());
+            plantList.add(p);
+            organisms[p.getX()][p.getY()].add((T) p);
+        }
+        catch(BadLocationException e){
+            System.out.println("Bad Location Exception" + e.getMessage());
+        }
+        
     }
     
     public void addMeat(Meat p){
@@ -62,6 +69,13 @@ public class Board<T extends Organism>{
         organisms[p.getX()][p.getY()].add((T) p);
     }
     
+    
+    /**
+     * safely adds an animal to the board. if no empty location can be found,
+     * prints the exception message and does nothing.
+     * 
+     * @param ani
+     */
     public void addAnimal(Animal ani){
         try{
             int[] tempLoc = findClosestEmpty(ani.getX(), ani.getY());
@@ -77,6 +91,33 @@ public class Board<T extends Organism>{
         }
     }
     
+    public void remove(Object o){
+        if(o instanceof Plant){
+            removePlant((Plant) o);
+        }
+        if(o instanceof Animal){
+            removeAnimal((Animal) o);
+        }
+        if(o instanceof Meat){
+            removeMeat((Meat) o);
+        }
+    }
+    
+    private void removePlant(Plant p){
+        organisms[p.getX()][p.getY()].remove(p);
+        plantList.remove(p);
+    }
+    
+    private void removeAnimal(Animal a){
+        organisms[a.getX()][a.getY()].remove(a);
+        plantList.remove(a);
+    }
+    
+    private void removeMeat(Meat m){
+        organisms[m.getX()][m.getY()].remove(m);
+        plantList.remove(m);
+    }
+    
     /**
      * takes a x,y coordinate and returns the x,y coordinates of the location
      * that contains the desired organism. if null is entered for org it returns
@@ -89,7 +130,6 @@ public class Board<T extends Organism>{
      * @return {x, y}
      * @throws BadLocationException 
      */
-    
     public int[] findClosest(T org, int x, int y) throws BadLocationException{
         if(organisms[x][y].contains(org))
             return new int[]{x,y};
@@ -222,6 +262,153 @@ public class Board<T extends Organism>{
                 else if(organisms[x+i][y].contains(org))
                     return new int[]{x+i,y};
                 else if(organisms[x+i][y+i].contains(org))
+                    return new int[]{x+i,y+i};
+            }
+        }
+        throw new BadLocationException("Your animal is bad and should feel bad", 0);
+    }
+    
+    /**
+     * Takes a land type and a location and returns the nearest location on the board
+     * of that given land type
+     * @param land
+     * @param x
+     * @param y
+     * @return coordinates of landtype
+     * @throws BadLocationException 
+     */
+    public int[] findClosestLandType(LandType land, int x, int y) throws BadLocationException{
+        if(landscape[x][y].equals(land))
+            return new int[]{x,y};
+        
+        for(int i = 1; i <= landscape.length; i++){
+            if(x <= i){
+                if(y <= i){            
+                    if(landscape[x + i][y].equals(land))
+                        return new int[]{x + i,y};
+                    
+                    else if(landscape[x + i][y + i].equals(land))
+                        return new int[]{x + i,y + i};
+                    
+                    else if(landscape[x][y + i].equals(land))
+                        return new int[]{x,y+i};
+                }
+                
+                else if(y >= (landscape[0].length-i)){
+                    if(landscape[x][y - i].equals(land))
+                        return new int[]{x,y-i};
+        
+                    else if(landscape[x + i][y].equals(land))
+                        return new int[]{x + i,y};
+                    
+                    else if(landscape[x + i][y - i].equals(land))
+                        return new int[]{x + i, y - i};
+                    
+                }
+                
+                else{
+                    if(landscape[x][y-i].equals(land))
+                        return new int[]{x,y-i};
+                    
+                    if(landscape[x+i][y-i].equals(land))
+                        return new int[]{x+i,y-i};
+                    
+                    if(landscape[x+i][y].equals(land))
+                        return new int[]{x+i,y};
+                    
+                    if(landscape[x][y+i].equals(land))
+                        return new int[]{x,y+i};
+                    
+                    if(landscape[x+i][y+i].equals(land))
+                        return new int[]{x+i,y+i};
+                }
+            }
+            
+            else if(y <= i){
+                if(x >= (landscape.length-i)){
+                    if(landscape[x-i][y].equals(land))
+                        return new int[]{x-i,y};
+        
+                    else if(landscape[x][y+i].equals(land))
+                        return new int[]{x,y+i};
+                    
+                    else if(landscape[x - i][y + i].equals(land))
+                        return new int[]{x - i, y + i};
+                }
+                
+                else{
+                    if(landscape[x - i][y].equals(land))
+                        return new int[]{x - i,y};
+                    
+                    if(landscape[x-i][y+i].equals(land))
+                        return new int[]{x-i,y+i};
+                    
+                    if(landscape[x+i][y].equals(land))
+                        return new int[]{x+i,y};
+                    
+                    if(landscape[x][y+i].equals(land))
+                        return new int[]{x,y+i};
+                    
+                    if(landscape[x+i][y+i].equals(land))
+                        return new int[]{x+i,y+i};
+                }
+            }
+            
+            else if(x >= (landscape.length - i)){
+                if(y >= (landscape[0].length - i)){
+                    if(landscape[x-i][y].equals(land))
+                        return new int[]{x-i,y};
+                    
+                    else if(landscape[x-i][y-i].equals(land))
+                        return new int[]{x-i,y-i};
+                    
+                    else if(landscape[x][y-i].equals(land))
+                        return new int[]{x,y-i};
+                    
+                }
+                
+                else{
+                    if(landscape[x][y+i].equals(land))
+                        return new int[]{x,y+i};
+                    else if(landscape[x-i][y+i].equals(land))
+                        return new int[]{x-i,y+i};
+                    else if(landscape[x-i][y].equals(land))
+                        return new int[]{x-i,y};
+                    else if(landscape[x-i][y-i].equals(land))
+                        return new int[]{x-i,y-i};
+                    else if(landscape[x][y-i].equals(land))
+                        return new int[]{x,y-i};
+                }
+            }
+            
+            else if(y >= (landscape[0].length - i)){
+                if(landscape[x+i][y].equals(land))
+                    return new int[]{x+i,y};
+                else if(landscape[x+i][y-i].equals(land))
+                    return new int[]{x+i,y-i};
+                else if(landscape[x][y-i].equals(land))
+                    return new int[]{x,y-i};
+                else if(landscape[x-i][y-i].equals(land))
+                    return new int[]{x-i,y-i};
+                else if(landscape[x-i][y].equals(land))
+                    return new int[]{x-i,y};
+            }
+            else{
+                if(landscape[x][y+i].equals(land))
+                    return new int[]{x,y+i};
+                else if(landscape[x-i][y+i].equals(land))
+                    return new int[]{x-i,y+i};
+                else if(landscape[x-i][y].equals(land))
+                    return new int[]{x-i,y};
+                else if(landscape[x-i][y-i].equals(land))
+                    return new int[]{x-i,y};
+                else if(landscape[x][y-i].equals(land))
+                    return new int[]{x,y-i};
+                else if(landscape[x+i][y-i].equals(land))
+                    return new int[]{x+i,y-i};
+                else if(landscape[x+i][y].equals(land))
+                    return new int[]{x+i,y};
+                else if(landscape[x+i][y+i].equals(land))
                     return new int[]{x+i,y+i};
             }
         }
@@ -831,15 +1018,19 @@ public class Board<T extends Organism>{
             }
             List<Plant> pList = b.getPlantList();
             int[] temp;
-            for(int i = 0; i < 10; i++){
+            LinkedList<Plant> addedPlants = new LinkedList<Plant>();
+            for(int i = 0; i < 200; i++){
                 for(Plant p: pList){
                     temp = p.grow();
                     if(temp[0] != -1){
-                        if(generator.nextInt(100) > 90){
-                            p = new Tree(p.getPlantSize(),p.getX(),p.getY());
+                        if(generator.nextInt(100) > 98){
+                            addedPlants.add(new Tree(p.getPlantSize(),p.getX(),p.getY()));
                         }
                     }
                 }
+            }
+            for(Plant p: addedPlants){
+                b.addPlant(p);
             }
         }
         

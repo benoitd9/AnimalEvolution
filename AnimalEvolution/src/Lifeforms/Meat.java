@@ -1,6 +1,8 @@
 package Lifeforms;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Color;
 
 /**
  * Meat is dropped when an Animal is killed
@@ -57,6 +59,16 @@ public class Meat extends Organism
 
     @Override
     public void paintComponent(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Graphics2D g2d = (Graphics2D) g;
+        
+        
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(xPosition*16+(28-size),yPosition*16+(28-size/4),size*2,size/2);
+        g2d.fillOval(xPosition*16+(28-size+size/4),yPosition*16+(28-size/2),size/2,size/2);
+        g2d.fillOval(xPosition*16+(28-size+size/4),yPosition*16+(28+size/2),size/2,size/2);
+        g2d.fillOval(xPosition*16+(28+size+size/4),yPosition*16+(28-size/2),size/2,size/2);
+        g2d.fillOval(xPosition*16+(28+size+size/4),yPosition*16+(28+size/2),size/2,size/2);
+        g2d.setColor(new Color(102,0,0));
+        g2d.fillOval(xPosition*16+(28-size/2),yPosition*16+(28-size/4),size,size/2);
     }
 }

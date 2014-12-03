@@ -361,7 +361,9 @@ public class ConcreteAnimal extends Animal{
         if(this.getName().equals(otherAnimal.getName())){
             if(this.getX() == otherAnimal.getX() &&
                this.getY() == otherAnimal.getY()){
-                return true;
+                if(this.getColor().equals(otherAnimal.getColor()))
+                    return true;
+                else return false;
             }
             else return false;
         }

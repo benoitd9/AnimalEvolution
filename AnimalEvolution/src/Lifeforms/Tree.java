@@ -49,7 +49,7 @@ public class Tree extends Plant{
     }
     
     public int[] grow(){
-        size += 10;
+        size += 20;
         return spread();
     }
     
