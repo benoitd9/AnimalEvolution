@@ -7,6 +7,7 @@ package Lifeforms;
 
 import java.awt.Graphics;
 import java.awt.Color;
+import java.util.Random;
 
 /**
  *
@@ -19,21 +20,16 @@ public class Grass extends Plant{
     }
     
     public void paintComponent(Graphics g){
-        g.setColor(Color.GREEN);
-        int sizeFactor = 0;
-        if(size <= 4)
-            sizeFactor = 4;
-        
-        else if(size > 4 && size <= 8)
-            sizeFactor = 8;
-        
-        else if(size > 8 && size <= 16)
-            sizeFactor = 16;
-        
-        else
-            sizeFactor = 32;
-        //g.fillRect(xPosition*16+20, yPosition*16+20, 16, 16);
+        Random rand = new Random();
+        int randX;
+        int randY;
         g.setColor(new Color(0, 153, 0));
+        for(int i = 0; i < size*2; i++){
+            randX = rand.nextInt(16)+20;
+            randY = rand.nextInt(13)+20;
+            g.drawLine(xPosition*16+randX, yPosition*16+randY, xPosition*16+randX, yPosition*16+randY+3);
+        }
+        /*
         if(sizeFactor == 4){
             g.drawLine(xPosition*16+25, yPosition*16+25, xPosition*16+25, yPosition*16+28);
             g.drawLine(xPosition*16+32, yPosition*16+30, xPosition*16+32, yPosition*16+33);
@@ -65,7 +61,7 @@ public class Grass extends Plant{
             g.drawLine(xPosition*16+25, yPosition*16+33, xPosition*16+25, yPosition*16+36);
             g.drawLine(xPosition*16+27, yPosition*16+31, xPosition*16+27, yPosition*16+34);
             g.drawLine(xPosition*16+23, yPosition*16+26, xPosition*16+23, yPosition*16+29);
-        }
+        }*/
     }
     
     public int[] grow(){
