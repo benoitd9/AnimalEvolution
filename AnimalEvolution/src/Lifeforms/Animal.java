@@ -2,6 +2,8 @@ package Lifeforms;
 
 import java.lang.CloneNotSupportedException;
 import AnimalBoard.Direction;
+import AnimalLogic.EatingStrategy;
+import AnimalLogic.MovementStrategy;
 import java.awt.Color;
 
 
@@ -24,4 +26,7 @@ public abstract class Animal extends Organism{
     public abstract void giveXP(int x);
     public abstract void ate(int yum);
     public abstract void reduceFullness();
+    public abstract MovementStrategy getMovement();
+    public abstract EatingStrategy getEatStrat();
+    public abstract void hide();
 }

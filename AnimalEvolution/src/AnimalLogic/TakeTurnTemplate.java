@@ -1,4 +1,8 @@
 package AnimalLogic;
+
+import AnimalBoard.Board;
+import Lifeforms.Animal;
+
 /**
  * TakeTurnTemplate is the template for all of the TakeTurns
  * 
@@ -9,24 +13,22 @@ public abstract class TakeTurnTemplate
      /**
      * moves the Animal towards its current objective
      */
-    abstract void move();
+    abstract void move(Board b, Animal a);
     
     /**
-     * implements the fight strategy of the animal
-     *     fight, flight, random
+     * Animal will fight
      */
-    abstract void fight();
+    abstract void fight(Animal a, Animal b);
     
     /**
      * implements the Animals eating strategy
      */
-    abstract void eat();
+    abstract void eat(Board b, Animal a);
     
     /**
-     * implements the end turn strategy
-     *     hide for example
+     * ends the animal turn
      */
-    abstract void endTurn();
+    abstract void endTurn(Animal a);
     
     /**
      * template method
@@ -34,9 +36,11 @@ public abstract class TakeTurnTemplate
      */
     public final void act()
     {
-        move();
-        fight();
-        eat();
-        endTurn();
+        Animal a = null,c = null;    
+        Board b = null;
+        move(b, a);
+        fight(a, c);
+        eat(b, a);
+        endTurn(a);
     }
 }

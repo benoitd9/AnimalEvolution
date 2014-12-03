@@ -1,4 +1,8 @@
 package AnimalLogic;
+
+import AnimalBoard.Board;
+import Lifeforms.Animal;
+
 /**
  * TakeTurnNormal extends TakeTurnTemplate
  *      it does not do anything special compared to the other TakeTurns
@@ -11,16 +15,16 @@ public class TakeTurnNormal extends TakeTurnTemplate
      * moves the Animal towards its current objective
      */
     @Override
-    void move()
+    void move(Board b, Animal a)
     {
-        System.out.println("move");
+        a.getMovement().doMovement(b, a);
     }
     
     /**
      * the animal will try to fight
      */
     @Override
-    void fight()
+    void fight(Animal a, Animal b)
     {
         System.out.println("fight");
     }
@@ -29,16 +33,16 @@ public class TakeTurnNormal extends TakeTurnTemplate
      * the animal will try to eat
      */
     @Override
-    void eat()
+    void eat(Board b, Animal a)
     {
-        System.out.println("eat");
+        a.getEatStrat().eat(b, a);
     }
     
     /**
      * end the animals turn
      */
     @Override
-    void endTurn()
+    void endTurn(Animal a)
     {
     }
 }

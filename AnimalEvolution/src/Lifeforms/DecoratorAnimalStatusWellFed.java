@@ -1,5 +1,7 @@
 package Lifeforms;
 
+import AnimalLogic.EatingStrategy;
+import AnimalLogic.MovementStrategy;
 import Lifeforms.Animal;
 
 /**
@@ -75,6 +77,21 @@ public class DecoratorAnimalStatusWellFed extends DecoratorAnimalStatus
 
     @Override
     public void reduceFullness() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public MovementStrategy getMovement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public EatingStrategy getEatStrat() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void hide() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

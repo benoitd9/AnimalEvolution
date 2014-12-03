@@ -125,6 +125,8 @@ public class ConcreteAnimal extends Animal{
      */
     protected Color color;
     
+    protected int inHiding = 0;
+    
     public ConcreteAnimal clone() throws CloneNotSupportedException{
         return new ConcreteAnimal(this);
     }
@@ -397,6 +399,16 @@ public class ConcreteAnimal extends Animal{
     {
         return eatStrat;
     }
+    
+    /**
+     * puts the animal into hiding
+     */
+    @Override
+    public void hide() {
+        inHiding = 1;       
+    }
+    
+    
     
     public void paintComponent(Graphics g){
         int limbs = body.getNumLimbs();
