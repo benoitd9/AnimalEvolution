@@ -54,7 +54,9 @@ public class Board<T extends Organism>{
     
     public void addPlant(Plant p){
         try{
-            findClosestLandType(LandType.DIRT,p.getX(),p.getY());
+            int[] temp = findClosestLandType(LandType.DIRT,p.getX(),p.getY());
+            p.setX(temp[0]);
+            p.setY(temp[1]);
             plantList.add(p);
             organisms[p.getX()][p.getY()].add((T) p);
         }
@@ -64,9 +66,9 @@ public class Board<T extends Organism>{
         
     }
     
-    public void addMeat(Meat p){
-        meatList.add(p);
-        organisms[p.getX()][p.getY()].add((T) p);
+    public void addMeat(Meat m){
+        meatList.add(m);
+        organisms[m.getX()][m.getY()].add((T) m);
     }
     
     
@@ -78,13 +80,11 @@ public class Board<T extends Organism>{
      */
     public void addAnimal(Animal ani){
         try{
-            int[] tempLoc = findClosestEmpty(ani.getX(), ani.getY());
-            
-            if( organisms[tempLoc[0]][tempLoc[1]] != null ){
-                organisms[tempLoc[0]][tempLoc[1]].add((T) ani);
-                animalList.add(ani);
-            }
-            
+            int[] tempLoc = findClosestLandType(LandType.DIRT, ani.getX(), ani.getY());
+            ani.setX(tempLoc[0]);
+            ani.setY(tempLoc[1]);
+            animalList.add(ani);
+            organisms[ani.getX()][ani.getY()].add((T) ani);
         }
         catch(BadLocationException e){
             System.out.println("Bad Location Exception:" + e.getMessage());

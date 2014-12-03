@@ -56,6 +56,16 @@ public class Meat extends Organism
     public int getY(){
         return yPosition;
     }
+    
+    @Override
+    public void setX(int x) {
+        xPosition = x;
+    }
+
+    @Override
+    public void setY(int y) {
+        yPosition = y;
+    }
 
     @Override
     public void paintComponent(Graphics g) {

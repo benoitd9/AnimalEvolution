@@ -45,6 +45,16 @@ public abstract class Plant extends Organism{
         return yPosition;
     }
     
+    @Override
+    public void setX(int x) {
+        xPosition = x;
+    }
+
+    @Override
+    public void setY(int y) {
+        yPosition = y;
+    }
+    
      /**
      * the Plant is reduced in size when it is eaten
      * a Plant of size 0 can not be eaten

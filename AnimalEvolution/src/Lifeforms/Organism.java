@@ -14,6 +14,9 @@ public abstract class Organism extends JComponent{
     
     abstract public int getY();
     
+    public abstract void setX(int x);
+    public abstract void setY(int y);
+    
     abstract public void paintComponent(Graphics g);
     
 }
