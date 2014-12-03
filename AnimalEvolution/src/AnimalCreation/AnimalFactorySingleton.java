@@ -75,15 +75,15 @@ public class AnimalFactorySingleton{
            attributes = parse(placeholder, false);
         }
         
-        BodyComponent body = makeBody();
+        Body body = makeBody();
         
         return ConcreteAnimal.create(name[0], attributes, body);
         
     }
     
-    public BodyComponent makeBody(){
-        BodyComponent body = new Body();
-        BodyComponent skele = new Skeleton();
+    public Body makeBody(){
+        Body body = new Body();
+        Skeleton skele = new Skeleton();
             
         try{
            for(int i = 0; i < 5; i++){
