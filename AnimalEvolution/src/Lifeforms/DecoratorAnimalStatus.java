@@ -6,7 +6,6 @@ package Lifeforms;
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 
-import Lifeforms.Animal;
 import AnimalBoard.Direction;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -29,8 +28,8 @@ public abstract class DecoratorAnimalStatus extends Animal {
         return decoAni.getY();
     }
     
-    @Override
-    abstract public Object clone();
+    //@Override
+    //abstract public Object clone();
     
     @Override
     public Direction getDirection(){

@@ -1,6 +1,7 @@
 package AnimalComposite;
 
 import AnimalComposite.CompositeComponent;
+import java.util.List;
 
 /**
  * Torso extends CompositeComponent
@@ -18,7 +19,26 @@ public class Torso extends CompositeComponent{
     }
     
     @Override
-    public Object clone() {
-            return new Torso(this);
+    public Object clone() throws CloneNotSupportedException {
+        Torso torso = new Torso();
+        List<BodyComponent> parts = this.children;
+        
+        try{
+            
+            for(BodyComponent part : parts){
+                if( part instanceof Arm ){
+                    torso.add( new Arm() );
+                } else if( part instanceof Leg){
+                    torso.add( new Leg() );
+                } else if( part instanceof Head){
+                    torso.add( new Head() );
+                }
+            }
+            
+            return torso;
+                   
+        } catch (Exception e) {
+            throw new CloneNotSupportedException("Clone Unsupported: Torso");
+        }
     }
 }

@@ -28,15 +28,15 @@ public class DecoratorAnimalStatusStarving extends DecoratorAnimalStatus
         //decrease strength and movement speed
     }
     
-    @Override
-    public Object clone(){
+    /* @Override
+    public Object clone() throws CloneNotSupportedException{
         try{
             return new DecoratorAnimalStatusStarving((Animal)decoAni.clone());
         }
         catch(CloneNotSupportedException e){
             return null;
         }
-    }
+    } */
 
     @Override
     public int getSpeed() {

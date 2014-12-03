@@ -9,6 +9,8 @@ import Lifeforms.Meat;
 import javax.swing.JFrame;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Main
@@ -46,13 +48,26 @@ public class Main
         
         Map<String, ConcreteAnimal> animalList = AnimalFactorySingleton.getInstance().animalList;
         
-        
-        ConcreteAnimal bearCopy = animalList.get("Bear");
-        AnimalFactorySingleton.getInstance().addAnimal("Bear2", bearCopy);
+        try {
+            ConcreteAnimal bear2 = (ConcreteAnimal) bear.clone();
+            AnimalFactorySingleton.getInstance().addAnimal("Bear2", bear2 );
+            
+            /* Testin that Clone makes a new Bear object */
+            System.out.println();
 
+            System.out.println("bear 1 xPosition: " + bear.getX() );
+            System.out.println("bear 2 xPosition: " + bear.getX() );
+            System.out.println("bear 1 is moving...");
+            bear.setX(20);
+            System.out.println("Bear 1 is now at xPosition: " + bear.getX() );
+            System.out.println("Bear 2 is still back at xPosition: " + bear2.getX() );
+            
+            System.out.println();
+        } catch (CloneNotSupportedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        System.out.println(animalList.toString());
-        
+  
         
         System.out.println("A "+bear.getName()+" has been created");
         System.out.println("A "+rabbit.getName()+" has been created");

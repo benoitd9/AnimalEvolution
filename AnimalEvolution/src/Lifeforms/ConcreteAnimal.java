@@ -14,6 +14,8 @@ import AnimalComposite.Body;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * ConcreteAnimal contains all of the attributes for the animals along with
@@ -34,6 +36,7 @@ public class ConcreteAnimal extends Animal{
      * decreases by 1 each turn
      */
     protected int fullness = 1;
+   
     
     /**
      * what the animal eats: Herbivore, Carnivore, Omnivore
@@ -121,6 +124,34 @@ public class ConcreteAnimal extends Animal{
      * The color this animal is
      */
     protected Color color;
+    
+    public ConcreteAnimal clone() throws CloneNotSupportedException{
+        return new ConcreteAnimal(this);
+    }
+    
+    public ConcreteAnimal(ConcreteAnimal orig){
+        AnimalComposite.Body orig_body = orig.body;
+        Body new_body = new AnimalComposite.Body();
+        
+        try {
+            new_body = (Body) orig_body.clone();
+        } catch (CloneNotSupportedException ex) {
+            Logger.getLogger(ConcreteAnimal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        //name = strName;
+        body = new_body;
+        xPosition = orig.xPosition;
+        yPosition = orig.yPosition;
+        eatStrat = orig.eatStrat;
+        moveStrat = orig.moveStrat;
+        isCannibal = orig.isCannibal;
+        movementSpeed = orig.movementSpeed;
+        gender = orig.gender;
+        
+        
+    }
 
     private ConcreteAnimal(String aniName, int[] attr, Body initialBody) 
     {   

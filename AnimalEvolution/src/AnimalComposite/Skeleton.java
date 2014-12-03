@@ -33,24 +33,26 @@ public class Skeleton extends CompositeComponent{
     }
     
     @Override
-    public Object clone() {
-        Skeleton skel = new Skeleton(this);
-        List<BodyComponent> childs = skel.children;
+    public Object clone() throws CloneNotSupportedException {
+        Skeleton skele = new Skeleton();
+        
+        try{
+            List<BodyComponent> bones = this.children;
 
-        for(BodyComponent comps : childs){
-            
-            if (comps instanceof Arm) {
-                skel.add(new Arm());
-            } else if(comps instanceof Head){
-                skel.add(new Head());
-            } else if(comps instanceof Leg){
-                skel.add(new Leg());
-            } else if(comps instanceof Torso){
-                skel.add(new Torso());
+            for(BodyComponent bone : bones){
+                if( bone instanceof Bone){
+                      skele.add( new Bone() );
+                }
             }
-             
-        }
 
-        return skel;
+            return skele; 
+            
+        } catch (Exception e){
+            throw new CloneNotSupportedException("Clone Unsupported: Skeleton");
+        }
+         
+ 
     }
+ 
+       
 }

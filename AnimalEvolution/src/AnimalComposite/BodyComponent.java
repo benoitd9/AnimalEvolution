@@ -9,9 +9,7 @@ import java.lang.CloneNotSupportedException;
  */
 public abstract class BodyComponent implements Cloneable {
     
-    public BodyComponent(){
-        
-    }
+    public BodyComponent(){}
     
     public abstract int getSize();
     

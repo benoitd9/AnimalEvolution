@@ -28,7 +28,7 @@ public class DecoratorAnimalStatusWellFed extends DecoratorAnimalStatus
         //increase Strength and movement speed
     }
     
-    @Override
+    /* @Override
     public Object clone(){
         try{
             return new DecoratorAnimalStatusWellFed((Animal)decoAni.clone());
@@ -36,7 +36,7 @@ public class DecoratorAnimalStatusWellFed extends DecoratorAnimalStatus
         catch(CloneNotSupportedException e){
             return null;
         }
-    }
+    } */
 
     @Override
     public int getSpeed() {
