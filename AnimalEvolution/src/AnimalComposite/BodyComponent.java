@@ -7,23 +7,23 @@ import java.lang.CloneNotSupportedException;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public interface BodyComponent extends Cloneable {
+public abstract class BodyComponent implements Cloneable {
     
-    public int getSize();
+    public abstract int getSize();
     
-    /**
+    /*
      * adds a child component to the body part
      * 
      * @param component the parent body part
      */
-    public void add(BodyComponent component) throws LeafComponentException;
+    public abstract void add(BodyComponent component) throws LeafComponentException;
     
     /**
      * removes a child component to the body part
      * 
      * @param component the parent body part
      */
-    public void remove(BodyComponent component) throws LeafComponentException;
+    public abstract void remove(BodyComponent component) throws LeafComponentException;
     
     /**
      * returns the specified child component from its parent body part
@@ -31,9 +31,9 @@ public interface BodyComponent extends Cloneable {
      * @param i the child component
      * @return the child component
      */
-    public BodyComponent getChild(int i) throws LeafComponentException;
+    public abstract BodyComponent getChild(int i) throws LeafComponentException;
     
-    public int getNumLimbs();
+    public abstract int getNumLimbs();
     
-    public Object clone() throws CloneNotSupportedException;
+    public abstract Object clone() throws CloneNotSupportedException;
 }

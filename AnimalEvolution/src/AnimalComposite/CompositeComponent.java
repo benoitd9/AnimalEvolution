@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public abstract class CompositeComponent implements BodyComponent{
+public abstract class CompositeComponent extends BodyComponent{
     protected List<BodyComponent> children;
     
     public CompositeComponent(){

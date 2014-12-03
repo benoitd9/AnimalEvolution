@@ -9,7 +9,7 @@ package AnimalComposite;
  *
  * @author Nate
  */
-public abstract class BodyComponentDecorator implements BodyComponent{
+public abstract class BodyComponentDecorator extends BodyComponent{
     
     private BodyComponent decoComp;
     

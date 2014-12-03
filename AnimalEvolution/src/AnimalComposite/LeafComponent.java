@@ -7,7 +7,7 @@ package AnimalComposite;
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
-public abstract class LeafComponent implements BodyComponent {
+public abstract class LeafComponent extends BodyComponent {
     
     private LeafComponentException except = new LeafComponentException("This leaf has no children");
     
@@ -46,14 +46,7 @@ public abstract class LeafComponent implements BodyComponent {
     }
     
     @Override
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {		
-            e.getMessage();
-            throw new RuntimeException();
-        }
-    }
+    public abstract Object clone();
     
     @Override
     public int getNumLimbs(){
