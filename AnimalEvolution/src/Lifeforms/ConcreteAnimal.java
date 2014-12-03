@@ -10,7 +10,7 @@ import AnimalLogic.EatingStrategyCarnivore;
 import AnimalLogic.MovementStrategyHunt;
 import AnimalLogic.MovementStrategy;
 import AnimalBoard.Direction;
-import AnimalComposite.BodyComponent;
+import AnimalComposite.Body;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -95,7 +95,7 @@ public class ConcreteAnimal extends Animal{
     /**
      * the body parts that make up the Animal
      */
-    protected BodyComponent body;
+    protected Body body;
     
     /**
      * how much damage the Animal can deal
@@ -122,7 +122,7 @@ public class ConcreteAnimal extends Animal{
      */
     protected Color color;
 
-    private ConcreteAnimal(String aniName, int[] attr, BodyComponent initialBody) 
+    private ConcreteAnimal(String aniName, int[] attr, Body initialBody) 
     {   
         name = aniName;
         
@@ -318,7 +318,7 @@ public class ConcreteAnimal extends Animal{
         return color;
     }
     
-    public static ConcreteAnimal create(String name, int[] parameters, BodyComponent body){
+    public static ConcreteAnimal create(String name, int[] parameters, Body body){
         return new ConcreteAnimal(name,parameters,body);
     }
     
