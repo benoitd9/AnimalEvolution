@@ -1,6 +1,7 @@
 package AnimalComposite;
 
 import AnimalComposite.CompositeComponent;
+import java.util.List;
 
 /**
  * Skeleton extends CompositeComponent
@@ -33,6 +34,23 @@ public class Skeleton extends CompositeComponent{
     
     @Override
     public Object clone() {
-            return new Skeleton(this);
+        Skeleton skel = new Skeleton(this);
+        List<BodyComponent> childs = skel.children;
+
+        for(BodyComponent comps : childs){
+            
+            if (comps instanceof Arm) {
+                skel.add(new Arm());
+            } else if(comps instanceof Head){
+                skel.add(new Head());
+            } else if(comps instanceof Leg){
+                skel.add(new Leg());
+            } else if(comps instanceof Torso){
+                skel.add(new Torso());
+            }
+             
+        }
+
+        return skel;
     }
 }

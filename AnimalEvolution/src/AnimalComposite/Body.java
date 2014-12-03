@@ -23,6 +23,16 @@ public class Body extends CompositeComponent{
 
         for(BodyComponent comps : childs){
             
+            if (comps instanceof Arm) {
+                bod.add(new Arm());
+            } else if(comps instanceof Head){
+                bod.add(new Head());
+            } else if(comps instanceof Leg){
+                bod.add(new Leg());
+            } else if(comps instanceof Torso){
+                bod.add(new Torso());
+            }
+             
         }
 
         return bod;
