@@ -82,7 +82,7 @@ public class AnimalFactorySingleton{
     }
     
     public Body makeBody(){
-        Body body = new Body();
+        AnimalComposite.Body body = new Body();
         Skeleton skele = new Skeleton();
             
         try{
