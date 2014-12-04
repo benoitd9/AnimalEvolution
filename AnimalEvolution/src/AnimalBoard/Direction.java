@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AnimalBoard;
 
 /**
- *
- * @author Nate
+ * The direction that the animal is facing
+ * 
+ * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class Direction {
     private int xDir;
@@ -23,7 +19,6 @@ public class Direction {
     public static final Direction SOUTHWEST = new Direction(-1,1);
     public static final Direction WEST = new Direction(-1,0);
     public static final Direction NORTHWEST = new Direction(-1, -1);
-    
     
     private Direction(int x, int y){
         xDir = x;

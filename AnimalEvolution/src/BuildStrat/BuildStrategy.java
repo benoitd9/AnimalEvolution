@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BuildStrat;
 
 /**
- *
- * @author Nate
+ * basic build strategy for all other terrain type build strategies
+ * 
+ * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public interface BuildStrategy {
     public int[] getProbabilities();

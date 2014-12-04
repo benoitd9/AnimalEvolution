@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AnimalLogic;
 
 import Lifeforms.Animal;
@@ -10,8 +5,9 @@ import Lifeforms.Meat;
 import AnimalBoard.Board;
 
 /**
- *
- * @author Holly
+ * fight is conducted between two animals until one is killed
+ * 
+ * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class Fight {
     public static void fight(Animal aniA, Animal aniB, Board b){

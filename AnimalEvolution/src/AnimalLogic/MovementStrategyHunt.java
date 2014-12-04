@@ -20,91 +20,98 @@ public class MovementStrategyHunt implements MovementStrategy
     @Override
     public void doMovement(Board board, Lifeforms.Animal a)
     {
-        System.out.println("The "+a.getName()+" is hunting.");
-        
-        int[][] seen = board.getVision(a);
-        List<Lifeforms.Animal> aniList = board.getAnimalList();
-        LinkedList<Lifeforms.Animal> seenAnimals = new LinkedList<>();
-        Lifeforms.Animal target = null;
-        int found = 0;
-        
-        for(Animal b: aniList)
-        {
-            for(int i = 0; i<seen.length; i++)
+            System.out.println("The "+a.getName()+" is hunting.");
+
+            int[][] seen = board.getVision(a);
+            List<Lifeforms.Animal> aniList = board.getAnimalList();
+            LinkedList<Lifeforms.Animal> seenAnimals = new LinkedList<>();
+            Lifeforms.Animal target = null;
+            int found = 0;
+
+            for(Animal b: aniList)
             {
-                if(b.getX() == seen[i][0] && b.getY() == seen[i][1])
+                for(int i = 0; i<seen.length; i++)
                 {
-                    //System.out.println("An Animal has been added "+b.getName()+" at " + seen[i][0] + ", " + seen[i][1]);
-                    seenAnimals.add(b);
-                    found++;
+                    if(b.getX() == seen[i][0] && b.getY() == seen[i][1])
+                    {
+                        //System.out.println("An Animal has been added "+b.getName()+" at " + seen[i][0] + ", " + seen[i][1]);
+                        seenAnimals.add(b);
+                        found++;
+                    }
                 }
             }
-        }
 
-        if(found > 0)
-            target = seenAnimals.get(1);
-        
-        int k = 0;
-        while(seenAnimals.get(k) != null && target == null)
-        {
-            Lifeforms.Animal temp = seenAnimals.get(k);
-            //check to see if the organism is an animal
-            if(a.getName().equals(target.getName()) && a.getIsCannibal())
+            if(found > 1)
             {
-                target = temp;
-            }
-            else if(a.getName().equals(target.getName()))
-            {
-                target = temp;
-            }
-            k++;
-        }
+                if(seenAnimals.get(1) != null)
+                    target = seenAnimals.get(1);
 
-        if(target != null)
-        {
-            //starting with a simplified movement and will improve if time is available
-            //move x
-            if(abs(a.getX()-target.getX()) < a.getSpeed())
-            {
-                a.setX(target.getX());
-            }
-            else
-            {
-                if(a.getX()<target.getX())
+                int k = 1;
+
+                /* while(seenAnimals.get(k) != null && target != null)
                 {
-                    a.setX(a.getX()+a.getSpeed());
+
+                    System.out.println("cannible chekc");
+
+                    Lifeforms.Animal temp = seenAnimals.get(k);
+                    //check to see if the organism is an animal
+                    if(a.getName().equals(target.getName()) && a.getIsCannibal())
+                    {
+                        target = temp;
+                    }
+                    else if(a.getName().equals(target.getName()))
+                    {
+                        target = temp;
+                    }
+                    k++;
+                }
+                        */
+
+                if(target != null)
+                {
+
+                    //starting with a simplified movement and will improve if time is available
+                    //move x
+                    if(abs(a.getX()-target.getX()) < a.getSpeed())
+                    {
+                        a.setX(target.getX());
+                    }
+                    else
+                    {
+                        if(a.getX()<target.getX())
+                        {
+                            a.setX(a.getX()+a.getSpeed());
+                        }
+                        else
+                        {
+                            a.setX(a.getX()-a.getSpeed());
+                        }
+                    }
+                    //move y
+                    if(abs(a.getY()-target.getY())<a.getSpeed())
+                    {
+                        a.setY(target.getY());
+                    }else{
+                        if(a.getY()<target.getY())
+                        {
+                            a.setY(a.getY()+a.getSpeed());
+                        }
+                        else
+                        {
+                            a.setY(a.getY()-a.getSpeed());
+                        }
+                    }
+
+                    //Intiate a Fight in Possible
+
+                    if(a.getX() == target.getX() && a.getY() == target.getY()){
+                        Fight.fight(a,target,board);
+                    }
                 }
                 else
                 {
-                    a.setX(a.getX()-a.getSpeed());
+                    a.turnClockwise();
                 }
             }
-            //move y
-            if(abs(a.getY()-target.getY())<a.getSpeed())
-            {
-                a.setY(target.getY());
-            }else{
-                if(a.getY()<target.getY())
-                {
-                    a.setY(a.getY()+a.getSpeed());
-                }
-                else
-                {
-                    a.setY(a.getY()-a.getSpeed());
-                }
-            }
-            
-            if(a.getX() == target.getX() && a.getY() == target.getY()){
-                Fight.fight(a,target,board);
-            }
-        }
-        else
-        {
-            a.turnClockwise();
-        }
-        
-        if(a.getX() == target.getX() && a.getY() == target.getY()){
-            Fight.fight(a, target, board);
-        }
     }
 }

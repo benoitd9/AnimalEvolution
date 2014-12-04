@@ -28,11 +28,23 @@ public class GUIBoard extends JPanel{
         board = b;
     }
     
+    /**
+     * refreshes the gui
+     * 
+     * @param x1
+     * @param y1
+     * @param x2
+     * @param y2 
+     */
     public void update(int x1, int y1, int x2, int y2){
         repaint(x1,y1,x2,y2);
     }
     
-    
+    /**
+     * draws the graphics to the app
+     * 
+     * @param g graphics
+     */
     public void paintComponent(Graphics g){
         int width = getWidth();
         int height = getHeight();

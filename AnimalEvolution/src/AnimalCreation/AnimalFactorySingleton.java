@@ -17,6 +17,9 @@ import java.util.Random;
 public class AnimalFactorySingleton{
     
 
+    /**
+     * Animal List Hash Map
+     */
     public Map<String, Animal> animalList = new HashMap<String, Animal>();
 
 
@@ -76,6 +79,12 @@ public class AnimalFactorySingleton{
         
     }
     
+    /**
+     * builds the animals body
+     * 
+     * @param size size of the body
+     * @return the animals body
+     */
     private Body makeBody(int size){
         Body body = new Body();
         Skeleton skele = new Skeleton();
@@ -99,10 +108,23 @@ public class AnimalFactorySingleton{
         return body;
     }
         
+    /**
+     * adds an animal to the animalList
+     * 
+     * @param name name of the animal to be added
+     * @param a the animal to be added
+     */
     public void addAnimal(String name, Animal a){
         this.animalList.put(name, a);
     }
     
+    /**
+     * parses string to create an animal from
+     * 
+     * @param s string to be parsed
+     * @param knowLength length of the string split by ','
+     * @return int[] of attributes
+     */
     private int[] parse(String s, boolean knowLength){
         
         int numAttributes;

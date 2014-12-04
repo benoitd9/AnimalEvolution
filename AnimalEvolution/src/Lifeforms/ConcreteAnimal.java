@@ -125,6 +125,9 @@ public class ConcreteAnimal extends Animal{
      */
     protected Color color;
     
+    /**
+     * inHiding of 1 means the animal is in hiding and harder to see
+     */
     protected int inHiding = 0;
     
     public ConcreteAnimal clone() throws CloneNotSupportedException{
@@ -292,21 +295,38 @@ public class ConcreteAnimal extends Animal{
         return damageConstant;
     }
     
+    /**
+     * how much damage the animal has taken
+     * 
+     * @param damage total damage the animal has taken
+     */
     public void damage(int damage){
         markedDamage += damage;
     }
     
+    /**
+     * the animal regenerates one hit point
+     */
     public void heal(){
         if(markedDamage > 0)
             markedDamage -= 1;
     }
     
+    /**
+     * checks to see if the animal is dead by checking if it has taken more
+     * damage than it has hit points
+     * 
+     * @return true if it is dead and false if it is still alive
+     */
     public boolean isDead(){
         if(markedDamage >= hitPoints)
             return true;
         else return false;
     }
     
+    /**
+     * turns the animal to face forty-five degrees to its right
+     */
     public void turnClockwise(){
         if(dir == Direction.NORTH){
             dir = Direction.NORTHEAST;
@@ -334,6 +354,9 @@ public class ConcreteAnimal extends Animal{
         }
     }
     
+    /**
+     * turns the animal to face forty-five degrees to its left
+     */
     public void turnCounterClockwise(){
         if(dir == Direction.NORTH){
             dir = Direction.NORTHWEST;

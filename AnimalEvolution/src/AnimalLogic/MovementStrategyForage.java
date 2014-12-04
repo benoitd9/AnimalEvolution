@@ -22,14 +22,14 @@ public class MovementStrategyForage implements MovementStrategy
     public void doMovement(Board board, Lifeforms.Animal a)
     {
         System.out.println("The "+a.getName()+" is foraging.");
-        
+
         int[][] seen = board.getVision(a);
         List<Lifeforms.Animal> aniList = board.getAnimalList();
         List<Lifeforms.Plant> plantList = board.getPlantList();
         List<Lifeforms.Plant> seenPlants = new LinkedList<>();
         Lifeforms.Plant target = null;
         int found = 0;
-        
+
         for(Lifeforms.Plant b: plantList)
         {
             for(int i = 0; i<seen.length; i++)
@@ -42,7 +42,7 @@ public class MovementStrategyForage implements MovementStrategy
                 }
             }
         }
-        
+
         if(found == 1)
             target = seenPlants.get(0);
 
@@ -88,7 +88,7 @@ public class MovementStrategyForage implements MovementStrategy
                     a.setY(a.getY()+a.getSpeed());
             }
         }
-        
+
         if(target != null && run == 0)
         {
             //starting with a simplified movement and will improve if time is available

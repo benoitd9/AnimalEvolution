@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Lifeforms;
 
 import java.awt.Graphics;
@@ -10,9 +5,8 @@ import java.awt.Color;
 import java.util.Random;
 
 /**
- *
- * @author Nate
- */
+     * turns the animal to face forty-five degrees to the right
+     */
 public class Grass extends Plant{
     
     public Grass(int size, int xPos, int yPos){
@@ -64,11 +58,21 @@ public class Grass extends Plant{
         }*/
     }
     
+    /**
+     * increases the plants size by 1
+     * 
+     * @return plants size + 1
+     */
     public int[] grow(){
         size += 1;
         return spread();
     }
     
+    /**
+     * spreads the plant
+     * 
+     * @return coordinate of the spread plant
+     */
     protected int[] spread(){
         if(size > 20){
             size = size/2;

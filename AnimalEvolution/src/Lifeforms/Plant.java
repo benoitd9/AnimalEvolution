@@ -20,6 +20,9 @@ public abstract class Plant extends Organism{
      */
     protected int yPosition;
     
+    /**
+     * how big the plant is
+     */
     protected int size;
     
     public Plant(int s, int x, int y){

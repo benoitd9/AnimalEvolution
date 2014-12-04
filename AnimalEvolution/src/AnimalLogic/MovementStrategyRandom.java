@@ -46,77 +46,78 @@ public class MovementStrategyRandom implements MovementStrategy
                 }
             }
 
-            if(found > 1){
+            if(found > 1)
+            {
                 if(seenAnimals.get(1) != null)
                     target = seenAnimals.get(1);
 
-            int k = 1;
-           
-            /* while(seenAnimals.get(k) != null && target != null)
-            {
-                
-                System.out.println("cannible chekc");
-               
-                Lifeforms.Animal temp = seenAnimals.get(k);
-                //check to see if the organism is an animal
-                if(a.getName().equals(target.getName()) && a.getIsCannibal())
-                {
-                    target = temp;
-                }
-                else if(a.getName().equals(target.getName()))
-                {
-                    target = temp;
-                }
-                k++;
-            }
-                    */
+                int k = 1;
 
-            if(target != null)
-            {
-                
-                //starting with a simplified movement and will improve if time is available
-                //move x
-                if(abs(a.getX()-target.getX()) < a.getSpeed())
+                /* while(seenAnimals.get(k) != null && target != null)
                 {
-                    a.setX(target.getX());
+
+                    System.out.println("cannible chekc");
+
+                    Lifeforms.Animal temp = seenAnimals.get(k);
+                    //check to see if the organism is an animal
+                    if(a.getName().equals(target.getName()) && a.getIsCannibal())
+                    {
+                        target = temp;
+                    }
+                    else if(a.getName().equals(target.getName()))
+                    {
+                        target = temp;
+                    }
+                    k++;
+                }
+                        */
+
+                if(target != null)
+                {
+
+                    //starting with a simplified movement and will improve if time is available
+                    //move x
+                    if(abs(a.getX()-target.getX()) < a.getSpeed())
+                    {
+                        a.setX(target.getX());
+                    }
+                    else
+                    {
+                        if(a.getX()<target.getX())
+                        {
+                            a.setX(a.getX()+a.getSpeed());
+                        }
+                        else
+                        {
+                            a.setX(a.getX()-a.getSpeed());
+                        }
+                    }
+                    //move y
+                    if(abs(a.getY()-target.getY())<a.getSpeed())
+                    {
+                        a.setY(target.getY());
+                    }else{
+                        if(a.getY()<target.getY())
+                        {
+                            a.setY(a.getY()+a.getSpeed());
+                        }
+                        else
+                        {
+                            a.setY(a.getY()-a.getSpeed());
+                        }
+                    }
+
+                    //Intiate a Fight in Possible
+
+                    if(a.getX() == target.getX() && a.getY() == target.getY()){
+                        Fight.fight(a,target,board);
+                    }
                 }
                 else
                 {
-                    if(a.getX()<target.getX())
-                    {
-                        a.setX(a.getX()+a.getSpeed());
-                    }
-                    else
-                    {
-                        a.setX(a.getX()-a.getSpeed());
-                    }
-                }
-                //move y
-                if(abs(a.getY()-target.getY())<a.getSpeed())
-                {
-                    a.setY(target.getY());
-                }else{
-                    if(a.getY()<target.getY())
-                    {
-                        a.setY(a.getY()+a.getSpeed());
-                    }
-                    else
-                    {
-                        a.setY(a.getY()-a.getSpeed());
-                    }
-                }
-                
-                //Intiate a Fight in Possible
-                
-                if(a.getX() == target.getX() && a.getY() == target.getY()){
-                    Fight.fight(a,target,board);
+                    a.turnClockwise();
                 }
             }
-            else
-            {
-                a.turnClockwise();
-            }
-        }
         }
         else if(z<11)//forage
         {

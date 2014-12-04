@@ -9,14 +9,14 @@ import java.util.Random;
 
 /**
  * EatinstStrategyOmnivore implements EatingStrategy
- *      The Animal will eat Plants and Animals
+ *      The Animal will eat Plants and Animal meat
  * 
  * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class EatingStrategyOmnivore implements EatingStrategy
 {
     /**
-     * the animal will try to eat either plants or animals
+     * the animal will try to eat either plants or animal meat
      */
     @Override
     public void eat(Board b, Animal a) 

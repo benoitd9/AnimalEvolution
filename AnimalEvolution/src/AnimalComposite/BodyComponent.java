@@ -37,9 +37,26 @@ public abstract class BodyComponent extends JComponent implements Cloneable {
      */
     public abstract BodyComponent getChild(int i) throws LeafComponentException;
     
+    /**
+     * gets the number of limbs the animal has
+     * 
+     * @return the number of limbs the animal has
+     */
     public abstract int getNumLimbs();
     
+    /**
+     * clones the animal
+     * 
+     * @return clone of the animal
+     * @throws CloneNotSupportedException 
+     */
     public abstract Object clone() throws CloneNotSupportedException;
     
+    /**
+     * draws the graphics
+     * 
+     * @param g graphics
+     * @param size size of the graphics to be drawn
+     */
     public abstract void paintComponent(Graphics g, int size);
 }

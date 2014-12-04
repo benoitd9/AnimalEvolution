@@ -37,6 +37,6 @@ public abstract class TakeTurnTemplate
     {
         move(b, aniA);
         eat(b, aniA);
-        endTurn(aniA);
+        endTurn(aniA);//different for certain animals
     }
 }

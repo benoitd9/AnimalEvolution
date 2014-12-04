@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BuildStrat;
 
 import BuildStrat.BuildStrategy;
 
 /**
- *
- * @author Nate
+ * Build strategy for shallow water terrain type
+ * 
+ * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class ShallowWaterStrategy implements BuildStrategy{
     

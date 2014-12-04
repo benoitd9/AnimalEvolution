@@ -52,7 +52,7 @@ public class Board<T extends Organism>{
      * safely adds a plant to the board. if no empty location can be found,
      * prints the exception message and does nothing.
      * 
-     * @param plant
+     * @param plant plant that is added to the board
      */
     
     public void addPlant(Plant p){
@@ -73,6 +73,13 @@ public class Board<T extends Organism>{
         
     }
     
+    
+    /**
+     * safely adds a plant to the board. if no empty location can be found,
+     * prints the exception message and does nothing.
+     * 
+     * @param m meat that is added to the board
+     */
     public void addMeat(Meat m){
         meatList.add(m);
         organisms[m.getX()][m.getY()].add((T) m);
@@ -87,7 +94,7 @@ public class Board<T extends Organism>{
      * safely adds an animal to the board. if no empty location can be found,
      * prints the exception message and does nothing.
      * 
-     * @param ani
+     * @param ani animal that is added to the board
      */
     public void addAnimal(Animal ani){
         try{
@@ -106,6 +113,11 @@ public class Board<T extends Organism>{
         }
     }
     
+    /**
+     * removes an animal, plant or meat from the board
+     * 
+     * @param o animal, plant or meat that is to be removed
+     */
     public void remove(Object o){
         if( o instanceof Plant){
             removePlant((Plant) o);
@@ -118,6 +130,11 @@ public class Board<T extends Organism>{
         }
     }
     
+    /**
+     * removes a plant from the board
+     * 
+     * @param p plant to be removed from the board
+     */
     private void removePlant(Plant p){
         organisms[p.getX()][p.getY()].remove(p);
         plantList.remove(p);
@@ -126,6 +143,11 @@ public class Board<T extends Organism>{
         gBoard.update(p.getX()*16+20, p.getY()*16+20, p.getX()*16+36, p.getY()*16+36);
     }
     
+    /**
+     * removes an animal from the board
+     * 
+     * @param a animal to be removed from the board
+     */
     private void removeAnimal(Animal a){
         organisms[a.getX()][a.getY()].remove(a);
         animalList.remove(a);
@@ -134,6 +156,11 @@ public class Board<T extends Organism>{
         gBoard.update(a.getX()*16+20, a.getY()*16+20, a.getX()*16+36, a.getY()*16+36);
     }
     
+    /**
+     * removes a meat from the board
+     * 
+     * @param m meat to be removed from the board
+     */
     private void removeMeat(Meat m){
         organisms[m.getX()][m.getY()].remove(m);
         meatList.remove(m);
@@ -148,10 +175,10 @@ public class Board<T extends Organism>{
      * the nearest location that has an empty list. If no such location can be 
      * found, it throws BadLocationException
      * 
-     * @param org
-     * @param x
-     * @param y
-     * @return {x, y}
+     * @param org desired organism
+     * @param x target x coordinate
+     * @param y target y coordinate
+     * @return {x, y} coordinates of the desired organism
      * @throws BadLocationException 
      */
     public int[] findClosest(T org, int x, int y) throws BadLocationException{
@@ -295,9 +322,10 @@ public class Board<T extends Organism>{
     /**
      * Takes a land type and a location and returns the nearest location on the board
      * of that given land type
-     * @param land
-     * @param x
-     * @param y
+     * 
+     * @param land desired land
+     * @param x starting x coordinate
+     * @param y starting y coordinate
      * @return coordinates of landtype
      * @throws BadLocationException 
      */
@@ -439,6 +467,14 @@ public class Board<T extends Organism>{
         throw new BadLocationException("Your animal is bad and should feel bad", 0);
     }
     
+    /**
+     * finds the closest empty space to the given coordinates
+     * 
+     * @param x starting x coordinate
+     * @param y starting y coordinate
+     * @return coordinate of the closest empty space
+     * @throws BadLocationException 
+     */
     public int[] findClosestEmpty(int x, int y) throws BadLocationException{
         if(organisms[x][y] != null){
             
@@ -614,8 +650,8 @@ public class Board<T extends Organism>{
      * of the position, [*][1] will give you the Y-coordinate. the array contains all the tiles
      * the animal can currently see
      * 
-     * @param ani
-     * @return int[][]
+     * @param ani animal that you are getting vision for
+     * @return int[][] coordinates that the animal can see
      */
     public int[][] getVision(Animal ani){
         int[][] tempReturned = new int[50][2];
@@ -954,6 +990,9 @@ public class Board<T extends Organism>{
         return landscape[x][y];
     }
     
+    /**
+     * prints the percent of each type of terrain that the board is made of
+     */
     public void printTerrainComposition(){
         int[] temp = new int[4];
         for(int i = 0; i < landscape.length; i++){
@@ -975,6 +1014,7 @@ public class Board<T extends Organism>{
         System.out.println((double)((double)(temp[2]*100)/(double)(landscape.length*landscape[0].length)) + "% Rock");
         System.out.println((double)((double)(temp[3]*100)/(double)(landscape.length*landscape[0].length)) + "% Lava");
     }
+    
     
     public Iterator<T> aniListIterator(){
         return new AnimalIterator(organismList.iterator());
@@ -1010,6 +1050,11 @@ public class Board<T extends Organism>{
         }
     }
     
+    /**
+     * builds the board
+     * 
+     * @param <T> extends organism
+     */
     public static class BoardBuilder<T extends Organism>{
         
         private final int numTiles = 50;

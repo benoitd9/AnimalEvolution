@@ -1,13 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package FileReader;
 
 import java.io.File;
@@ -19,8 +9,10 @@ import java.util.List;
 import java.util.LinkedList;
 
 /**
- *
- * @author Holly
+ * Text file reader for taking in text files with one string to create an animal
+ * per line
+ * 
+ * @author  Thomas Ashborn, David Benoit, Kevin Patraw, Nathan Plante
  */
 public class TextFileReader {
     private Scanner scan;
