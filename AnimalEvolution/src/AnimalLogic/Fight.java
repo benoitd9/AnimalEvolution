@@ -16,6 +16,8 @@ import AnimalBoard.Board;
 public class Fight {
     public static void fight(Animal aniA, Animal aniB, Board b){
         int i = 0;
+        System.out.println("Fight " + aniA.getName() + " vs " + aniB.getName());
+        
         while(!aniA.isDead() || !aniB.isDead()){
             if(i % 2 == 0)
                 aniB.damage(aniA.getDamage());
@@ -26,9 +28,11 @@ public class Fight {
         
         if(aniA.isDead()){
             b.addMeat(new Meat(aniA.getOrganismSize(), aniA.getX(), aniA.getY()));
+            System.out.println("Animal " + aniA.getName() + "is dead");
         }
         if(aniB.isDead()){
             b.addMeat(new Meat(aniB.getOrganismSize(), aniB.getX(), aniB.getY()));
+            System.out.println("Animal " + aniB.getName() + "is dead");
         }
         
     }

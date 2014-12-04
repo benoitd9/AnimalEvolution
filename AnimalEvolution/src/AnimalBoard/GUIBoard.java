@@ -51,10 +51,12 @@ public class GUIBoard extends JPanel{
             System.out.print("");
         
         List<Plant> pList = board.getPlantList();
-        for(Plant p: pList){
-            add(p);
-            p.repaint();
-            p.setVisible(true);
+        Plant current;
+        for(int i = 0; i < pList.size(); i++ ){
+            current = pList.get(i);
+            add(current);
+            current.repaint();
+            current.setVisible(true);
         }
         
         for(int i = 0; i < 5000; i++)

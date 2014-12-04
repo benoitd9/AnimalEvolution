@@ -16,6 +16,7 @@ import FileReader.TextFileReader;
 import AnimalLogic.TakeTurnNormal;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.List;
 
 /**
  * Main
@@ -25,15 +26,15 @@ import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args){
-        System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
-        TextFileReader txt = new TextFileReader();
-        txt.read();
-        if(txt.strings() != null){
-            for(String s: txt.strings()){
-                ConcreteAnimal ani = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal(s);
-                AnimalFactorySingleton.getInstance().addAnimal(ani.getName(), ani);
-            }
-        }
+        System.setProperty("java.util.Arrays.useLegacyMergeSort", "true"); // WHAT.. ??? WTF.
+        //TextFileReader txt = new TextFileReader();
+        //txt.read();
+       // if(txt.strings() != null){
+        //    for(String s: txt.strings()){
+         //       ConcreteAnimal ani = (ConcreteAnimal) AnimalFactorySingleton.getInstance().createAnimal(s);
+         //       AnimalFactorySingleton.getInstance().addAnimal(ani.getName(), ani);
+         //   }
+       // }
         int numTurns = 10;
         Board.BoardBuilder<Organism> builder = new Board.BoardBuilder<Organism>();
         Board<Organism> b = builder.build();System.out.println("\nAnimal World Game");
@@ -65,7 +66,7 @@ public class Main
             ConcreteAnimal bear2 = (ConcreteAnimal) bear.clone();
             AnimalFactorySingleton.getInstance().addAnimal("Bear2", bear2 );
             
-            /* Testin that Clone makes a new Bear object */
+            //Testin that Clone makes a new Bear object
             System.out.println();
 
             System.out.println("bear 1 xPosition: " + bear.getX() );
@@ -75,54 +76,76 @@ public class Main
             System.out.println("Bear 1 is now at xPosition: " + bear.getX() );
             System.out.println("Bear 2 is still back at xPosition: " + bear2.getX() );
             
+            //b.addAnimal(bear2);
+            
             System.out.println();
+                    
         } catch (CloneNotSupportedException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         
   
         
-        System.out.println("A "+bear.getName()+" has been created");
-        System.out.println("A "+rabbit.getName()+" has been created");
-        System.out.println("A "+kangaroo.getName()+" has been created");
+        //System.out.println("A "+bear.getName()+" has been created");
+        //System.out.println("A "+rabbit.getName()+" has been created");
+        //System.out.println("A "+kangaroo.getName()+" has been created");
         b.addAnimal(bear);
         b.addAnimal(rabbit);
         b.addAnimal(kangaroo);
         b.addAnimal(wolf);
         b.addAnimal(squirrel);
         
-        JFrame app = new JFrame();
-        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        app.add(b.getGUI());
-        app.setSize(b.getGUI().getWidth(),b.getGUI().getHeight()+20);
-        app.setVisible(true);
-        app.repaint();
+        //JFrame app = new JFrame();
+        //app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //app.add(b.getGUI());
+        //app.setSize(b.getGUI().getWidth(),b.getGUI().getHeight()+20);
+        //app.setVisible(true);
+        //app.repaint();
         
         TakeTurnNormal turnTaker = new TakeTurnNormal();
         boolean cont = true;
         Scanner s = new Scanner(System.in);
-        /*(while(cont){
+        while(cont){
+            
+            //app.repaint();
             
             while(animalList.size() > 0){
-                LinkedList<Animal> deadAnimalList = new LinkedList<Animal>();
-                for(Animal a: b.getAnimalList()){
-                    if(!a.isDead()){
-                        turnTaker.act(a, b);
-                        app.repaint();
+               
+                System.out.println("Sequence over press enter...");
+                String slowDown =  s.nextLine();
+                
+                if(slowDown.equalsIgnoreCase("q")){
+                    System.exit(0);
+                } else {
+                    LinkedList<Animal> deadAnimalList = new LinkedList<Animal>();
+                    List<Animal> ani_list = b.getAnimalList();
+
+                    Animal current;
+                    
+                    
+                    for( int i = 0; i < ani_list.size(); i++ ){
+                        current = ani_list.get(i);
+                        
+                        System.out.println(current.getName());
+                        
+                        if(!current.isDead()){
+                            turnTaker.act(current, b);
+                        }
                     }
-                    System.out.println("Animal Loop");
-                }
-                for(Animal a: b.getAnimalList()){
-                    if(a.isDead()){
-                        deadAnimalList.add(a);
+                    for(Animal a: b.getAnimalList()){
+                        if(a.isDead()){
+                            deadAnimalList.add(a);
+
+                        }
+                    }
+                    if(!deadAnimalList.isEmpty()){
+                        for(Animal a: deadAnimalList){
+                            b.remove(a);
+                       }
                     }
                 }
-                if(!deadAnimalList.isEmpty()){
-                    for(Animal a: deadAnimalList){
-                        b.remove(a);
-                        app.repaint();
-                   }
-                }
+                
+                
                 
             }
             
@@ -131,26 +154,12 @@ public class Main
                 cont = false;
             }
             
-            System.out.println("end loop");
-            
             numTurns--;
-        }*/
+            
+        }
         
         b.printTerrainComposition();
-
-        rabbit.setX(2);
-        rabbit.setY(0);
-        squirrel.setX(0);
-        squirrel.setY(2);
-        wolf.setX(4);
-        wolf.setY(2);
-        kangaroo.setX(2);
-        kangaroo.setY(4);
-        bear.setX(2);
-        bear.setY(2);
-        System.out.println("bear is at "+bear.getX()+", "+bear.getY());
-        //bear.getMovement().doMovement(b, bear);
-        System.out.println("bear is at "+bear.getX()+", "+bear.getY());
+        
         
         b.addMeat(new Meat(2,2,2));
         //wolf.getEatStrat().eat(b, wolf);

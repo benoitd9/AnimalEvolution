@@ -20,6 +20,7 @@ public class MovementStrategyRandom implements MovementStrategy
     @Override
     public void doMovement(AnimalBoard.Board board, Lifeforms.Animal a)
     {
+        //System.out.println("RANDOM");
         Random rand = new Random();
         int z = rand.nextInt(10);
         if(z < 4)//hunt
@@ -45,12 +46,17 @@ public class MovementStrategyRandom implements MovementStrategy
                 }
             }
 
-            if(found > 1)
-                target = seenAnimals.get(1);
+            if(found > 1){
+                if(seenAnimals.get(1) != null)
+                    target = seenAnimals.get(1);
 
-            int k = 0;
-            while(seenAnimals.get(k) != null && target != null)
+            int k = 1;
+           
+            /* while(seenAnimals.get(k) != null && target != null)
             {
+                
+                System.out.println("cannible chekc");
+               
                 Lifeforms.Animal temp = seenAnimals.get(k);
                 //check to see if the organism is an animal
                 if(a.getName().equals(target.getName()) && a.getIsCannibal())
@@ -63,9 +69,11 @@ public class MovementStrategyRandom implements MovementStrategy
                 }
                 k++;
             }
+                    */
 
             if(target != null)
             {
+                
                 //starting with a simplified movement and will improve if time is available
                 //move x
                 if(abs(a.getX()-target.getX()) < a.getSpeed())
@@ -97,11 +105,18 @@ public class MovementStrategyRandom implements MovementStrategy
                         a.setY(a.getY()-a.getSpeed());
                     }
                 }
+                
+                //Intiate a Fight in Possible
+                
+                if(a.getX() == target.getX() && a.getY() == target.getY()){
+                    Fight.fight(a,target,board);
+                }
             }
             else
             {
                 a.turnClockwise();
             }
+        }
         }
         else if(z<11)//forage
         {

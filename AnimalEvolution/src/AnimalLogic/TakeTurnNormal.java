@@ -17,7 +17,11 @@ public class TakeTurnNormal extends TakeTurnTemplate
     @Override
     protected void move(Board b, Animal a)
     {
+        int x = a.getX();
+        int y = a.getY();
         a.getMovement().doMovement(b, a);
+        System.out.println("Animal: " + a.getName() + " moved from: " + x + "," + y + " to " + a.getX() + "," + a.getY());
+        
     }
     
     /**
@@ -35,5 +39,6 @@ public class TakeTurnNormal extends TakeTurnTemplate
     @Override
     protected void endTurn(Animal a)
     {
+        //System.exit(0);
     }
 }
